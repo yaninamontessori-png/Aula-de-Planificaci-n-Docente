@@ -1,0 +1,11 @@
+# Configuración mínima del proyecto Supabase para la CLI.
+# Se vincula a tu proyecto real con:  supabase link --project-ref <REF>
+# y se aplican las migraciones con:    supabase db push
+project_id = "aula-planificacion-docente"
+
+[db]
+# Versión de PostgreSQL del proyecto en la nube (Supabase usa 15/17 según el proyecto).
+major_version = 17
+
+# La autenticación con Google se configura en el panel de Supabase
+# (Authentication → Providers → Google). No se guardan secretos en este archivo.
