@@ -2044,16 +2044,16 @@ export const CURRICULUM_BY_GRADE = {
 } as const;
 
 export function getAreasForGrade(grade: number): string[] {
-  return Object.keys(CURRICULUM_BY_GRADE[grade] || {});
+  return Object.keys(CURRICULUM_BY_GRADE[String(grade) as keyof typeof CURRICULUM_BY_GRADE] || {});
 }
 
 export function getContentsForGradeAndArea(
   grade: number,
   area: string
 ): { id: string; label: string }[] {
-  return CURRICULUM_BY_GRADE[grade]?.[area]?.contents || [];
+  return CURRICULUM_BY_GRADE[String(grade) as keyof typeof CURRICULUM_BY_GRADE]?.[area]?.contents || [];
 }
 
 export function getAreaLabel(grade: number, area: string): string {
-  return CURRICULUM_BY_GRADE[grade]?.[area]?.label || area;
+  return CURRICULUM_BY_GRADE[String(grade) as keyof typeof CURRICULUM_BY_GRADE]?.[area]?.label || area;
 }

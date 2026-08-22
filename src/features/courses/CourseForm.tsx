@@ -53,16 +53,16 @@ export function CourseForm({ course, onSuccess }: CourseFormProps) {
         await updateCourse(course.id, {
           name: formData.name,
           years: formData.years,
-          student_count: formData.student_count ? parseInt(formData.student_count) : null,
+          student_count: formData.student_count ? parseInt(formData.student_count) : undefined,
           notes: formData.notes || undefined,
-        });
+        } as any);
       } else {
         await createCourse({
           name: formData.name,
           years: formData.years,
           student_count: formData.student_count ? parseInt(formData.student_count) : undefined,
           notes: formData.notes || undefined,
-        });
+        } as any);
       }
       setFormData({ name: "", years: [], student_count: "", notes: "" });
       onSuccess?.();

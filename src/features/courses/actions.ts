@@ -13,7 +13,7 @@ export interface Course {
 
 export async function getCourses(): Promise<Course[]> {
   const supabase = await createClient();
-  const { data, error } = await supabase
+  const { data, error } = await (supabase as any)
     .from("courses")
     .select("*")
     .order("created_at", { ascending: false });
@@ -24,7 +24,7 @@ export async function getCourses(): Promise<Course[]> {
 
 export async function createCourse(course: Omit<Course, "id">) {
   const supabase = await createClient();
-  const { data, error } = await supabase
+  const { data, error } = await (supabase as any)
     .from("courses")
     .insert([course])
     .select()
@@ -37,7 +37,7 @@ export async function createCourse(course: Omit<Course, "id">) {
 
 export async function updateCourse(id: string, course: Partial<Omit<Course, "id">>) {
   const supabase = await createClient();
-  const { data, error } = await supabase
+  const { data, error } = await (supabase as any)
     .from("courses")
     .update(course)
     .eq("id", id)
@@ -51,7 +51,7 @@ export async function updateCourse(id: string, course: Partial<Omit<Course, "id"
 
 export async function deleteCourse(id: string) {
   const supabase = await createClient();
-  const { error } = await supabase.from("courses").delete().eq("id", id);
+  const { error } = await (supabase as any).from("courses").delete().eq("id", id);
 
   if (error) throw new Error(`No se pudo eliminar el curso: ${error.message}`);
   revalidatePath("/mi-curso");
