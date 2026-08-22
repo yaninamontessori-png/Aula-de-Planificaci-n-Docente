@@ -74,6 +74,25 @@ Supabase mostrarán un error claro pidiendo completar las variables.
 
 ---
 
+### Solución de problemas
+
+**`fetch failed` / `UNABLE_TO_VERIFY_LEAF_SIGNATURE` al iniciar sesión.**
+Algún antivirus o proxy (AVG, Avast, ESET, Kaspersky…) inspecciona el tráfico
+HTTPS y re-firma los certificados con una CA propia que Node no reconoce. El
+servidor no puede validar el certificado de Supabase. Soluciones:
+
+- Ejecutá el dev server en una terminal donde esté definida la variable
+  `NODE_EXTRA_CA_CERTS` apuntando al certificado del antivirus (muchos la
+  configuran solas, p. ej. `C:\ProgramData\AVG\Antivirus\wscert.pem`), **o**
+- Usá el almacén de certificados del sistema:
+
+  ```bash
+  # PowerShell
+  $env:NODE_OPTIONS="--use-system-ca"; npm run dev
+  ```
+
+No afecta a producción (Vercel no intercepta HTTPS).
+
 ## Configurar Supabase
 
 ### 1. Crear el proyecto y aplicar el esquema
