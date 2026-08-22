@@ -167,11 +167,17 @@ mano en el código. El CSV debe tener el encabezado:
 grade,area,axis,content_number,content_text,source_year
 ```
 
-Hay un ejemplo en [`scripts/curriculum.sample.csv`](scripts/curriculum.sample.csv).
+El repositorio ya incluye el dataset completo del Diseño Curricular de Santa Fe
+en [`scripts/curriculum_santa_fe.csv`](scripts/curriculum_santa_fe.csv):
+**1.308 contenidos**, 5 áreas, grados 1.º a 7.º, con sus ejes reales y **sin
+datos de estudiantes** (se extrajo solo N.º, Eje y Contenido de las planillas de
+origen). Hay además un mini ejemplo de formato en
+[`scripts/curriculum.sample.csv`](scripts/curriculum.sample.csv).
+
 Para importar (requiere `SUPABASE_SERVICE_ROLE_KEY` en `.env.local`):
 
 ```bash
-npm run import:curriculum -- ruta/al/curriculum.csv
+npm run import:curriculum -- scripts/curriculum_santa_fe.csv
 ```
 
 El proceso es **idempotente**: calcula un hash por contenido y hace *upsert*, así

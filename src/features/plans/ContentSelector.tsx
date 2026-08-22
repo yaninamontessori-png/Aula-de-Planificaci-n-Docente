@@ -26,11 +26,10 @@ export function ContentSelector({
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [openArea, setOpenArea] = useState<string | null>(null);
+  const [openEjes, setOpenEjes] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    // El componente se remonta con key={grade} desde el Wizard, así que el
-    // estado inicial (loading=true) ya es el correcto: acá solo actualizamos
-    // el estado dentro del callback asíncrono.
+    // Remontado con key={grade} desde el Wizard: el estado inicial ya es válido.
     let active = true;
     const supabase = createClient();
     supabase
@@ -53,16 +52,19 @@ export function ContentSelector({
   }, [grade]);
 
   const selectedIds = useMemo(() => new Set(selected.map((c) => c.id)), [selected]);
+  const searching = query.trim().length > 0;
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return rows;
     return rows.filter((r) =>
-      `${r.area} ${r.axis ?? ""} ${r.content_text}`.toLowerCase().includes(q),
+      `${r.area} ${r.axis ?? ""} ${r.content_number ?? ""} ${r.content_text}`
+        .toLowerCase()
+        .includes(q),
     );
   }, [rows, query]);
 
-  // Agrupa área → eje.
+  // Agrupa área → eje conservando el orden.
   const groups = useMemo(() => {
     const byArea = new Map<string, Map<string, Row[]>>();
     for (const r of filtered) {
@@ -75,7 +77,7 @@ export function ContentSelector({
     return byArea;
   }, [filtered]);
 
-  function toggle(row: Row, checked: boolean) {
+  function toggleContent(row: Row, checked: boolean) {
     if (checked) {
       onChange([
         ...selected,
@@ -92,6 +94,15 @@ export function ContentSelector({
     }
   }
 
+  function toggleEje(key: string) {
+    setOpenEjes((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+  }
+
   if (loading) return <p className="text-muted">Cargando contenidos…</p>;
   if (error)
     return (
@@ -102,8 +113,7 @@ export function ContentSelector({
   if (rows.length === 0)
     return (
       <p className="rounded-lg border border-dashed border-border bg-surface p-6 text-muted">
-        No hay contenidos cargados para {grade}.º grado todavía. Importá el
-        Diseño Curricular con el script <code>import:curriculum</code>.
+        No hay contenidos cargados para {grade}.º grado todavía.
       </p>
     );
 
@@ -118,53 +128,82 @@ export function ContentSelector({
         className="mb-4 w-full rounded-lg border border-border bg-surface px-3 py-3"
       />
 
+      {searching && groups.size === 0 && (
+        <p className="text-muted">No se encontraron contenidos para “{query}”.</p>
+      )}
+
       {[...groups.entries()].map(([area, axes]) => {
-        const areaCount = selected.filter((c) => c.area === area).length;
-        const isOpen = openArea === area || query.trim().length > 0;
+        const areaSelected = selected.filter((c) => c.area === area).length;
+        const areaOpen = openArea === area || searching;
         return (
           <div key={area} className="mb-3 overflow-hidden rounded-xl border border-border bg-surface">
             <button
               type="button"
-              onClick={() => setOpenArea(isOpen && !query ? null : area)}
-              aria-expanded={isOpen}
-              className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left font-heading font-bold text-brand"
+              onClick={() => setOpenArea(areaOpen && !searching ? null : area)}
+              aria-expanded={areaOpen}
+              className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left"
             >
-              <span>{area}</span>
-              <span className="rounded-full bg-surface-2 px-2.5 py-0.5 text-xs font-semibold text-brand">
-                {areaCount > 0 ? `${areaCount} sel.` : "—"}
+              <span className="font-heading text-lg font-bold text-brand">{area}</span>
+              <span className="shrink-0 rounded-full bg-surface-2 px-3 py-1 text-xs font-semibold text-brand">
+                {areaSelected > 0
+                  ? `${areaSelected} seleccionado${areaSelected > 1 ? "s" : ""}`
+                  : "Sin seleccionar"}
               </span>
             </button>
 
-            {isOpen && (
-              <div className="border-t border-border px-3 pb-3">
-                {[...axes.entries()].map(([axis, items]) => (
-                  <div key={axis} className="mt-3">
-                    <p className="mb-1 px-1 text-sm font-semibold text-brand-2">{axis}</p>
-                    <ul>
-                      {items.map((row) => {
-                        const checked = selectedIds.has(row.id);
-                        return (
-                          <li key={row.id}>
-                            <label className="flex cursor-pointer items-start gap-3 rounded-lg px-2 py-2 hover:bg-surface-2">
-                              <input
-                                type="checkbox"
-                                checked={checked}
-                                onChange={(e) => toggle(row, e.target.checked)}
-                                className="mt-1 h-5 w-5 shrink-0 accent-[var(--color-brand)]"
-                              />
-                              <span className="text-sm leading-snug">
-                                {row.content_number && (
-                                  <strong>{row.content_number}. </strong>
-                                )}
-                                {row.content_text}
-                              </span>
-                            </label>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                ))}
+            {areaOpen && (
+              <div className="border-t border-border p-2">
+                {[...axes.entries()].map(([axis, items]) => {
+                  const key = `${area}||${axis}`;
+                  const ejeOpen = openEjes.has(key) || searching;
+                  const ejeSelected = items.filter((r) => selectedIds.has(r.id)).length;
+                  return (
+                    <div key={key} className="mb-1 overflow-hidden rounded-lg border border-border">
+                      <button
+                        type="button"
+                        onClick={() => toggleEje(key)}
+                        aria-expanded={ejeOpen}
+                        className="flex w-full items-center justify-between gap-3 bg-surface-2 px-3 py-3 text-left"
+                      >
+                        <span className="text-sm font-semibold text-brand-ink">
+                          {axis}
+                          {ejeSelected > 0 && (
+                            <span className="ml-2 text-brand-2">· {ejeSelected} sel.</span>
+                          )}
+                        </span>
+                        <span className="shrink-0 text-sm font-semibold text-muted">
+                          {items.length}
+                        </span>
+                      </button>
+
+                      {ejeOpen && (
+                        <ul className="bg-surface px-2 py-1">
+                          {items.map((row) => {
+                            const checked = selectedIds.has(row.id);
+                            return (
+                              <li key={row.id}>
+                                <label className="flex cursor-pointer items-start gap-3 rounded-lg px-2 py-2 hover:bg-surface-2">
+                                  <input
+                                    type="checkbox"
+                                    checked={checked}
+                                    onChange={(e) => toggleContent(row, e.target.checked)}
+                                    className="mt-0.5 h-5 w-5 shrink-0 accent-[var(--color-brand)]"
+                                  />
+                                  <span className="text-sm leading-snug">
+                                    {row.content_number && (
+                                      <strong>{row.content_number}. </strong>
+                                    )}
+                                    {row.content_text}
+                                  </span>
+                                </label>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             )}
           </div>
