@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { MobileNav, DesktopNav } from "@/components/layout/MobileNav";
 import { SignOutButton } from "@/components/auth/SignOutButton";
+import { OnboardingModal } from "@/features/profile/OnboardingModal";
 
 export default async function AppLayout({
   children,
@@ -13,6 +14,14 @@ export default async function AppLayout({
   } = await supabase.auth.getUser();
 
   if (!user) redirect("/login");
+
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("onboarded, display_name")
+    .eq("id", user.id)
+    .maybeSingle();
+  // Primera vez (o perfil sin completar): mostramos el modal de bienvenida.
+  const needsOnboarding = profile ? !profile.onboarded : true;
 
   return (
     <div className="flex min-h-full flex-1 flex-col">
@@ -38,6 +47,16 @@ export default async function AppLayout({
       </main>
 
       <MobileNav />
+
+      {needsOnboarding && (
+        <OnboardingModal
+          defaultName={
+            profile?.display_name ||
+            (user.user_metadata?.full_name as string | undefined) ||
+            (user.email ? user.email.split("@")[0] : "")
+          }
+        />
+      )}
     </div>
   );
 }

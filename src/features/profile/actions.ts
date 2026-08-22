@@ -65,3 +65,47 @@ export async function updateProfile(
   revalidatePath("/perfil");
   return { ok: true };
 }
+
+/**
+ * Completa el perfil la primera vez (modal de bienvenida) y marca onboarded.
+ */
+export async function completeOnboarding(
+  _prev: ProfileActionState,
+  formData: FormData,
+): Promise<ProfileActionState> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { error: "Tu sesión expiró. Volvé a ingresar." };
+
+  const displayName = String(formData.get("display_name") ?? "").trim();
+  if (!displayName) return { error: "Ingresá tu nombre." };
+
+  const institution = String(formData.get("institution") ?? "").trim();
+  const gradeRaw = String(formData.get("default_grade") ?? "").trim();
+  const defaultGrade =
+    gradeRaw && Number(gradeRaw) >= 1 && Number(gradeRaw) <= 7 ? Number(gradeRaw) : null;
+  const subjectRaw = String(formData.get("teaching_subject") ?? "").trim();
+  const teachingSubject = SUBJECT_IDS.has(subjectRaw) ? subjectRaw : "grado";
+  const role = String(formData.get("role") ?? "") === "directivo" ? "directivo" : "docente";
+
+  const { error } = await supabase.from("profiles").upsert(
+    {
+      id: user.id,
+      display_name: displayName,
+      institution: institution || null,
+      default_grade: defaultGrade,
+      teaching_subject: teachingSubject,
+      role,
+      onboarded: true,
+    },
+    { onConflict: "id" },
+  );
+
+  if (error) return { error: "No se pudo guardar. Intentá nuevamente." };
+
+  // Revalida el layout para que el modal desaparezca.
+  revalidatePath("/", "layout");
+  return { ok: true };
+}

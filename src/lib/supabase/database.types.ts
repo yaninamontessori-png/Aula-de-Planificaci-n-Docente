@@ -23,6 +23,7 @@ export interface Database {
           default_grade: number | null;
           role: string;
           teaching_subject: string | null;
+          onboarded: boolean;
           created_at: string;
           updated_at: string;
         };
@@ -36,6 +37,7 @@ export interface Database {
           default_grade?: number | null;
           role?: string;
           teaching_subject?: string | null;
+          onboarded?: boolean;
         };
         Update: {
           display_name?: string | null;
@@ -46,6 +48,7 @@ export interface Database {
           default_grade?: number | null;
           role?: string;
           teaching_subject?: string | null;
+          onboarded?: boolean;
         };
         Relationships: [];
       };
