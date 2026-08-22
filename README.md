@@ -240,17 +240,26 @@ de Supabase (Database → Advisors) y revisá las advertencias.
 - [x] Validación tipada del dominio + tests.
 - [x] Lint, TypeScript y build en verde.
 
-**Antes de continuar con Gemini y las descargas**
+- [x] Asistente de 4 pasos: datos, selección de contenidos (área→eje, buscador,
+      contador, exige ≥2 áreas), pregunta motivadora y recurso.
+- [x] Generación con IA (Gemini) con salida JSON estructurada y validada.
+- [x] Guardado de planificaciones y contenidos, con detalle de secciones.
 
-1. Crear el proyecto Supabase y aplicar la migración.
-2. Configurar Google OAuth y probar el ingreso de punta a punta.
-3. Importar el CSV curricular real y verificar el Paso 2.
-4. Correr los Security Advisors de Supabase.
+**Sobre la generación con IA**
+
+- Modelo: `gemini-flash-latest`, con respaldo automático a
+  `gemini-flash-lite-latest` cuando el principal está sobrecargado (503).
+  Configurable con la variable `GEMINI_MODEL`.
+- Por ahora corre en una **Server Action** de Next.js (la clave queda solo en el
+  servidor, nunca en el navegador). El esqueleto de **Edge Function** en
+  `supabase/functions/generate-plan/` es el paso de endurecimiento siguiente.
+- Los contenidos curriculares son de **muestra** (`scripts/curriculum.sample.csv`).
+  Reemplazalos por los ~1.308 reales con `npm run import:curriculum`.
 
 **Pendiente (próximas etapas)**
 
-- Asistente de 4 pasos completo y selector de contenidos.
-- Edge Function de Gemini (generación con IA) cableada al frontend.
-- Edición por secciones, duplicar, eliminar y descargas Word/PDF.
-- Despliegue en Vercel (aún **no** realizado, por indicación del proyecto).
+- Edición por secciones desde el detalle, duplicar y eliminar (con confirmación).
+- Descargas Word (.docx) y PDF.
+- Migrar la generación a la Edge Function de Supabase.
+- Despliegue en Vercel.
 ```

@@ -1,4 +1,38 @@
 grade,area,axis,content_number,content_text,source_year
-1,Lengua y Literatura,En relación con la oralidad,1,"Escucha comprensiva de textos leídos o expresados en forma oral por el docente y sus compañeros.",2024
-1,Matemática,Número y operaciones,1,"Reconocimiento y uso de los números naturales en situaciones cotidianas.",2024
-2,Ciencias Sociales,Sociedades y culturas,1,"Reconocimiento de la diversidad de trabajos, trabajadores y sus condiciones en distintos contextos.",2024
+1,Lengua y Literatura,Oralidad,1,"Escucha comprensiva de consignas, narraciones y explicaciones dadas por el docente.",2024
+1,Lengua y Literatura,Oralidad,2,"Participación en conversaciones respetando turnos de intercambio.",2024
+1,Lengua y Literatura,Lectura,3,"Lectura de palabras y textos breves con distintos propósitos.",2024
+1,Lengua y Literatura,Escritura,4,"Escritura del propio nombre y de palabras significativas.",2024
+1,Matemática,Número y operaciones,1,"Reconocimiento, lectura y escritura de números naturales en situaciones cotidianas.",2024
+1,Matemática,Número y operaciones,2,"Resolución de problemas de suma y resta con distintos significados.",2024
+1,Matemática,Espacio y formas,3,"Descripción y comparación de figuras y cuerpos geométricos.",2024
+1,Ciencias Sociales,Sociedades y culturas,1,"Reconocimiento de trabajos y roles en la vida familiar y comunitaria.",2024
+1,Ciencias Sociales,Sociedades en el tiempo,2,"Registro del paso del tiempo mediante calendarios y rutinas.",2024
+1,Ciencias Naturales,Los seres vivos,1,"Observación y descripción de plantas y animales del entorno.",2024
+1,Ciencias Naturales,Los materiales,2,"Exploración de materiales y sus propiedades observables.",2024
+1,"Saberes, Vidas y Mundos",Convivencia,1,"Construcción de acuerdos de convivencia en el aula.",2024
+1,"Saberes, Vidas y Mundos",Identidad,2,"Reconocimiento de la propia historia y la de sus compañeros.",2024
+2,Lengua y Literatura,Oralidad,1,"Renarración de cuentos y relatos escuchados o leídos.",2024
+2,Lengua y Literatura,Lectura,2,"Lectura de textos literarios y no literarios con creciente autonomía.",2024
+2,Lengua y Literatura,Escritura,3,"Producción de textos breves atendiendo al propósito y al destinatario.",2024
+2,Matemática,Número y operaciones,1,"Uso de números en el orden de las centenas en situaciones problemáticas.",2024
+2,Matemática,Número y operaciones,2,"Estrategias de cálculo mental para sumar y restar.",2024
+2,Matemática,Medida,3,"Comparación y medición de longitudes con unidades no convencionales.",2024
+2,Ciencias Sociales,Sociedades y culturas,1,"Análisis de instituciones de la comunidad y sus funciones.",2024
+2,Ciencias Sociales,Sociedades en el tiempo,2,"Comparación de la vida cotidiana en distintos momentos históricos.",2024
+2,Ciencias Naturales,Los seres vivos,1,"Clasificación de seres vivos según características observables.",2024
+2,Ciencias Naturales,La Tierra y el universo,2,"Observación de cambios en el cielo y el paisaje a lo largo del día.",2024
+2,"Saberes, Vidas y Mundos",Ambiente,1,"Prácticas de cuidado del ambiente en la escuela y el hogar.",2024
+2,"Saberes, Vidas y Mundos",Convivencia,2,"Resolución dialogada de conflictos cotidianos.",2024
+3,Lengua y Literatura,Oralidad,1,"Exposición oral de temas conocidos con apoyo de imágenes o esquemas.",2024
+3,Lengua y Literatura,Lectura,2,"Lectura de textos de estudio identificando información relevante.",2024
+3,Lengua y Literatura,Escritura,3,"Escritura de textos narrativos con inicio, desarrollo y cierre.",2024
+3,Matemática,Número y operaciones,1,"Multiplicación y división en problemas de reparto y organización.",2024
+3,Matemática,Número y operaciones,2,"Análisis del valor posicional en números de cuatro cifras.",2024
+3,Matemática,Espacio y formas,3,"Construcción y clasificación de figuras geométricas según sus lados.",2024
+3,Ciencias Sociales,Sociedades y culturas,1,"Estudio de actividades productivas de la provincia de Santa Fe.",2024
+3,Ciencias Sociales,Sociedades en el tiempo,2,"Reconstrucción de la historia local a partir de distintas fuentes.",2024
+3,Ciencias Naturales,Los seres vivos,1,"Relaciones alimentarias entre los seres vivos de un ambiente.",2024
+3,Ciencias Naturales,Los materiales,2,"Cambios de estado del agua y sus usos cotidianos.",2024
+3,"Saberes, Vidas y Mundos",Ambiente,1,"Proyectos escolares de cuidado del agua y la energía.",2024
+3,"Saberes, Vidas y Mundos",Identidad,2,"Valoración de la diversidad cultural de la comunidad.",2024
