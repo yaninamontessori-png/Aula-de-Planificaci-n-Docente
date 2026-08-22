@@ -1,20 +1,23 @@
 @import "tailwindcss";
 
 /* ===========================================================================
-   Identidad visual Montessori — serena, clara, sin saturación.
+   Identidad visual "Papelería pastel" — cálida, redondeada, con energía de aula.
    =========================================================================== */
 :root {
-  --color-brand: #4e6146; /* verde principal */
-  --color-brand-2: #667a5d; /* verde secundario */
-  --color-brand-ink: #28483b; /* verde texto */
-  --color-bg: #fbf9f4; /* fondo */
+  --color-brand: #a45c3c; /* terracota — acción principal */
+  --color-brand-2: #8a4b32; /* terracota hover */
+  --color-brand-ink: #4a3f2a; /* marrón cálido para texto de acento */
+  --color-bg: #fbf7f1; /* crema */
   --color-surface: #ffffff; /* tarjetas */
-  --color-surface-2: #e8ece4; /* superficies claras */
-  --color-ink: #1b1c19; /* texto principal */
-  --color-muted: #5b615a; /* texto secundario */
-  --color-border: #d7d9d0; /* bordes */
-  --color-danger: #93000a; /* errores */
-  --color-danger-bg: #f9e7e7;
+  --color-surface-2: #f0e6d4; /* superficies suaves */
+  --color-ink: #2f2a24; /* texto principal */
+  --color-muted: #6f685c; /* texto secundario */
+  --color-border: #ece2d0; /* bordes */
+  --color-accent: #aecdb9; /* salvia — paneles y acentos */
+  --color-accent-ink: #26302a; /* texto sobre salvia */
+  --color-accent-2: #cfe4d6; /* salvia clara */
+  --color-danger: #a8412c; /* errores (terracota profundo) */
+  --color-danger-bg: #fbe1dc;
 }
 
 @theme inline {
@@ -27,11 +30,14 @@
   --color-ink: var(--color-ink);
   --color-muted: var(--color-muted);
   --color-border: var(--color-border);
+  --color-accent: var(--color-accent);
+  --color-accent-ink: var(--color-accent-ink);
+  --color-accent-2: var(--color-accent-2);
   --color-danger: var(--color-danger);
   --color-danger-bg: var(--color-danger-bg);
 
   --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-manrope), var(--font-hanken), ui-sans-serif, sans-serif;
+  --font-heading: var(--font-unbounded), var(--font-hanken), ui-sans-serif, sans-serif;
 }
 
 html {
@@ -51,6 +57,7 @@ h1,
 h2,
 h3 {
   font-family: var(--font-heading);
+  letter-spacing: -0.015em;
 }
 
 /* Foco visible y accesible en todos los controles interactivos. */

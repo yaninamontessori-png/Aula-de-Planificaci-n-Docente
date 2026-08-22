@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Hanken_Grotesk, Manrope } from "next/font/google";
+import { Hanken_Grotesk, Unbounded } from "next/font/google";
 import "./globals.css";
 
 const hanken = Hanken_Grotesk({
@@ -8,9 +8,9 @@ const hanken = Hanken_Grotesk({
   display: "swap",
 });
 
-const manrope = Manrope({
-  variable: "--font-manrope",
-  weight: ["600", "700"],
+const unbounded = Unbounded({
+  variable: "--font-unbounded",
+  weight: ["600", "700", "800"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -25,14 +25,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#4e6146",
+  themeColor: "#a45c3c",
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es" className={`${hanken.variable} ${manrope.variable} h-full`}>
+    <html lang="es" className={`${hanken.variable} ${unbounded.variable} h-full`}>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
