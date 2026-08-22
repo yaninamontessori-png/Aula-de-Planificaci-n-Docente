@@ -2051,9 +2051,11 @@ export function getContentsForGradeAndArea(
   grade: number,
   area: string
 ): { id: string; label: string }[] {
-  return CURRICULUM_BY_GRADE[String(grade) as keyof typeof CURRICULUM_BY_GRADE]?.[area]?.contents || [];
+  const gradeData = CURRICULUM_BY_GRADE[String(grade) as keyof typeof CURRICULUM_BY_GRADE];
+  return (gradeData?.[area as keyof typeof gradeData]?.contents as any) || [];
 }
 
 export function getAreaLabel(grade: number, area: string): string {
-  return CURRICULUM_BY_GRADE[String(grade) as keyof typeof CURRICULUM_BY_GRADE]?.[area]?.label || area;
+  const gradeData = CURRICULUM_BY_GRADE[String(grade) as keyof typeof CURRICULUM_BY_GRADE];
+  return (gradeData?.[area as keyof typeof gradeData]?.label as any) || area;
 }
