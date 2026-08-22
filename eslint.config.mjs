@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Se ejecutan en Deno/Node fuera del bundle de Next: distinto entorno.
+    "supabase/functions/**",
+    "scripts/**",
   ]),
 ]);
 
