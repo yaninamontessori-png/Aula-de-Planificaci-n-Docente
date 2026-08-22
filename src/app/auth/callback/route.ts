@@ -14,11 +14,17 @@ export async function GET(request: Request) {
   // El proveedor (Supabase/Google) puede volver con un error en vez de un código.
   const providerError = searchParams.get("error_description") || searchParams.get("error");
 
+  // Detrás del proxy de Vercel, `origin` puede ser el interno; preferimos el
+  // host reenviado para redirigir siempre al dominio público correcto.
+  const forwardedHost = request.headers.get("x-forwarded-host");
+  const forwardedProto = request.headers.get("x-forwarded-proto") ?? "https";
+  const baseUrl = forwardedHost ? `${forwardedProto}://${forwardedHost}` : origin;
+
   if (code) {
     const supabase = await createClient();
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
-      return NextResponse.redirect(`${origin}${next}`);
+      return NextResponse.redirect(`${baseUrl}${next}`);
     }
     console.error("[auth/callback] exchangeCodeForSession falló:", error.message);
   } else if (providerError) {
@@ -27,5 +33,5 @@ export async function GET(request: Request) {
     console.error("[auth/callback] no llegó ningún código.");
   }
 
-  return NextResponse.redirect(`${origin}/login?error=auth`);
+  return NextResponse.redirect(`${baseUrl}/login?error=auth`);
 }

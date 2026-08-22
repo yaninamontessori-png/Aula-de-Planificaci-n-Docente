@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { buttonClasses } from "@/components/ui/Button";
-import { env } from "@/lib/env";
 
 export function GoogleButton({ redirectTo = "/nueva" }: { redirectTo?: string }) {
   const [loading, setLoading] = useState(false);
@@ -13,7 +12,10 @@ export function GoogleButton({ redirectTo = "/nueva" }: { redirectTo?: string })
     setLoading(true);
     setError(null);
     const supabase = createClient();
-    const callback = new URL("/auth/callback", env.NEXT_PUBLIC_SITE_URL);
+    // Usamos el origen real del navegador (Vercel o local) para que Google
+    // vuelva SIEMPRE al mismo dominio desde el que se inició la sesión, sin
+    // depender de NEXT_PUBLIC_SITE_URL (que podía quedar apuntando a localhost).
+    const callback = new URL("/auth/callback", window.location.origin);
     callback.searchParams.set("next", redirectTo);
 
     const { error } = await supabase.auth.signInWithOAuth({
