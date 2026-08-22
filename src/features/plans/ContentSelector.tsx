@@ -47,8 +47,6 @@ export function ContentSelector({
 
   const loading = false;
   const error = null;
-    };
-  }, [grade]);
 
   const selectedIds = useMemo(() => new Set(selected.map((c) => c.id)), [selected]);
   const searching = query.trim().length > 0;
