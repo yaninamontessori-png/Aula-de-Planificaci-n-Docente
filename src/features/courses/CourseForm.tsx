@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { createCourse, updateCourse, type Course } from "./actions";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/Button";
 
 const AVAILABLE_YEARS = [
   "Sala 3",

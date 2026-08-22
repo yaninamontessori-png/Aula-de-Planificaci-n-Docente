@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { deleteCourse, type Course } from "./actions";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/Button";
 
 interface CourseListProps {
   courses: Course[];
