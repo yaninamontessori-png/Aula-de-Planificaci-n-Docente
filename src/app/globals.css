@@ -1,26 +1,70 @@
 @import "tailwindcss";
 
+/* ===========================================================================
+   Identidad visual Montessori — serena, clara, sin saturación.
+   =========================================================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-brand: #4e6146; /* verde principal */
+  --color-brand-2: #667a5d; /* verde secundario */
+  --color-brand-ink: #28483b; /* verde texto */
+  --color-bg: #fbf9f4; /* fondo */
+  --color-surface: #ffffff; /* tarjetas */
+  --color-surface-2: #e8ece4; /* superficies claras */
+  --color-ink: #1b1c19; /* texto principal */
+  --color-muted: #5b615a; /* texto secundario */
+  --color-border: #d7d9d0; /* bordes */
+  --color-danger: #93000a; /* errores */
+  --color-danger-bg: #f9e7e7;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-brand: var(--color-brand);
+  --color-brand-2: var(--color-brand-2);
+  --color-brand-ink: var(--color-brand-ink);
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-surface-2: var(--color-surface-2);
+  --color-ink: var(--color-ink);
+  --color-muted: var(--color-muted);
+  --color-border: var(--color-border);
+  --color-danger: var(--color-danger);
+  --color-danger-bg: var(--color-danger-bg);
+
+  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-manrope), var(--font-hanken), ui-sans-serif, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden; /* nunca desplazamiento horizontal */
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+}
+
+/* Foco visible y accesible en todos los controles interactivos. */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-brand-2) 45%, transparent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Áreas táctiles mínimas de 44px en controles nativos. */
+button,
+[role="button"],
+a.btn,
+input,
+select {
+  min-height: 44px;
 }
