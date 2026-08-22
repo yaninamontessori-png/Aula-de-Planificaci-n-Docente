@@ -2,8 +2,11 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { normalizeSkillIds } from "@/features/plans/schema";
 
 export type ProfileActionState = { ok?: boolean; error?: string };
+
+const NOTES_MAX = 600;
 
 /**
  * Actualiza el perfil de la docente autenticada.
@@ -25,13 +28,29 @@ export async function updateProfile(
 
   if (!displayName) return { error: "El nombre no puede quedar vacío." };
 
+  // Enfoques pedagógicos ("skills"): checkboxes name="skills" (solo ids válidos).
+  const skills = normalizeSkillIds(
+    formData.getAll("skills").map((v) => String(v)),
+  );
+  const notes = String(formData.get("pedagogical_notes") ?? "")
+    .trim()
+    .slice(0, NOTES_MAX);
+  const gradeRaw = String(formData.get("default_grade") ?? "").trim();
+  const defaultGrade =
+    gradeRaw && Number(gradeRaw) >= 1 && Number(gradeRaw) <= 7 ? Number(gradeRaw) : null;
+
   // upsert cubre el caso (poco común) de que aún no exista la fila de perfil.
-  const { error } = await supabase
-    .from("profiles")
-    .upsert(
-      { id: user.id, display_name: displayName, institution: institution || null },
-      { onConflict: "id" },
-    );
+  const { error } = await supabase.from("profiles").upsert(
+    {
+      id: user.id,
+      display_name: displayName,
+      institution: institution || null,
+      teaching_skills: skills,
+      pedagogical_notes: notes || null,
+      default_grade: defaultGrade,
+    },
+    { onConflict: "id" },
+  );
 
   if (error) return { error: "No se pudo guardar. Intentá nuevamente." };
 

@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import {
   planDraftSchema,
   generatedSectionsSchema,
+  skillPromptsFor,
   type GeneratedSections,
 } from "./schema";
 import { generateSections, GEMINI_MODEL } from "./gemini";
@@ -49,8 +50,22 @@ export async function generatePlan(input: unknown): Promise<GenerateResult> {
     return { ok: false, error: `Alcanzaste el límite mensual de ${limit} generaciones.` };
   }
 
+  // Configuración pedagógica de la docente: orienta al agente de IA.
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("teaching_skills, pedagogical_notes")
+    .eq("id", user.id)
+    .maybeSingle();
+  const guidelines = {
+    skills: skillPromptsFor(profile?.teaching_skills ?? []),
+    notes: (profile?.pedagogical_notes ?? "").trim(),
+  };
+
   try {
-    const { sections, model, inputTokens, outputTokens } = await generateSections(draft);
+    const { sections, model, inputTokens, outputTokens } = await generateSections(
+      draft,
+      guidelines,
+    );
     await supabase.from("generation_events").insert({
       user_id: user.id,
       status: "exito",

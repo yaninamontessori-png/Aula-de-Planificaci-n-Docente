@@ -34,8 +34,16 @@ const responseSchema = {
   required: SECTION_KEYS,
 };
 
-function systemInstruction(): string {
-  return [
+/** Configuración pedagógica de la docente (viene de su Perfil). */
+export type PlanGuidelines = {
+  /** Instrucciones de los enfoques ("skills") activos. */
+  skills: string[];
+  /** Contexto del grupo/aula en texto libre. */
+  notes: string;
+};
+
+function systemInstruction(guidelines?: PlanGuidelines): string {
+  const lines = [
     "Sos una especialista en educación primaria y planificación curricular de Santa Fe, Argentina.",
     "Creá una propuesta situada, viable, inclusiva y coherente con la edad. No agregues contenidos curriculares que no estén en la selección docente.",
     "La pregunta motivadora debe funcionar como hilo conductor real, no como título decorativo.",
@@ -44,7 +52,21 @@ function systemInstruction(): string {
     "Incluí adecuaciones y alternativas de acceso, participación y producción sin diagnosticar estudiantes ni nombrarlos.",
     "Escribí en español rioplatense profesional, claro y listo para que una docente lo edite.",
     "Dentro de cada campo largo usá subtítulos y viñetas con el carácter • cuando ayude a la lectura.",
-  ].join("\n");
+  ];
+
+  if (guidelines?.skills?.length) {
+    lines.push("");
+    lines.push("Aplicá de forma transversal y concreta estos enfoques elegidos por la docente:");
+    for (const s of guidelines.skills) lines.push("• " + s);
+  }
+  if (guidelines?.notes?.trim()) {
+    lines.push("");
+    lines.push(
+      "Tené en cuenta este contexto del grupo indicado por la docente (sin nombrar ni diagnosticar a estudiantes): " +
+        guidelines.notes.trim(),
+    );
+  }
+  return lines.join("\n");
 }
 
 function buildPrompt(d: PlanDraft): string {
@@ -84,12 +106,15 @@ export type GeminiResult = {
 };
 
 /** Llama a Gemini con un reintento ante errores transitorios (red / 5xx). */
-export async function generateSections(draft: PlanDraft): Promise<GeminiResult> {
+export async function generateSections(
+  draft: PlanDraft,
+  guidelines?: PlanGuidelines,
+): Promise<GeminiResult> {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) throw new Error("La generación con IA no está configurada (falta GEMINI_API_KEY).");
 
   const body = JSON.stringify({
-    systemInstruction: { parts: [{ text: systemInstruction() }] },
+    systemInstruction: { parts: [{ text: systemInstruction(guidelines) }] },
     contents: [{ role: "user", parts: [{ text: buildPrompt(draft) }] }],
     generationConfig: {
       responseMimeType: "application/json",

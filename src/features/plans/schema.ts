@@ -7,6 +7,100 @@ import { z } from "zod";
 
 export const GRADES = [1, 2, 3, 4, 5, 6, 7] as const;
 
+/**
+ * Enfoques pedagógicos ("skills" del agente de IA).
+ * La docente los activa en su Perfil y se inyectan como instrucciones al generar.
+ *   - `label` / `short`: para la interfaz.
+ *   - `prompt`: la instrucción que recibe el modelo cuando el enfoque está activo.
+ */
+export const TEACHING_SKILLS = [
+  {
+    id: "esi",
+    label: "ESI · Educación Sexual Integral",
+    short: "Cuidado del cuerpo, emociones, respeto y diversidad, según la edad.",
+    prompt:
+      "Integrá la Educación Sexual Integral (ESI) de forma transversal y apropiada a la edad: cuidado del cuerpo, expresión de emociones, respeto por la diversidad y vínculos saludables.",
+  },
+  {
+    id: "eai",
+    label: "Educación Ambiental",
+    short: "Cuidado del ambiente y vínculo con el entorno local.",
+    prompt:
+      "Integrá la Educación Ambiental Integral (EAI): cuidado del ambiente, consumo responsable y vínculo con el entorno local.",
+  },
+  {
+    id: "ecd",
+    label: "Ciudadanía y Derechos",
+    short: "Convivencia democrática y derechos de niñas y niños.",
+    prompt:
+      "Integrá la Educación en Ciudadanía y Derechos (ECD): convivencia democrática, derechos de niñas y niños y participación.",
+  },
+  {
+    id: "ei",
+    label: "Interculturalidad",
+    short: "Reconocer y valorar la diversidad cultural del aula.",
+    prompt:
+      "Integrá una perspectiva intercultural (EI): reconocimiento y valoración de la diversidad cultural del aula y la comunidad.",
+  },
+  {
+    id: "dua",
+    label: "Inclusión (DUA)",
+    short: "Diseño Universal: múltiples formas de acceder y participar.",
+    prompt:
+      "Aplicá el Diseño Universal para el Aprendizaje (DUA): ofrecé múltiples formas de representación, de acción y expresión, y de implicación, con consignas multinivel.",
+  },
+  {
+    id: "abp",
+    label: "Aprendizaje por proyectos",
+    short: "Un proyecto con producto final auténtico y su socialización.",
+    prompt:
+      "Estructurá la propuesta como Aprendizaje Basado en Proyectos (ABP), con un producto final auténtico y su socialización con la comunidad.",
+  },
+  {
+    id: "ludico",
+    label: "Juego y ludificación",
+    short: "El juego como estrategia central de enseñanza.",
+    prompt:
+      "Priorizá el juego y las dinámicas lúdicas como estrategia central de enseñanza.",
+  },
+  {
+    id: "cooperativo",
+    label: "Trabajo cooperativo",
+    short: "Grupos pequeños con roles y objetivos compartidos.",
+    prompt:
+      "Privilegiá el trabajo cooperativo en pequeños grupos, con roles definidos e interdependencia positiva.",
+  },
+  {
+    id: "concreto",
+    label: "Material concreto",
+    short: "Aprender con materiales manipulables y exploración.",
+    prompt:
+      "Apoyá los aprendizajes en materiales concretos y manipulables y en la exploración autónoma.",
+  },
+  {
+    id: "tic",
+    label: "Tecnología educativa",
+    short: "Herramientas digitales al servicio del objetivo.",
+    prompt:
+      "Integrá tecnologías digitales de manera pedagógica (buscar, producir y comunicar) cuando aporten al objetivo.",
+  },
+] as const;
+
+export type TeachingSkillId = (typeof TEACHING_SKILLS)[number]["id"];
+export const TEACHING_SKILL_IDS: readonly string[] = TEACHING_SKILLS.map((s) => s.id);
+
+/** Solo ids válidos del catálogo (descarta cualquier valor desconocido). */
+export function normalizeSkillIds(ids: string[]): string[] {
+  const valid = new Set(TEACHING_SKILL_IDS);
+  return [...new Set(ids)].filter((id) => valid.has(id));
+}
+
+/** Instrucciones para el modelo a partir de los ids elegidos. */
+export function skillPromptsFor(ids: string[]): string[] {
+  const chosen = new Set(ids);
+  return TEACHING_SKILLS.filter((s) => chosen.has(s.id)).map((s) => s.prompt);
+}
+
 export const planningTypeSchema = z.enum(["unidad_mensual", "secuencia_clases"]);
 
 /** Contenido curricular tal como se selecciona en el Paso 2. */

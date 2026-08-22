@@ -18,6 +18,9 @@ export interface Database {
           display_name: string | null;
           institution: string | null;
           province: string;
+          teaching_skills: string[];
+          pedagogical_notes: string | null;
+          default_grade: number | null;
           created_at: string;
           updated_at: string;
         };
@@ -26,11 +29,17 @@ export interface Database {
           display_name?: string | null;
           institution?: string | null;
           province?: string;
+          teaching_skills?: string[];
+          pedagogical_notes?: string | null;
+          default_grade?: number | null;
         };
         Update: {
           display_name?: string | null;
           institution?: string | null;
           province?: string;
+          teaching_skills?: string[];
+          pedagogical_notes?: string | null;
+          default_grade?: number | null;
         };
         Relationships: [];
       };

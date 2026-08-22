@@ -25,9 +25,13 @@ const EJEMPLOS = [
 export function Wizard({
   defaultTeacherName,
   defaultInstitution,
+  defaultGrade,
+  skillsCount,
 }: {
   defaultTeacherName: string;
   defaultInstitution: string;
+  defaultGrade: number;
+  skillsCount: number;
 }) {
   const router = useRouter();
   const [step, setStep] = useState(0);
@@ -36,7 +40,7 @@ export function Wizard({
   const teacherName = defaultTeacherName;
   const institution = defaultInstitution;
 
-  const [grade, setGrade] = useState(3);
+  const [grade, setGrade] = useState(defaultGrade);
   const [planningType, setPlanningType] = useState<"unidad_mensual" | "secuencia_clases">(
     "unidad_mensual",
   );
@@ -334,6 +338,29 @@ export function Wizard({
               <p className="text-muted">
                 Con tu pregunta y tus contenidos vamos a armar un borrador con las 10
                 secciones. Después vas a poder editar todo antes de guardar.
+              </p>
+              <p className="mt-3 flex items-start gap-2 rounded-xl bg-accent-2 px-3 py-2.5 text-sm text-accent-ink">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0">
+                  <path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1" />
+                </svg>
+                {skillsCount > 0 ? (
+                  <span>
+                    Se aplicarán los <strong>{skillsCount} enfoques</strong> que configuraste en tu{" "}
+                    <Link href="/perfil" className="font-bold underline">
+                      Perfil
+                    </Link>
+                    .
+                  </span>
+                ) : (
+                  <span>
+                    En tu{" "}
+                    <Link href="/perfil" className="font-bold underline">
+                      Perfil
+                    </Link>{" "}
+                    podés activar enfoques (ESI, ambiental, inclusión…) para que la IA los use
+                    siempre.
+                  </span>
+                )}
               </p>
               <Button size="lg" className="mt-4" onClick={onGenerate} disabled={generating}>
                 {generating ? "Generando borrador…" : "Generar borrador con IA"}
