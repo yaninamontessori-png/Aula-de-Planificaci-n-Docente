@@ -138,54 +138,6 @@ export function ContentSelector({
         className="mb-4 w-full rounded-xl border border-border bg-surface px-3 py-3"
       />
 
-      {!searching && suggested.length > 0 && (
-        <div className="mb-5">
-          <p className="mb-2 text-xs font-bold uppercase tracking-wide text-muted">
-            Sugeridos para empezar
-          </p>
-          <div className="flex flex-col gap-2">
-            {suggested.map((r) => {
-              const checked = selectedIds.has(r.id);
-              return (
-                <button
-                  key={r.id}
-                  type="button"
-                  onClick={() => toggleContent(r, !checked)}
-                  aria-pressed={checked}
-                  className={`flex items-center gap-3 rounded-xl border px-4 py-3 text-left transition-colors ${
-                    checked
-                      ? "border-accent bg-accent-2"
-                      : "border-border bg-surface hover:border-accent"
-                  }`}
-                >
-                  <span
-                    className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ${
-                      checked ? "bg-accent text-accent-ink" : "bg-surface-2 text-brand"
-                    }`}
-                  >
-                    {checked ? (
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M20 6 9 17l-5-5" />
-                      </svg>
-                    ) : (
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
-                        <path d="M12 5v14M5 12h14" />
-                      </svg>
-                    )}
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block text-[11px] font-bold text-brand-ink">{r.area}</span>
-                    <span className="block text-sm leading-snug text-ink">{r.content_text}</span>
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-          <p className="mt-3 text-xs font-bold uppercase tracking-wide text-muted">
-            O explorá todos
-          </p>
-        </div>
-      )}
 
       {searching && groups.size === 0 && (
         <p className="text-muted">No se encontraron contenidos para “{query}”.</p>
