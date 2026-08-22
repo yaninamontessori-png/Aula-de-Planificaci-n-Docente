@@ -51,6 +51,8 @@ export function Wizard({
   const [generating, setGenerating] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [editingKey, setEditingKey] = useState<keyof GeneratedSections | null>(null);
+  const [savedPlanId, setSavedPlanId] = useState<string | null>(null);
 
   const areas = countAreas(contents);
 
@@ -90,8 +92,56 @@ export function Wizard({
     const res = await savePlan(draft(), sections);
     setSaving(false);
     if (!res.ok) return setError(res.error);
-    router.push(`/planificaciones/${res.planId}`);
-    router.refresh();
+    setSavedPlanId(res.planId);
+  }
+
+  if (savedPlanId) {
+    return (
+      <div className="relative overflow-hidden rounded-3xl bg-surface px-6 py-16 text-center">
+        <span className="pointer-events-none absolute left-10 top-16 h-3 w-3 rotate-12 rounded-sm bg-[#f3b7a1]" />
+        <span className="pointer-events-none absolute right-14 top-24 h-2.5 w-2.5 -rotate-12 rounded-sm bg-[#a9d0b8]" />
+        <span className="pointer-events-none absolute left-20 top-32 h-3.5 w-3.5 rotate-45 rounded-sm bg-[#f2d590]" />
+        <span className="pointer-events-none absolute right-24 top-40 h-2.5 w-2.5 rounded-sm bg-[#cdbef0]" />
+        <span className="pointer-events-none absolute right-10 top-28 h-3 w-3 rotate-45 rounded-sm bg-[#f3b7a1]" />
+        <div className="relative mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-accent text-accent-ink">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </div>
+        <h1 className="relative mt-6 font-heading text-3xl font-extrabold text-ink">
+          ¡Tu planificación está lista!
+        </h1>
+        <p className="relative mx-auto mt-3 max-w-sm text-muted">
+          La guardamos en «Mis planificaciones». Podés seguir editándola cuando quieras.
+        </p>
+        <div className="relative mx-auto mt-8 flex max-w-xs flex-col gap-3">
+          <Button
+            size="lg"
+            onClick={() => {
+              router.push(`/planificaciones/${savedPlanId}`);
+              router.refresh();
+            }}
+          >
+            Ver mi planificación
+          </Button>
+          <button
+            type="button"
+            className="rounded-full bg-surface-2 px-6 py-3 font-bold text-brand-ink transition-colors hover:bg-accent-2"
+            onClick={() => {
+              setSavedPlanId(null);
+              setSections(null);
+              setContents([]);
+              setGuidingQuestion("");
+              setTeacherResource("");
+              setTitle("");
+              setStep(0);
+            }}
+          >
+            Crear otra
+          </button>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -300,19 +350,29 @@ export function Wizard({
                   final es tuya.
                 </span>
               </div>
-              {(Object.keys(SECTION_LABELS) as (keyof GeneratedSections)[]).map((key) => (
-                <details key={key} className="mb-2 overflow-hidden rounded-2xl border-2 border-border bg-surface" open={key === "titulo" || key === "actividades"}>
-                  <summary className="cursor-pointer px-4 py-3 font-heading font-bold text-ink">
-                    {SECTION_LABELS[key]}
-                  </summary>
-                  <textarea
-                    className="w-full border-t-2 border-border bg-bg px-4 py-3 text-sm"
-                    style={{ minHeight: key === "titulo" ? 48 : 160 }}
-                    value={sections[key]}
-                    onChange={(e) => setSections({ ...sections, [key]: e.target.value })}
-                  />
-                </details>
-              ))}
+              <div className="space-y-2">
+                {(Object.keys(SECTION_LABELS) as (keyof GeneratedSections)[]).map((key) => (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => setEditingKey(key)}
+                    className="flex w-full items-center gap-3 rounded-2xl border-2 border-border bg-surface px-4 py-3 text-left transition-colors hover:border-accent"
+                  >
+                    <span className="min-w-0 flex-1">
+                      <span className="block font-heading text-sm font-bold text-ink">
+                        {SECTION_LABELS[key]}
+                      </span>
+                      <span className="mt-0.5 block truncate text-xs text-muted">
+                        {sections[key]?.trim() || "Tocá para escribir…"}
+                      </span>
+                    </span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-brand">
+                      <path d="M12 20h9" />
+                      <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" />
+                    </svg>
+                  </button>
+                ))}
+              </div>
               <div className="mt-4 flex flex-wrap items-center gap-3">
                 <Button size="lg" onClick={onSave} disabled={saving}>
                   {saving ? "Guardando…" : "Guardar planificación"}
@@ -343,6 +403,36 @@ export function Wizard({
         </button>
         {step < STEPS.length - 1 && <Button onClick={() => goTo(step + 1)}>Continuar →</Button>}
       </div>
+
+      {/* Hoja de edición a pantalla completa */}
+      {editingKey && sections && (
+        <div className="fixed inset-0 z-50 flex flex-col bg-bg">
+          <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-3">
+            <button
+              type="button"
+              onClick={() => setEditingKey(null)}
+              aria-label="Volver"
+              className="flex items-center gap-1 text-sm font-bold text-muted hover:text-brand"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+            </button>
+            <span className="font-heading text-sm font-bold text-ink">
+              {SECTION_LABELS[editingKey]}
+            </span>
+            <Button size="md" onClick={() => setEditingKey(null)}>
+              Listo
+            </Button>
+          </div>
+          <textarea
+            autoFocus
+            className="mx-auto w-full max-w-2xl flex-1 resize-none bg-bg px-5 py-5 text-base leading-relaxed focus:outline-none"
+            value={sections[editingKey]}
+            onChange={(e) => setSections({ ...sections, [editingKey]: e.target.value })}
+          />
+        </div>
+      )}
     </div>
   );
 }
