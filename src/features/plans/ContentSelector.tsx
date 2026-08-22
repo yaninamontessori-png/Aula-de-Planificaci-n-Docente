@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { createClient } from "@/lib/supabase/client";
+import { useMemo, useState } from "react";
 import type { SelectedContent } from "./schema";
+import { CURRICULUM_BY_GRADE } from "./curriculum";
 
 type Row = {
   id: string;
@@ -21,33 +21,32 @@ export function ContentSelector({
   selected: SelectedContent[];
   onChange: (next: SelectedContent[]) => void;
 }) {
-  const [rows, setRows] = useState<Row[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [openArea, setOpenArea] = useState<string | null>(null);
   const [openEjes, setOpenEjes] = useState<Set<string>>(new Set());
 
-  useEffect(() => {
-    // Remontado con key={grade} desde el Wizard: el estado inicial ya es válido.
-    let active = true;
-    const supabase = createClient();
-    supabase
-      .from("curriculum_contents")
-      .select("id, area, axis, content_number, content_text")
-      .eq("grade", grade)
-      .eq("active", true)
-      .order("area")
-      .order("axis")
-      .order("content_number")
-      .then(({ data, error }) => {
-        if (!active) return;
-        if (error) setError("No se pudieron cargar los contenidos.");
-        else setRows((data as Row[]) ?? []);
-        setLoading(false);
+  // Generar filas desde curriculum.ts
+  const rows = useMemo(() => {
+    const gradeData = CURRICULUM_BY_GRADE[String(grade) as keyof typeof CURRICULUM_BY_GRADE];
+    if (!gradeData) return [];
+
+    const result: Row[] = [];
+    Object.entries(gradeData).forEach(([areaId, areaData]) => {
+      (areaData.contents as any).forEach((content: any) => {
+        result.push({
+          id: `${areaId}/${content.id}`,
+          area: (areaData.label as any),
+          axis: null,
+          content_number: null,
+          content_text: (content.label as any),
+        });
       });
-    return () => {
-      active = false;
+    });
+    return result;
+  }, [grade]);
+
+  const loading = false;
+  const error = null;
     };
   }, [grade]);
 
