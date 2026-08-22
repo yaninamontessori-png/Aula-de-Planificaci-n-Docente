@@ -1,7 +1,7 @@
 /**
  * Currículum de Santa Fe - Áreas, ejes y contenidos por grado
  * Extraído de: C:\Users\Pc\Desktop\primaria\diseno_curricular_santa_fe_FIEL_AL_PDF
- * Fiel al PDF oficial - Éxodo 2025
+ * Fiel al PDF oficial
  */
 
 export const CURRICULUM_BY_GRADE = {
@@ -10,8 +10,12 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Artes Audiovisuales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Artes Audiovisuales - Contenidos del Área"
+          "id": "recursos-audiovisuales",
+          "label": "RECURSOS AUDIOVISUALES"
+        },
+        {
+          "id": "interpretación-crítica",
+          "label": "INTERPRETACIÓN CRÍTICA"
         }
       ]
     },
@@ -19,8 +23,32 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Artes Visuales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Artes Visuales - Contenidos del Área"
+          "id": "la-imagen-en-la-bidimensión",
+          "label": "LA IMAGEN EN LA BIDIMENSIÓN"
+        },
+        {
+          "id": "la-imagen-en-la-tridimensión",
+          "label": "LA IMAGEN EN LA TRIDIMENSIÓN"
+        },
+        {
+          "id": "la-imagen-en-medios-múltiples-y-digitales",
+          "label": "LA IMAGEN EN MEDIOS MÚLTIPLES Y DIGITALES"
+        },
+        {
+          "id": "nuestro-entorno,-nuestra-imagen",
+          "label": "NUESTRO ENTORNO, NUESTRA IMAGEN"
+        },
+        {
+          "id": "la-cultura-visual-en-el-mundo",
+          "label": "LA CULTURA VISUAL EN EL MUNDO"
+        },
+        {
+          "id": "contextos-expositivos",
+          "label": "CONTEXTOS EXPOSITIVOS"
+        },
+        {
+          "id": "manifestaciones-artísticas-históricas-y-actuales",
+          "label": "MANIFESTACIONES ARTÍSTICAS HISTÓRICAS Y ACTUALES"
         }
       ]
     },
@@ -28,8 +56,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Ciencias Naturales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Ciencias Naturales - Contenidos del Área"
+          "id": "contenidos-del-area",
+          "label": "Contenidos"
         }
       ]
     },
@@ -37,8 +65,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Ciencias Sociales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Ciencias Sociales - Contenidos del Área"
+          "id": "contenidos-del-area",
+          "label": "Contenidos"
         }
       ]
     },
@@ -46,8 +74,16 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Danza",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Danza - Contenidos del Área"
+          "id": "elementos-del-movimiento-danzado",
+          "label": "ELEMENTOS DEL MOVIMIENTO DANZADO"
+        },
+        {
+          "id": "la-experiencia-del-danzar",
+          "label": "LA EXPERIENCIA DEL DANZAR"
+        },
+        {
+          "id": "el-proceso-creativo-y-la-composición-en-danza",
+          "label": "EL PROCESO CREATIVO Y LA COMPOSICIÓN EN DANZA"
         }
       ]
     },
@@ -55,8 +91,28 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Educacion Fisica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Educacion Fisica - Contenidos del Área"
+          "id": "desarrollo-perceptivo-motriz:-identidad-corporal",
+          "label": "DESARROLLO PERCEPTIVO MOTRIZ: IDENTIDAD CORPORAL"
+        },
+        {
+          "id": "habilidades-motoras",
+          "label": "HABILIDADES MOTORAS"
+        },
+        {
+          "id": "capacidades-motoras",
+          "label": "CAPACIDADES MOTORAS"
+        },
+        {
+          "id": "prácticas-lúdicas-y-deportivas",
+          "label": "PRÁCTICAS LÚDICAS Y DEPORTIVAS"
+        },
+        {
+          "id": "prácticas-expresivas-y-lenguajes",
+          "label": "PRÁCTICAS EXPRESIVAS Y LENGUAJES"
+        },
+        {
+          "id": "prácticas-en-el-ambiente-(eai)",
+          "label": "PRÁCTICAS EN EL AMBIENTE (EAI)"
         }
       ]
     },
@@ -64,8 +120,24 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Educacion Tecnologica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Educacion Tecnologica - Contenidos del Área"
+          "id": "dispositivos-computacionales-e-infraestructura",
+          "label": "DISPOSITIVOS COMPUTACIONALES E INFRAESTRUCTURA"
+        },
+        {
+          "id": "alfabetizaciones-múlptiples",
+          "label": "ALFABETIZACIONES MÚLPTIPLES"
+        },
+        {
+          "id": "programación-y-robótica",
+          "label": "PROGRAMACIÓN Y ROBÓTICA"
+        },
+        {
+          "id": "diversidad,-cambios-y-continuidades",
+          "label": "DIVERSIDAD, CAMBIOS Y CONTINUIDADES"
+        },
+        {
+          "id": "convivencia-en-entornos-digitales",
+          "label": "CONVIVENCIA EN ENTORNOS DIGITALES"
         }
       ]
     },
@@ -99,8 +171,24 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Matematica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Matematica - Contenidos del Área"
+          "id": "números-naturales-y-sistema-de-numeración",
+          "label": "NÚMEROS NATURALES Y SISTEMA DE NUMERACIÓN"
+        },
+        {
+          "id": "operaciones",
+          "label": "OPERACIONES"
+        },
+        {
+          "id": "orientación-y-localización-en-el-espacio",
+          "label": "ORIENTACIÓN Y LOCALIZACIÓN EN EL ESPACIO"
+        },
+        {
+          "id": "figuras-geométricas",
+          "label": "FIGURAS GEOMÉTRICAS"
+        },
+        {
+          "id": "cuerpos-geométricos",
+          "label": "CUERPOS GEOMÉTRICOS"
         }
       ]
     },
@@ -108,8 +196,40 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Musica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Musica - Contenidos del Área"
+          "id": "las-músicas-como-manifestaciones-sociales-y-culturales",
+          "label": "LAS MÚSICAS COMO MANIFESTACIONES SOCIALES Y CULTURALES"
+        },
+        {
+          "id": "las-músicas-y-sus-protagonistas",
+          "label": "LAS MÚSICAS Y SUS PROTAGONISTAS"
+        },
+        {
+          "id": "los-contextos-musicales",
+          "label": "LOS CONTEXTOS MUSICALES"
+        },
+        {
+          "id": "entornos-sonoros,-ámbitos-y-medios",
+          "label": "ENTORNOS SONOROS, ÁMBITOS Y MEDIOS"
+        },
+        {
+          "id": "relaciones-discursivo-musicales",
+          "label": "RELACIONES DISCURSIVO-MUSICALES"
+        },
+        {
+          "id": "relaciones-sonoras",
+          "label": "RELACIONES SONORAS"
+        },
+        {
+          "id": "producción-vocal",
+          "label": "PRODUCCIÓN VOCAL"
+        },
+        {
+          "id": "producción-corporal",
+          "label": "PRODUCCIÓN CORPORAL"
+        },
+        {
+          "id": "producción-instrumental",
+          "label": "PRODUCCIÓN INSTRUMENTAL"
         }
       ]
     },
@@ -142,8 +262,32 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Teatro",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Teatro - Contenidos del Área"
+          "id": "el-teatro-como-manifestación-histórica-y-cultural",
+          "label": "EL TEATRO COMO MANIFESTACIÓN HISTÓRICA Y CULTURAL"
+        },
+        {
+          "id": "el-teatro-y-sus-hacedores",
+          "label": "EL TEATRO Y SUS HACEDORES"
+        },
+        {
+          "id": "el-reconocimiento-de-los-elementos-teatrales",
+          "label": "EL RECONOCIMIENTO DE LOS ELEMENTOS TEATRALES"
+        },
+        {
+          "id": "la-apreciación-de-las-producciones-propias-y-de-pares",
+          "label": "LA APRECIACIÓN DE LAS PRODUCCIONES PROPIAS Y DE PARES"
+        },
+        {
+          "id": "el-cuerpo-y-la-voz-en-el-espacio-como-instrumentos-de-creación",
+          "label": "EL CUERPO Y LA VOZ EN EL ESPACIO COMO INSTRUMENTOS DE CREACIÓN"
+        },
+        {
+          "id": "el-juego-en-ficción",
+          "label": "EL JUEGO EN FICCIÓN"
+        },
+        {
+          "id": "el-títere-como-medio-de-creación-y-expresión",
+          "label": "EL TÍTERE COMO MEDIO DE CREACIÓN Y EXPRESIÓN"
         }
       ]
     }
@@ -153,8 +297,12 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Artes Audiovisuales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Artes Audiovisuales - Contenidos del Área"
+          "id": "recursos-audiovisuales",
+          "label": "RECURSOS AUDIOVISUALES"
+        },
+        {
+          "id": "interpretación-crítica",
+          "label": "INTERPRETACIÓN CRÍTICA"
         }
       ]
     },
@@ -162,8 +310,32 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Artes Visuales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Artes Visuales - Contenidos del Área"
+          "id": "la-imagen-en-la-bidimensión",
+          "label": "LA IMAGEN EN LA BIDIMENSIÓN"
+        },
+        {
+          "id": "la-imagen-en-la-tridimensión",
+          "label": "LA IMAGEN EN LA TRIDIMENSIÓN"
+        },
+        {
+          "id": "la-imagen-en-medios-múltiples-y-digitales",
+          "label": "LA IMAGEN EN MEDIOS MÚLTIPLES Y DIGITALES"
+        },
+        {
+          "id": "nuestro-entorno,-nuestra-imagen",
+          "label": "NUESTRO ENTORNO, NUESTRA IMAGEN"
+        },
+        {
+          "id": "la-cultura-visual-en-el-mundo",
+          "label": "LA CULTURA VISUAL EN EL MUNDO"
+        },
+        {
+          "id": "contextos-expositivos",
+          "label": "CONTEXTOS EXPOSITIVOS"
+        },
+        {
+          "id": "manifestaciones-artísticas-históricas-y-actuales",
+          "label": "MANIFESTACIONES ARTÍSTICAS HISTÓRICAS Y ACTUALES"
         }
       ]
     },
@@ -171,8 +343,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Ciencias Naturales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Ciencias Naturales - Contenidos del Área"
+          "id": "contenidos-del-area",
+          "label": "Contenidos"
         }
       ]
     },
@@ -180,8 +352,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Ciencias Sociales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Ciencias Sociales - Contenidos del Área"
+          "id": "contenidos-del-area",
+          "label": "Contenidos"
         }
       ]
     },
@@ -189,8 +361,16 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Danza",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Danza - Contenidos del Área"
+          "id": "elementos-del-movimiento-danzado",
+          "label": "ELEMENTOS DEL MOVIMIENTO DANZADO"
+        },
+        {
+          "id": "la-experiencia-del-danzar",
+          "label": "LA EXPERIENCIA DEL DANZAR"
+        },
+        {
+          "id": "el-proceso-creativo-y-la-composición-en-danza",
+          "label": "EL PROCESO CREATIVO Y LA COMPOSICIÓN EN DANZA"
         }
       ]
     },
@@ -198,8 +378,28 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Educacion Fisica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Educacion Fisica - Contenidos del Área"
+          "id": "desarrollo-perceptivo-motriz:-identidad-corporal",
+          "label": "DESARROLLO PERCEPTIVO MOTRIZ: IDENTIDAD CORPORAL"
+        },
+        {
+          "id": "habilidades-motoras",
+          "label": "HABILIDADES MOTORAS"
+        },
+        {
+          "id": "capacidades-motoras",
+          "label": "CAPACIDADES MOTORAS"
+        },
+        {
+          "id": "prácticas-lúdicas-y-deportivas",
+          "label": "PRÁCTICAS LÚDICAS Y DEPORTIVAS"
+        },
+        {
+          "id": "prácticas-expresivas-y-lenguajes",
+          "label": "PRÁCTICAS EXPRESIVAS Y LENGUAJES"
+        },
+        {
+          "id": "prácticas-en-el-ambiente-(eai)",
+          "label": "PRÁCTICAS EN EL AMBIENTE (EAI)"
         }
       ]
     },
@@ -207,8 +407,24 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Educacion Tecnologica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Educacion Tecnologica - Contenidos del Área"
+          "id": "dispositivos-computacionales-e-infraestructura",
+          "label": "DISPOSITIVOS COMPUTACIONALES E INFRAESTRUCTURA"
+        },
+        {
+          "id": "alfabetizaciones-múlptiples",
+          "label": "ALFABETIZACIONES MÚLPTIPLES"
+        },
+        {
+          "id": "programación-y-robótica",
+          "label": "PROGRAMACIÓN Y ROBÓTICA"
+        },
+        {
+          "id": "diversidad,-cambios-y-continuidades",
+          "label": "DIVERSIDAD, CAMBIOS Y CONTINUIDADES"
+        },
+        {
+          "id": "convivencia-en-entornos-digitales",
+          "label": "CONVIVENCIA EN ENTORNOS DIGITALES"
         }
       ]
     },
@@ -242,8 +458,24 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Matematica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Matematica - Contenidos del Área"
+          "id": "números-naturales-y-sistema-de-numeración",
+          "label": "NÚMEROS NATURALES Y SISTEMA DE NUMERACIÓN"
+        },
+        {
+          "id": "operaciones",
+          "label": "OPERACIONES"
+        },
+        {
+          "id": "orientación-y-localización-en-el-espacio",
+          "label": "ORIENTACIÓN Y LOCALIZACIÓN EN EL ESPACIO"
+        },
+        {
+          "id": "figuras-geométricas",
+          "label": "FIGURAS GEOMÉTRICAS"
+        },
+        {
+          "id": "cuerpos-geométricos",
+          "label": "CUERPOS GEOMÉTRICOS"
         }
       ]
     },
@@ -251,8 +483,40 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Musica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Musica - Contenidos del Área"
+          "id": "las-músicas-como-manifestaciones-sociales-y-culturales",
+          "label": "LAS MÚSICAS COMO MANIFESTACIONES SOCIALES Y CULTURALES"
+        },
+        {
+          "id": "las-músicas-y-sus-protagonistas",
+          "label": "LAS MÚSICAS Y SUS PROTAGONISTAS"
+        },
+        {
+          "id": "los-contextos-musicales",
+          "label": "LOS CONTEXTOS MUSICALES"
+        },
+        {
+          "id": "entornos-sonoros,-ámbitos-y-medios",
+          "label": "ENTORNOS SONOROS, ÁMBITOS Y MEDIOS"
+        },
+        {
+          "id": "relaciones-discursivo-musicales",
+          "label": "RELACIONES DISCURSIVO-MUSICALES"
+        },
+        {
+          "id": "relaciones-sonoras",
+          "label": "RELACIONES SONORAS"
+        },
+        {
+          "id": "producción-vocal",
+          "label": "PRODUCCIÓN VOCAL"
+        },
+        {
+          "id": "producción-corporal",
+          "label": "PRODUCCIÓN CORPORAL"
+        },
+        {
+          "id": "producción-instrumental",
+          "label": "PRODUCCIÓN INSTRUMENTAL"
         }
       ]
     },
@@ -285,8 +549,32 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Teatro",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Teatro - Contenidos del Área"
+          "id": "el-teatro-como-manifestación-histórica-y-cultural",
+          "label": "EL TEATRO COMO MANIFESTACIÓN HISTÓRICA Y CULTURAL"
+        },
+        {
+          "id": "el-teatro-y-sus-hacedores",
+          "label": "EL TEATRO Y SUS HACEDORES"
+        },
+        {
+          "id": "el-reconocimiento-de-los-elementos-teatrales",
+          "label": "EL RECONOCIMIENTO DE LOS ELEMENTOS TEATRALES"
+        },
+        {
+          "id": "la-apreciación-de-las-producciones-propias-y-de-pares",
+          "label": "LA APRECIACIÓN DE LAS PRODUCCIONES PROPIAS Y DE PARES"
+        },
+        {
+          "id": "el-cuerpo-y-la-voz-en-el-espacio-como-instrumentos-de-creación",
+          "label": "EL CUERPO Y LA VOZ EN EL ESPACIO COMO INSTRUMENTOS DE CREACIÓN"
+        },
+        {
+          "id": "el-juego-en-ficción",
+          "label": "EL JUEGO EN FICCIÓN"
+        },
+        {
+          "id": "el-títere-como-medio-de-creación-y-expresión",
+          "label": "EL TÍTERE COMO MEDIO DE CREACIÓN Y EXPRESIÓN"
         }
       ]
     }
@@ -296,8 +584,12 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Artes Audiovisuales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Artes Audiovisuales - Contenidos del Área"
+          "id": "recursos-audiovisuales",
+          "label": "RECURSOS AUDIOVISUALES"
+        },
+        {
+          "id": "interpretación-crítica",
+          "label": "INTERPRETACIÓN CRÍTICA"
         }
       ]
     },
@@ -305,8 +597,32 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Artes Visuales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Artes Visuales - Contenidos del Área"
+          "id": "la-imagen-en-la-bidimensión",
+          "label": "LA IMAGEN EN LA BIDIMENSIÓN"
+        },
+        {
+          "id": "la-imagen-en-la-tridimensión",
+          "label": "LA IMAGEN EN LA TRIDIMENSIÓN"
+        },
+        {
+          "id": "la-imagen-en-medios-múltiples-y-digitales",
+          "label": "LA IMAGEN EN MEDIOS MÚLTIPLES Y DIGITALES"
+        },
+        {
+          "id": "nuestro-entorno,-nuestra-imagen",
+          "label": "NUESTRO ENTORNO, NUESTRA IMAGEN"
+        },
+        {
+          "id": "la-cultura-visual-en-el-mundo",
+          "label": "LA CULTURA VISUAL EN EL MUNDO"
+        },
+        {
+          "id": "contextos-expositivos",
+          "label": "CONTEXTOS EXPOSITIVOS"
+        },
+        {
+          "id": "manifestaciones-artísticas-históricas-y-actuales",
+          "label": "MANIFESTACIONES ARTÍSTICAS HISTÓRICAS Y ACTUALES"
         }
       ]
     },
@@ -314,8 +630,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Ciencias Naturales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Ciencias Naturales - Contenidos del Área"
+          "id": "contenidos-del-area",
+          "label": "Contenidos"
         }
       ]
     },
@@ -323,8 +639,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Ciencias Sociales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Ciencias Sociales - Contenidos del Área"
+          "id": "contenidos-del-area",
+          "label": "Contenidos"
         }
       ]
     },
@@ -332,8 +648,16 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Danza",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Danza - Contenidos del Área"
+          "id": "elementos-del-movimiento-danzado",
+          "label": "ELEMENTOS DEL MOVIMIENTO DANZADO"
+        },
+        {
+          "id": "la-experiencia-del-danzar",
+          "label": "LA EXPERIENCIA DEL DANZAR"
+        },
+        {
+          "id": "el-proceso-creativo-y-la-composición-en-danza",
+          "label": "EL PROCESO CREATIVO Y LA COMPOSICIÓN EN DANZA"
         }
       ]
     },
@@ -341,8 +665,28 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Educacion Fisica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Educacion Fisica - Contenidos del Área"
+          "id": "desarrollo-perceptivo-motriz:-identidad-corporal",
+          "label": "DESARROLLO PERCEPTIVO MOTRIZ: IDENTIDAD CORPORAL"
+        },
+        {
+          "id": "habilidades-motoras",
+          "label": "HABILIDADES MOTORAS"
+        },
+        {
+          "id": "capacidades-motoras",
+          "label": "CAPACIDADES MOTORAS"
+        },
+        {
+          "id": "prácticas-lúdicas-y-deportivas",
+          "label": "PRÁCTICAS LÚDICAS Y DEPORTIVAS"
+        },
+        {
+          "id": "prácticas-expresivas-y-lenguajes",
+          "label": "PRÁCTICAS EXPRESIVAS Y LENGUAJES"
+        },
+        {
+          "id": "prácticas-en-el-ambiente-(eai)",
+          "label": "PRÁCTICAS EN EL AMBIENTE (EAI)"
         }
       ]
     },
@@ -350,8 +694,24 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Educacion Tecnologica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Educacion Tecnologica - Contenidos del Área"
+          "id": "dispositivos-computacionales-e-infraestructura",
+          "label": "DISPOSITIVOS COMPUTACIONALES E INFRAESTRUCTURA"
+        },
+        {
+          "id": "alfabetizaciones-múlptiples",
+          "label": "ALFABETIZACIONES MÚLPTIPLES"
+        },
+        {
+          "id": "programación-y-robótica",
+          "label": "PROGRAMACIÓN Y ROBÓTICA"
+        },
+        {
+          "id": "diversidad,-cambios-y-continuidades",
+          "label": "DIVERSIDAD, CAMBIOS Y CONTINUIDADES"
+        },
+        {
+          "id": "convivencia-en-entornos-digitales",
+          "label": "CONVIVENCIA EN ENTORNOS DIGITALES"
         }
       ]
     },
@@ -385,8 +745,24 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Matematica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Matematica - Contenidos del Área"
+          "id": "números-naturales-y-sistema-de-numeración",
+          "label": "NÚMEROS NATURALES Y SISTEMA DE NUMERACIÓN"
+        },
+        {
+          "id": "operaciones",
+          "label": "OPERACIONES"
+        },
+        {
+          "id": "orientación-y-localización-en-el-espacio",
+          "label": "ORIENTACIÓN Y LOCALIZACIÓN EN EL ESPACIO"
+        },
+        {
+          "id": "figuras-geométricas",
+          "label": "FIGURAS GEOMÉTRICAS"
+        },
+        {
+          "id": "cuerpos-geométricos",
+          "label": "CUERPOS GEOMÉTRICOS"
         }
       ]
     },
@@ -394,8 +770,40 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Musica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Musica - Contenidos del Área"
+          "id": "las-músicas-como-manifestaciones-sociales-y-culturales",
+          "label": "LAS MÚSICAS COMO MANIFESTACIONES SOCIALES Y CULTURALES"
+        },
+        {
+          "id": "las-músicas-y-sus-protagonistas",
+          "label": "LAS MÚSICAS Y SUS PROTAGONISTAS"
+        },
+        {
+          "id": "los-contextos-musicales",
+          "label": "LOS CONTEXTOS MUSICALES"
+        },
+        {
+          "id": "entornos-sonoros,-ámbitos-y-medios",
+          "label": "ENTORNOS SONOROS, ÁMBITOS Y MEDIOS"
+        },
+        {
+          "id": "relaciones-discursivo-musicales",
+          "label": "RELACIONES DISCURSIVO-MUSICALES"
+        },
+        {
+          "id": "relaciones-sonoras",
+          "label": "RELACIONES SONORAS"
+        },
+        {
+          "id": "producción-vocal",
+          "label": "PRODUCCIÓN VOCAL"
+        },
+        {
+          "id": "producción-corporal",
+          "label": "PRODUCCIÓN CORPORAL"
+        },
+        {
+          "id": "producción-instrumental",
+          "label": "PRODUCCIÓN INSTRUMENTAL"
         }
       ]
     },
@@ -428,8 +836,32 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Teatro",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Teatro - Contenidos del Área"
+          "id": "el-teatro-como-manifestación-histórica-y-cultural",
+          "label": "EL TEATRO COMO MANIFESTACIÓN HISTÓRICA Y CULTURAL"
+        },
+        {
+          "id": "el-teatro-y-sus-hacedores",
+          "label": "EL TEATRO Y SUS HACEDORES"
+        },
+        {
+          "id": "el-reconocimiento-de-los-elementos-teatrales",
+          "label": "EL RECONOCIMIENTO DE LOS ELEMENTOS TEATRALES"
+        },
+        {
+          "id": "la-apreciación-de-las-producciones-propias-y-de-pares",
+          "label": "LA APRECIACIÓN DE LAS PRODUCCIONES PROPIAS Y DE PARES"
+        },
+        {
+          "id": "el-cuerpo-y-la-voz-en-el-espacio-como-instrumentos-de-creación",
+          "label": "EL CUERPO Y LA VOZ EN EL ESPACIO COMO INSTRUMENTOS DE CREACIÓN"
+        },
+        {
+          "id": "el-juego-en-ficción",
+          "label": "EL JUEGO EN FICCIÓN"
+        },
+        {
+          "id": "el-títere-como-medio-de-creación-y-expresión",
+          "label": "EL TÍTERE COMO MEDIO DE CREACIÓN Y EXPRESIÓN"
         }
       ]
     }
@@ -489,8 +921,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Ciencias Naturales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Ciencias Naturales - Contenidos del Área"
+          "id": "cdp,-ecd,-ei",
+          "label": "CDP, ECD, EI"
         }
       ]
     },
@@ -513,6 +945,10 @@ export const CURRICULUM_BY_GRADE = {
         {
           "id": "cuerpo:-materialidad-y-sentido",
           "label": "CUERPO: MATERIALIDAD Y SENTIDO"
+        },
+        {
+          "id": "la-apreciación-en-danza:-experiencia-corporal-y-creación",
+          "label": "LA APRECIACIÓN EN DANZA: EXPERIENCIA CORPORAL Y CREACIÓN"
         },
         {
           "id": "de-sentido",
@@ -620,10 +1056,6 @@ export const CURRICULUM_BY_GRADE = {
           "label": "NÚMEROS RACIONALES: FRACCIONES Y NÚMEROS DECIMALES"
         },
         {
-          "id": "operaciones",
-          "label": "OPERACIONES"
-        },
-        {
           "id": "orientación-y-localización-en-el-espacio",
           "label": "ORIENTACIÓN Y LOCALIZACIÓN EN EL ESPACIO"
         },
@@ -641,7 +1073,7 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Musica",
       "contents": [
         {
-          "id": "las-músicas-como-manifestaciones-sociales-y-cultur",
+          "id": "las-músicas-como-manifestaciones-sociales-y-culturales",
           "label": "LAS MÚSICAS COMO MANIFESTACIONES SOCIALES Y CULTURALES"
         },
         {
@@ -719,8 +1151,12 @@ export const CURRICULUM_BY_GRADE = {
           "label": "EL RECONOCIMIENTO DE LOS ELEMENTOS TEATRALES"
         },
         {
-          "id": "la-apreciación-de-las-producciones-propias-y-de-pa",
+          "id": "la-apreciación-de-las-producciones-propias-y-de-pares",
           "label": "LA APRECIACIÓN DE LAS PRODUCCIONES PROPIAS Y DE PARES"
+        },
+        {
+          "id": "el-cuerpo-y-la-voz-en-el-espacio-como-instrumentos",
+          "label": "EL CUERPO Y LA VOZ EN EL ESPACIO COMO INSTRUMENTOS"
         },
         {
           "id": "de-creación",
@@ -731,12 +1167,12 @@ export const CURRICULUM_BY_GRADE = {
           "label": "EL JUEGO EN FICCIÓN"
         },
         {
-          "id": "y-expresión",
-          "label": "Y EXPRESIÓN"
+          "id": "los-títeres-y-los-objetos-animados-para-la-creación",
+          "label": "LOS TÍTERES Y LOS OBJETOS ANIMADOS PARA LA CREACIÓN"
         },
         {
-          "id": "el-teatro-como-actividad-colectiva-e-integradora",
-          "label": "EL TEATRO COMO ACTIVIDAD COLECTIVA E INTEGRADORA"
+          "id": "y-expresión",
+          "label": "Y EXPRESIÓN"
         }
       ]
     }
@@ -796,8 +1232,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Ciencias Naturales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Ciencias Naturales - Contenidos del Área"
+          "id": "cdp,-ecd,-ei",
+          "label": "CDP, ECD, EI"
         }
       ]
     },
@@ -820,6 +1256,10 @@ export const CURRICULUM_BY_GRADE = {
         {
           "id": "cuerpo:-materialidad-y-sentido",
           "label": "CUERPO: MATERIALIDAD Y SENTIDO"
+        },
+        {
+          "id": "la-apreciación-en-danza:-experiencia-corporal-y-creación",
+          "label": "LA APRECIACIÓN EN DANZA: EXPERIENCIA CORPORAL Y CREACIÓN"
         },
         {
           "id": "de-sentido",
@@ -927,10 +1367,6 @@ export const CURRICULUM_BY_GRADE = {
           "label": "NÚMEROS RACIONALES: FRACCIONES Y NÚMEROS DECIMALES"
         },
         {
-          "id": "operaciones",
-          "label": "OPERACIONES"
-        },
-        {
           "id": "orientación-y-localización-en-el-espacio",
           "label": "ORIENTACIÓN Y LOCALIZACIÓN EN EL ESPACIO"
         },
@@ -948,7 +1384,7 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Musica",
       "contents": [
         {
-          "id": "las-músicas-como-manifestaciones-sociales-y-cultur",
+          "id": "las-músicas-como-manifestaciones-sociales-y-culturales",
           "label": "LAS MÚSICAS COMO MANIFESTACIONES SOCIALES Y CULTURALES"
         },
         {
@@ -1026,8 +1462,12 @@ export const CURRICULUM_BY_GRADE = {
           "label": "EL RECONOCIMIENTO DE LOS ELEMENTOS TEATRALES"
         },
         {
-          "id": "la-apreciación-de-las-producciones-propias-y-de-pa",
+          "id": "la-apreciación-de-las-producciones-propias-y-de-pares",
           "label": "LA APRECIACIÓN DE LAS PRODUCCIONES PROPIAS Y DE PARES"
+        },
+        {
+          "id": "el-cuerpo-y-la-voz-en-el-espacio-como-instrumentos",
+          "label": "EL CUERPO Y LA VOZ EN EL ESPACIO COMO INSTRUMENTOS"
         },
         {
           "id": "de-creación",
@@ -1038,12 +1478,12 @@ export const CURRICULUM_BY_GRADE = {
           "label": "EL JUEGO EN FICCIÓN"
         },
         {
-          "id": "y-expresión",
-          "label": "Y EXPRESIÓN"
+          "id": "los-títeres-y-los-objetos-animados-para-la-creación",
+          "label": "LOS TÍTERES Y LOS OBJETOS ANIMADOS PARA LA CREACIÓN"
         },
         {
-          "id": "el-teatro-como-actividad-colectiva-e-integradora",
-          "label": "EL TEATRO COMO ACTIVIDAD COLECTIVA E INTEGRADORA"
+          "id": "y-expresión",
+          "label": "Y EXPRESIÓN"
         }
       ]
     }
@@ -1103,8 +1543,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Ciencias Naturales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Ciencias Naturales - Contenidos del Área"
+          "id": "cdp,-ecd,-ei",
+          "label": "CDP, ECD, EI"
         }
       ]
     },
@@ -1127,6 +1567,10 @@ export const CURRICULUM_BY_GRADE = {
         {
           "id": "cuerpo:-materialidad-y-sentido",
           "label": "CUERPO: MATERIALIDAD Y SENTIDO"
+        },
+        {
+          "id": "la-apreciación-en-danza:-experiencia-corporal-y-creación",
+          "label": "LA APRECIACIÓN EN DANZA: EXPERIENCIA CORPORAL Y CREACIÓN"
         },
         {
           "id": "de-sentido",
@@ -1234,10 +1678,6 @@ export const CURRICULUM_BY_GRADE = {
           "label": "NÚMEROS RACIONALES: FRACCIONES Y NÚMEROS DECIMALES"
         },
         {
-          "id": "operaciones",
-          "label": "OPERACIONES"
-        },
-        {
           "id": "orientación-y-localización-en-el-espacio",
           "label": "ORIENTACIÓN Y LOCALIZACIÓN EN EL ESPACIO"
         },
@@ -1255,7 +1695,7 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Musica",
       "contents": [
         {
-          "id": "las-músicas-como-manifestaciones-sociales-y-cultur",
+          "id": "las-músicas-como-manifestaciones-sociales-y-culturales",
           "label": "LAS MÚSICAS COMO MANIFESTACIONES SOCIALES Y CULTURALES"
         },
         {
@@ -1333,8 +1773,12 @@ export const CURRICULUM_BY_GRADE = {
           "label": "EL RECONOCIMIENTO DE LOS ELEMENTOS TEATRALES"
         },
         {
-          "id": "la-apreciación-de-las-producciones-propias-y-de-pa",
+          "id": "la-apreciación-de-las-producciones-propias-y-de-pares",
           "label": "LA APRECIACIÓN DE LAS PRODUCCIONES PROPIAS Y DE PARES"
+        },
+        {
+          "id": "el-cuerpo-y-la-voz-en-el-espacio-como-instrumentos",
+          "label": "EL CUERPO Y LA VOZ EN EL ESPACIO COMO INSTRUMENTOS"
         },
         {
           "id": "de-creación",
@@ -1345,12 +1789,12 @@ export const CURRICULUM_BY_GRADE = {
           "label": "EL JUEGO EN FICCIÓN"
         },
         {
-          "id": "y-expresión",
-          "label": "Y EXPRESIÓN"
+          "id": "los-títeres-y-los-objetos-animados-para-la-creación",
+          "label": "LOS TÍTERES Y LOS OBJETOS ANIMADOS PARA LA CREACIÓN"
         },
         {
-          "id": "el-teatro-como-actividad-colectiva-e-integradora",
-          "label": "EL TEATRO COMO ACTIVIDAD COLECTIVA E INTEGRADORA"
+          "id": "y-expresión",
+          "label": "Y EXPRESIÓN"
         }
       ]
     }
@@ -1406,8 +1850,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Ciencias Naturales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Ciencias Naturales - Contenidos del Área"
+          "id": "contenidos-del-area",
+          "label": "Contenidos"
         }
       ]
     },
@@ -1428,6 +1872,10 @@ export const CURRICULUM_BY_GRADE = {
           "label": "CUERPO: MATERIALIDAD Y SENTIDO"
         },
         {
+          "id": "la-apreciación-en-danza:-experiencia-corporal-y-creación",
+          "label": "LA APRECIACIÓN EN DANZA: EXPERIENCIA CORPORAL Y CREACIÓN"
+        },
+        {
           "id": "de-sentido",
           "label": "DE SENTIDO"
         },
@@ -1444,6 +1892,10 @@ export const CURRICULUM_BY_GRADE = {
     "educacion-fisica": {
       "label": "Educacion Fisica",
       "contents": [
+        {
+          "id": "desarrollo-perceptivo-motriz:-reestructuración-del",
+          "label": "DESARROLLO PERCEPTIVO MOTRIZ: REESTRUCTURACIÓN DEL"
+        },
         {
           "id": "esquema-corporal",
           "label": "ESQUEMA CORPORAL"
@@ -1503,8 +1955,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Lengua Y Literatura",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Lengua Y Literatura - Contenidos del Área"
+          "id": "contenidos-del-area",
+          "label": "Contenidos"
         }
       ]
     },
@@ -1512,8 +1964,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Lenguas Extranjeras",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Lenguas Extranjeras - Contenidos del Área"
+          "id": "contenidos-del-area",
+          "label": "Contenidos"
         }
       ]
     },
@@ -1531,10 +1983,6 @@ export const CURRICULUM_BY_GRADE = {
         {
           "id": "números-racionales:-fracciones-y-números-decimales",
           "label": "NÚMEROS RACIONALES: FRACCIONES Y NÚMEROS DECIMALES"
-        },
-        {
-          "id": "operaciones",
-          "label": "OPERACIONES"
         },
         {
           "id": "cdp,-esi,-eai,-ei",
@@ -1558,7 +2006,7 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Musica",
       "contents": [
         {
-          "id": "las-músicas-como-manifestaciones-sociales-y-cultur",
+          "id": "las-músicas-como-manifestaciones-sociales-y-culturales",
           "label": "LAS MÚSICAS COMO MANIFESTACIONES SOCIALES Y CULTURALES"
         },
         {
@@ -1636,8 +2084,12 @@ export const CURRICULUM_BY_GRADE = {
           "label": "EL RECONOCIMIENTO DE LOS ELEMENTOS TEATRALES"
         },
         {
-          "id": "la-apreciación-de-las-producciones-propias-y-de-pa",
+          "id": "la-apreciación-de-las-producciones-propias-y-de-pares",
           "label": "LA APRECIACIÓN DE LAS PRODUCCIONES PROPIAS Y DE PARES"
+        },
+        {
+          "id": "el-cuerpo-y-la-voz-en-el-espacio-como-instrumentos",
+          "label": "EL CUERPO Y LA VOZ EN EL ESPACIO COMO INSTRUMENTOS"
         },
         {
           "id": "de-creación",
@@ -1650,10 +2102,6 @@ export const CURRICULUM_BY_GRADE = {
         {
           "id": "los-objetos-lúdicos-para-la-creación-y-expresión",
           "label": "LOS OBJETOS LÚDICOS PARA LA CREACIÓN Y EXPRESIÓN"
-        },
-        {
-          "id": "el-teatro-como-actividad-colectiva-e-integradora",
-          "label": "EL TEATRO COMO ACTIVIDAD COLECTIVA E INTEGRADORA"
         }
       ]
     }
