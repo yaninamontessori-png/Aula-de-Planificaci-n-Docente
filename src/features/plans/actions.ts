@@ -6,6 +6,8 @@ import {
   planDraftSchema,
   generatedSectionsSchema,
   skillPromptsFor,
+  subjectPromptFor,
+  describeAdaptations,
   type GeneratedSections,
 } from "./schema";
 import { generateSections, GEMINI_MODEL } from "./gemini";
@@ -53,12 +55,13 @@ export async function generatePlan(input: unknown): Promise<GenerateResult> {
   // Configuración pedagógica de la docente: orienta al agente de IA.
   const { data: profile } = await supabase
     .from("profiles")
-    .select("teaching_skills, pedagogical_notes")
+    .select("teaching_skills, pedagogical_notes, teaching_subject")
     .eq("id", user.id)
     .maybeSingle();
   const guidelines = {
     skills: skillPromptsFor(profile?.teaching_skills ?? []),
     notes: (profile?.pedagogical_notes ?? "").trim(),
+    subject: subjectPromptFor(profile?.teaching_subject),
   };
 
   try {
@@ -126,6 +129,8 @@ export async function savePlan(input: unknown, sectionsInput: unknown): Promise<
       title: complete.success ? complete.data.titulo || draft.title : draft.title,
       guiding_question: draft.guidingQuestion,
       teacher_resource: draft.teacherResource || null,
+      curricular_adaptations:
+        describeAdaptations(draft.adaptations, draft.adaptationNotes) || null,
       generated_sections: sections,
       status,
       ai_model: status === "completo" ? GEMINI_MODEL : null,

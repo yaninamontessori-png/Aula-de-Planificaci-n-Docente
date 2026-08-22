@@ -9,18 +9,13 @@ import { generatePlan, savePlan } from "./actions";
 import {
   GRADES,
   SECTION_LABELS,
+  CURRICULAR_ADAPTATIONS,
   countAreas,
   type GeneratedSections,
   type SelectedContent,
 } from "./schema";
 
 const STEPS = ["Datos", "Contenidos", "Pregunta", "Planificación"] as const;
-
-const EJEMPLOS = [
-  "¿Cómo podemos contar una historia para que otra persona pueda imaginarla?",
-  "¿Por qué cambian los seres vivos con el paso del tiempo?",
-  "¿Qué historias esconde el lugar donde vivimos?",
-];
 
 export function Wizard({
   defaultTeacherName,
@@ -49,6 +44,8 @@ export function Wizard({
   const [title, setTitle] = useState("");
   const [guidingQuestion, setGuidingQuestion] = useState("");
   const [teacherResource, setTeacherResource] = useState("");
+  const [adaptations, setAdaptations] = useState<string[]>([]);
+  const [adaptationNotes, setAdaptationNotes] = useState("");
   const [contents, setContents] = useState<SelectedContent[]>([]);
 
   const [sections, setSections] = useState<GeneratedSections | null>(null);
@@ -71,6 +68,8 @@ export function Wizard({
       title,
       guidingQuestion,
       teacherResource,
+      adaptations,
+      adaptationNotes,
       contents,
     };
   }
@@ -137,6 +136,8 @@ export function Wizard({
               setContents([]);
               setGuidingQuestion("");
               setTeacherResource("");
+              setAdaptations([]);
+              setAdaptationNotes("");
               setTitle("");
               setStep(0);
             }}
@@ -291,34 +292,16 @@ export function Wizard({
         <section className="grid gap-4">
           <div className="rounded-xl bg-surface-2 px-4 py-3 text-sm text-brand-ink">
             Una buena pregunta suele empezar con «¿Cómo…?» o «¿Por qué…?» e invita a
-            investigar. Escribí la tuya o tocá un ejemplo.
+            investigar. Va a ser el hilo conductor de toda la propuesta.
           </div>
           <Field label="Tu pregunta motivadora (hilo conductor)">
             <textarea
               className={`${inputCls} min-h-28`}
               value={guidingQuestion}
               onChange={(e) => setGuidingQuestion(e.target.value)}
-              placeholder="Escribí tu pregunta acá…"
+              placeholder="Ej.: ¿Cómo podemos contar una historia para que otra persona pueda imaginarla?"
             />
           </Field>
-          <div>
-            <p className="mb-2 text-sm font-bold text-ink">Ejemplos para inspirarte (tocá para usar)</p>
-            <div className="flex flex-col gap-2">
-              {EJEMPLOS.map((q) => (
-                <button
-                  key={q}
-                  type="button"
-                  onClick={() => setGuidingQuestion(q)}
-                  className="flex items-start gap-2 rounded-xl border-2 border-dashed border-border bg-surface px-4 py-3 text-left text-sm text-brand-ink transition-colors hover:border-brand"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0 text-brand">
-                    <path d="M5 12h14M13 6l6 6-6 6" />
-                  </svg>
-                  {q}
-                </button>
-              ))}
-            </div>
-          </div>
           <Field label={<>Recurso que querés usar <span className="font-normal text-muted">· opcional</span></>}>
             <textarea
               className={`${inputCls} min-h-24`}
@@ -362,6 +345,46 @@ export function Wizard({
                   </span>
                 )}
               </p>
+              <div className="mt-4 rounded-2xl border-2 border-border bg-surface p-4">
+                <p className="text-sm font-bold text-ink">
+                  ¿Hay estudiantes con adaptación curricular?
+                </p>
+                <p className="mt-0.5 text-xs text-muted">
+                  Marcá las que correspondan y la IA generará las adaptaciones específicas.
+                  No se registran nombres de estudiantes.
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {CURRICULAR_ADAPTATIONS.map((a) => {
+                    const on = adaptations.includes(a.id);
+                    return (
+                      <button
+                        key={a.id}
+                        type="button"
+                        aria-pressed={on}
+                        onClick={() =>
+                          setAdaptations((prev) =>
+                            on ? prev.filter((x) => x !== a.id) : [...prev, a.id],
+                          )
+                        }
+                        className={`rounded-full border-2 px-3 py-1.5 text-xs font-semibold transition-colors ${
+                          on
+                            ? "border-accent bg-accent text-accent-ink"
+                            : "border-border bg-surface text-brand-ink hover:border-accent"
+                        }`}
+                      >
+                        {a.label}
+                      </button>
+                    );
+                  })}
+                </div>
+                <textarea
+                  value={adaptationNotes}
+                  onChange={(e) => setAdaptationNotes(e.target.value)}
+                  maxLength={500}
+                  placeholder="Otra adaptación o detalle (opcional). Sin nombres de estudiantes."
+                  className="mt-3 min-h-16 w-full rounded-xl border border-border bg-surface px-3 py-2.5 text-sm"
+                />
+              </div>
               <Button size="lg" className="mt-4" onClick={onGenerate} disabled={generating}>
                 {generating ? "Generando borrador…" : "Generar borrador con IA"}
               </Button>

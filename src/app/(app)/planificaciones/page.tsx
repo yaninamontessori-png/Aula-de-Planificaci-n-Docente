@@ -17,26 +17,44 @@ const estadoLabel: Record<string, string> = {
 
 export default async function PlanificacionesPage() {
   const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user!.id)
+    .maybeSingle();
+  const isDirectivo = profile?.role === "directivo";
+
+  // RLS decide el alcance: un directivo también ve las de su institución.
   const { data: plans, error } = await supabase
     .from("plans")
-    .select("id, title, planning_type, grade, status, created_at")
+    .select("id, title, planning_type, grade, status, created_at, teacher_name, user_id")
     .order("created_at", { ascending: false })
-    .limit(50);
+    .limit(100);
 
   return (
     <div>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="font-heading text-3xl font-bold text-brand">
-          Mis planificaciones
+          {isDirectivo ? "Planificaciones de la institución" : "Mis planificaciones"}
         </h1>
         <Link href="/nueva" className={buttonClasses("primary", "md")}>
           + Nueva
         </Link>
       </div>
 
+      {isDirectivo && (
+        <p className="mt-2 text-sm text-muted">
+          Como directivo/a, ves las planificaciones de las docentes de tu misma institución.
+        </p>
+      )}
+
       {error && (
         <p role="alert" className="mt-6 rounded-lg bg-danger-bg p-4 text-danger">
-          No pudimos cargar tus planificaciones. Revisá la configuración de Supabase e
+          No pudimos cargar las planificaciones. Revisá la configuración de Supabase e
           intentá de nuevo.
         </p>
       )}
@@ -44,10 +62,10 @@ export default async function PlanificacionesPage() {
       {!error && (!plans || plans.length === 0) && (
         <div className="mt-8 rounded-2xl border border-dashed border-border bg-surface p-10 text-center">
           <p className="font-heading text-lg font-bold text-ink">
-            Todavía no tenés planificaciones
+            Todavía no hay planificaciones
           </p>
           <p className="mt-2 text-muted">
-            Cuando crees tu primera planificación, vas a verla acá.
+            Cuando se cree la primera, va a aparecer acá.
           </p>
           <Link href="/nueva" className={`${buttonClasses("primary", "lg")} mt-6`}>
             Crear la primera
@@ -68,6 +86,9 @@ export default async function PlanificacionesPage() {
                     {p.title}
                   </p>
                   <p className="mt-1 text-sm text-muted">
+                    {isDirectivo && p.user_id !== user!.id && (
+                      <span className="font-semibold text-brand-ink">{p.teacher_name} · </span>
+                    )}
                     {tipoLabel[p.planning_type] ?? p.planning_type} · {p.grade}.º grado ·{" "}
                     {estadoLabel[p.status] ?? p.status}
                   </p>

@@ -7,6 +7,7 @@
  */
 import {
   generatedSectionsSchema,
+  describeAdaptations,
   type GeneratedSections,
   type PlanDraft,
 } from "./schema";
@@ -40,6 +41,8 @@ export type PlanGuidelines = {
   skills: string[];
   /** Contexto del grupo/aula en texto libre. */
   notes: string;
+  /** Enfoque según la especialidad de la docente (vacío para maestra de grado). */
+  subject?: string;
 };
 
 function systemInstruction(guidelines?: PlanGuidelines): string {
@@ -54,6 +57,10 @@ function systemInstruction(guidelines?: PlanGuidelines): string {
     "Dentro de cada campo largo usá subtítulos y viñetas con el carácter • cuando ayude a la lectura.",
   ];
 
+  if (guidelines?.subject?.trim()) {
+    lines.push("");
+    lines.push(guidelines.subject.trim());
+  }
   if (guidelines?.skills?.length) {
     lines.push("");
     lines.push("Aplicá de forma transversal y concreta estos enfoques elegidos por la docente:");
@@ -81,6 +88,7 @@ function buildPrompt(d: PlanDraft): string {
     .join("\n\n");
 
   const tipo = d.planningType === "secuencia_clases" ? "Secuencia de clases" : "Unidad didáctica mensual";
+  const adaptaciones = describeAdaptations(d.adaptations, d.adaptationNotes);
 
   return [
     `TIPO: ${tipo}`,
@@ -93,6 +101,9 @@ function buildPrompt(d: PlanDraft): string {
     "",
     "CONTENIDOS CURRICULARES AUTORIZADOS:",
     lista,
+    adaptaciones
+      ? `\nADAPTACIONES CURRICULARES A CONTEMPLAR: ${adaptaciones}.\nEn la sección "adecuaciones" desarrollá adaptaciones concretas y diferenciadas para estas configuraciones de apoyo: ajustes de acceso, de la actividad, de los materiales y de la evaluación, con estrategias específicas para cada una y basadas en el Diseño Universal para el Aprendizaje (DUA). No nombres ni identifiques a estudiantes.`
+      : "",
     "",
     "La planificación debe ser interdisciplinaria. Si la docente indicó un recurso, integralo de manera concreta en las actividades sin reemplazar los contenidos curriculares. Respetá la extensión elegida: una unidad mensual muestra progresión semanal; una secuencia organiza clases consecutivas.",
   ].join("\n");

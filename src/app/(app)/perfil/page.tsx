@@ -12,7 +12,9 @@ export default async function PerfilPage() {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("display_name, institution, default_grade, teaching_skills, pedagogical_notes")
+    .select(
+      "display_name, institution, default_grade, teaching_skills, pedagogical_notes, role, teaching_subject",
+    )
     .eq("id", user!.id)
     .maybeSingle();
 
@@ -28,6 +30,8 @@ export default async function PerfilPage() {
         displayName={profile?.display_name ?? ""}
         institution={profile?.institution ?? ""}
         defaultGrade={profile?.default_grade ?? null}
+        role={profile?.role ?? "docente"}
+        subject={profile?.teaching_subject ?? "grado"}
         skills={profile?.teaching_skills ?? []}
         notes={profile?.pedagogical_notes ?? ""}
       />

@@ -2,7 +2,9 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
-import { normalizeSkillIds } from "@/features/plans/schema";
+import { normalizeSkillIds, TEACHER_SUBJECTS } from "@/features/plans/schema";
+
+const SUBJECT_IDS = new Set(TEACHER_SUBJECTS.map((s) => s.id as string));
 
 export type ProfileActionState = { ok?: boolean; error?: string };
 
@@ -39,6 +41,10 @@ export async function updateProfile(
   const defaultGrade =
     gradeRaw && Number(gradeRaw) >= 1 && Number(gradeRaw) <= 7 ? Number(gradeRaw) : null;
 
+  const role = String(formData.get("role") ?? "") === "directivo" ? "directivo" : "docente";
+  const subjectRaw = String(formData.get("teaching_subject") ?? "").trim();
+  const teachingSubject = SUBJECT_IDS.has(subjectRaw) ? subjectRaw : "grado";
+
   // upsert cubre el caso (poco común) de que aún no exista la fila de perfil.
   const { error } = await supabase.from("profiles").upsert(
     {
@@ -48,6 +54,8 @@ export async function updateProfile(
       teaching_skills: skills,
       pedagogical_notes: notes || null,
       default_grade: defaultGrade,
+      role,
+      teaching_subject: teachingSubject,
     },
     { onConflict: "id" },
   );

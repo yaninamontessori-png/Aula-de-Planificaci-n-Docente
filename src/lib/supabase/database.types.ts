@@ -21,6 +21,8 @@ export interface Database {
           teaching_skills: string[];
           pedagogical_notes: string | null;
           default_grade: number | null;
+          role: string;
+          teaching_subject: string | null;
           created_at: string;
           updated_at: string;
         };
@@ -32,6 +34,8 @@ export interface Database {
           teaching_skills?: string[];
           pedagogical_notes?: string | null;
           default_grade?: number | null;
+          role?: string;
+          teaching_subject?: string | null;
         };
         Update: {
           display_name?: string | null;
@@ -40,6 +44,8 @@ export interface Database {
           teaching_skills?: string[];
           pedagogical_notes?: string | null;
           default_grade?: number | null;
+          role?: string;
+          teaching_subject?: string | null;
         };
         Relationships: [];
       };
@@ -87,6 +93,7 @@ export interface Database {
           title: string;
           guiding_question: string;
           teacher_resource: string | null;
+          curricular_adaptations: string | null;
           generated_sections: Record<string, unknown>;
           status: PlanStatus;
           ai_model: string | null;
@@ -105,6 +112,7 @@ export interface Database {
           title: string;
           guiding_question: string;
           teacher_resource?: string | null;
+          curricular_adaptations?: string | null;
           generated_sections?: Record<string, unknown>;
           status?: PlanStatus;
           ai_model?: string | null;
@@ -119,6 +127,7 @@ export interface Database {
           title?: string;
           guiding_question?: string;
           teacher_resource?: string | null;
+          curricular_adaptations?: string | null;
           generated_sections?: Record<string, unknown>;
           status?: PlanStatus;
           ai_model?: string | null;

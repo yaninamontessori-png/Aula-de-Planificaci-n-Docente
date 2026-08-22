@@ -3,13 +3,15 @@
 import { useActionState } from "react";
 import { updateProfile, type ProfileActionState } from "./actions";
 import { Button } from "@/components/ui/Button";
-import { GRADES, TEACHING_SKILLS } from "@/features/plans/schema";
+import { GRADES, TEACHING_SKILLS, TEACHER_SUBJECTS } from "@/features/plans/schema";
 
 export function ProfileForm({
   email,
   displayName,
   institution,
   defaultGrade,
+  role,
+  subject,
   skills,
   notes,
 }: {
@@ -17,6 +19,8 @@ export function ProfileForm({
   displayName: string;
   institution: string;
   defaultGrade: number | null;
+  role: string;
+  subject: string;
   skills: string[];
   notes: string;
 }) {
@@ -72,6 +76,40 @@ export function ProfileForm({
                 </option>
               ))}
             </select>
+          </div>
+          <div>
+            <label className="mb-1.5 block text-sm font-bold" htmlFor="teaching_subject">
+              Especialidad
+            </label>
+            <select
+              id="teaching_subject"
+              name="teaching_subject"
+              defaultValue={subject || "grado"}
+              className="w-full rounded-xl border border-border bg-surface px-3 py-3"
+            >
+              {TEACHER_SUBJECTS.map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.label}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="mb-1.5 block text-sm font-bold" htmlFor="role">
+              Rol
+            </label>
+            <select
+              id="role"
+              name="role"
+              defaultValue={role || "docente"}
+              className="w-full rounded-xl border border-border bg-surface px-3 py-3"
+            >
+              <option value="docente">Docente</option>
+              <option value="directivo">Directivo/a</option>
+            </select>
+            <p className="mt-1 text-xs text-muted">
+              Directivo/a ve las planificaciones de su institución.
+            </p>
           </div>
           <div className="sm:col-span-2">
             <label className="mb-1.5 block text-sm font-bold" htmlFor="institution">

@@ -101,6 +101,93 @@ export function skillPromptsFor(ids: string[]): string[] {
   return TEACHING_SKILLS.filter((s) => chosen.has(s.id)).map((s) => s.prompt);
 }
 
+/** Roles de la cuenta. El directivo puede ver las planificaciones de su institución. */
+export const ROLES = ["docente", "directivo"] as const;
+export type Role = (typeof ROLES)[number];
+
+/**
+ * Especialidad de la docente (maestra de grado o docente especial).
+ * Orienta a la IA sobre el enfoque de la propuesta.
+ */
+export const TEACHER_SUBJECTS = [
+  { id: "grado", label: "Maestra/o de grado", prompt: "" },
+  {
+    id: "musica",
+    label: "Música",
+    prompt:
+      "La docente es especialista en Educación Musical: encará la propuesta desde la música (escucha, exploración sonora, ritmo, canto, ejecución instrumental) integrando los contenidos seleccionados.",
+  },
+  {
+    id: "educacion_fisica",
+    label: "Educación Física",
+    prompt:
+      "La docente es especialista en Educación Física: encará la propuesta desde lo corporal y motriz (juego motor, expresión corporal, deportes, vida en la naturaleza) integrando los contenidos seleccionados.",
+  },
+  {
+    id: "plastica",
+    label: "Plástica / Artes visuales",
+    prompt:
+      "La docente es especialista en Artes Visuales: encará la propuesta desde el lenguaje visual (dibujo, pintura, collage, construcción, apreciación de obras) integrando los contenidos seleccionados.",
+  },
+  {
+    id: "ingles",
+    label: "Inglés",
+    prompt:
+      "La docente es especialista en Inglés: encará la propuesta desde la enseñanza del inglés como lengua extranjera integrando los contenidos seleccionados.",
+  },
+  {
+    id: "tecnologia",
+    label: "Tecnología / Informática",
+    prompt:
+      "La docente es especialista en Educación Tecnológica: encará la propuesta desde los procesos, medios técnicos y el pensamiento computacional integrando los contenidos seleccionados.",
+  },
+  {
+    id: "teatro",
+    label: "Teatro / Expresión",
+    prompt:
+      "La docente es especialista en Teatro: encará la propuesta desde el lenguaje teatral y la expresión dramática integrando los contenidos seleccionados.",
+  },
+  { id: "otra", label: "Otra especialidad", prompt: "" },
+] as const;
+
+export type TeacherSubjectId = (typeof TEACHER_SUBJECTS)[number]["id"];
+
+/** Instrucción para la IA según la especialidad (vacía para maestra de grado). */
+export function subjectPromptFor(id: string | null | undefined): string {
+  return TEACHER_SUBJECTS.find((s) => s.id === id)?.prompt ?? "";
+}
+
+/**
+ * Adaptaciones curriculares del grupo (por planificación). Describen la
+ * configuración de apoyo, NUNCA identifican estudiantes.
+ */
+export const CURRICULAR_ADAPTATIONS = [
+  { id: "dislexia", label: "Dislexia (lectura)" },
+  { id: "discalculia", label: "Discalculia (matemática)" },
+  { id: "disgrafia", label: "Disgrafía (escritura)" },
+  { id: "tdah", label: "TDAH (atención/impulsividad)" },
+  { id: "tea", label: "TEA (Espectro Autista)" },
+  { id: "disc_intelectual", label: "Discapacidad intelectual" },
+  { id: "disc_visual", label: "Discapacidad visual" },
+  { id: "disc_auditiva", label: "Discapacidad auditiva" },
+  { id: "disc_motriz", label: "Discapacidad motriz" },
+  { id: "altas_capacidades", label: "Altas capacidades" },
+  { id: "segunda_lengua", label: "Español como segunda lengua" },
+] as const;
+
+const ADAPTATION_LABEL = new Map<string, string>(
+  CURRICULAR_ADAPTATIONS.map((a) => [a.id, a.label]),
+);
+
+/** Resumen legible de las adaptaciones elegidas (para guardar y para la IA). */
+export function describeAdaptations(ids: string[], notes: string): string {
+  const labels = [...new Set(ids)].map((id) => ADAPTATION_LABEL.get(id)).filter(Boolean);
+  const parts: string[] = [];
+  if (labels.length) parts.push(labels.join(", "));
+  if (notes.trim()) parts.push(notes.trim());
+  return parts.join(" · ");
+}
+
 export const planningTypeSchema = z.enum(["unidad_mensual", "secuencia_clases"]);
 
 /** Contenido curricular tal como se selecciona en el Paso 2. */
@@ -140,6 +227,8 @@ export const planDraftSchema = z
       .trim()
       .min(10, "La pregunta motivadora debe tener al menos 10 caracteres."),
     teacherResource: z.string().trim().max(2000).optional().default(""),
+    adaptations: z.array(z.string()).max(20).optional().default([]),
+    adaptationNotes: z.string().trim().max(500).optional().default(""),
     contents: z.array(selectedContentSchema).min(1, "Seleccioná al menos un contenido."),
   })
   .superRefine((data, ctx) => {
