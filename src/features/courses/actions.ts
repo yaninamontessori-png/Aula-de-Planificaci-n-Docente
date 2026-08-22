@@ -6,7 +6,7 @@ import { createClient } from "@/lib/supabase/server";
 export interface Course {
   id: string;
   name: string;
-  year: string;
+  years: string[];
   student_count?: number;
   notes?: string;
 }

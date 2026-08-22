@@ -45,7 +45,7 @@ export function CourseList({ courses, onEdit, onRefresh }: CourseListProps) {
             <div className="flex-1 min-w-0">
               <h3 className="font-semibold text-foreground">{course.name}</h3>
               <p className="text-sm text-muted">
-                {course.year}
+                {course.years.join(", ")}
                 {course.student_count && ` • ${course.student_count} alumnos`}
               </p>
               {course.notes && (

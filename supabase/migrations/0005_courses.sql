@@ -2,7 +2,7 @@ create table public.courses (
   id uuid not null default gen_random_uuid(),
   user_id uuid not null,
   name text not null,
-  year text not null,
+  years text[] not null,
   student_count integer,
   notes text,
   created_at timestamp with time zone not null default now(),
