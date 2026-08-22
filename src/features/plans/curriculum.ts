@@ -1,8 +1,7 @@
 /**
- * Currículum de Santa Fe - Áreas y contenidos por grado
+ * Currículum de Santa Fe - Áreas, ejes y contenidos por grado
  * Extraído de: C:\Users\Pc\Desktop\primaria\diseno_curricular_santa_fe_FIEL_AL_PDF
- * Fiel al PDF oficial
- * Generado automáticamente
+ * Fiel al PDF oficial - Éxodo 2025
  */
 
 export const CURRICULUM_BY_GRADE = {
@@ -12,7 +11,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Artes Audiovisuales - Contenidos del Área"
         }
       ]
     },
@@ -21,7 +20,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Artes Visuales - Contenidos del Área"
         }
       ]
     },
@@ -30,7 +29,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Ciencias Naturales - Contenidos del Área"
         }
       ]
     },
@@ -39,7 +38,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Ciencias Sociales - Contenidos del Área"
         }
       ]
     },
@@ -48,7 +47,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Danza - Contenidos del Área"
         }
       ]
     },
@@ -57,7 +56,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Educacion Fisica - Contenidos del Área"
         }
       ]
     },
@@ -66,7 +65,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Educacion Tecnologica - Contenidos del Área"
         }
       ]
     },
@@ -74,8 +73,16 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Lengua Y Literatura",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "cdp,-esi,-ei",
+          "label": "CDP, ESI, EI"
+        },
+        {
+          "id": "cdp,-esi,-ei,-eai,-ecd",
+          "label": "CDP, ESI, EI, EAI, ECD"
+        },
+        {
+          "id": "esi,-ei,-eai,-ecd",
+          "label": "ESI, EI, EAI, ECD"
         }
       ]
     },
@@ -83,8 +90,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Lenguas Extranjeras",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "esi,-ecd,-ei",
+          "label": "ESI, ECD, EI"
         }
       ]
     },
@@ -93,7 +100,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Matematica - Contenidos del Área"
         }
       ]
     },
@@ -102,7 +109,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Musica - Contenidos del Área"
         }
       ]
     },
@@ -110,8 +117,24 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Saberes Vidas Y Mundos",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "ciudadanía,-derechos-humanos-y-participación",
+          "label": "CIUDADANÍA, DERECHOS HUMANOS Y PARTICIPACIÓN"
+        },
+        {
+          "id": "educación-intercultural",
+          "label": "EDUCACIÓN INTERCULTURAL"
+        },
+        {
+          "id": "educación-sexual-integral",
+          "label": "EDUCACIÓN SEXUAL INTEGRAL"
+        },
+        {
+          "id": "educación-ambiental-integral",
+          "label": "EDUCACIÓN AMBIENTAL INTEGRAL"
+        },
+        {
+          "id": "educación-y-cultura-digital",
+          "label": "EDUCACIÓN Y CULTURA DIGITAL"
         }
       ]
     },
@@ -120,7 +143,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Teatro - Contenidos del Área"
         }
       ]
     }
@@ -131,7 +154,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Artes Audiovisuales - Contenidos del Área"
         }
       ]
     },
@@ -140,7 +163,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Artes Visuales - Contenidos del Área"
         }
       ]
     },
@@ -149,7 +172,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Ciencias Naturales - Contenidos del Área"
         }
       ]
     },
@@ -158,7 +181,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Ciencias Sociales - Contenidos del Área"
         }
       ]
     },
@@ -167,7 +190,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Danza - Contenidos del Área"
         }
       ]
     },
@@ -176,7 +199,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Educacion Fisica - Contenidos del Área"
         }
       ]
     },
@@ -185,7 +208,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Educacion Tecnologica - Contenidos del Área"
         }
       ]
     },
@@ -193,8 +216,16 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Lengua Y Literatura",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "cdp,-esi,-ei",
+          "label": "CDP, ESI, EI"
+        },
+        {
+          "id": "cdp,-esi,-ei,-eai,-ecd",
+          "label": "CDP, ESI, EI, EAI, ECD"
+        },
+        {
+          "id": "esi,-ei,-eai,-ecd",
+          "label": "ESI, EI, EAI, ECD"
         }
       ]
     },
@@ -202,8 +233,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Lenguas Extranjeras",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "esi,-ecd,-ei",
+          "label": "ESI, ECD, EI"
         }
       ]
     },
@@ -212,7 +243,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Matematica - Contenidos del Área"
         }
       ]
     },
@@ -221,7 +252,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Musica - Contenidos del Área"
         }
       ]
     },
@@ -229,8 +260,24 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Saberes Vidas Y Mundos",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "ciudadanía,-derechos-humanos-y-participación",
+          "label": "CIUDADANÍA, DERECHOS HUMANOS Y PARTICIPACIÓN"
+        },
+        {
+          "id": "educación-intercultural",
+          "label": "EDUCACIÓN INTERCULTURAL"
+        },
+        {
+          "id": "educación-sexual-integral",
+          "label": "EDUCACIÓN SEXUAL INTEGRAL"
+        },
+        {
+          "id": "educación-ambiental-integral",
+          "label": "EDUCACIÓN AMBIENTAL INTEGRAL"
+        },
+        {
+          "id": "educación-y-cultura-digital",
+          "label": "EDUCACIÓN Y CULTURA DIGITAL"
         }
       ]
     },
@@ -239,7 +286,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Teatro - Contenidos del Área"
         }
       ]
     }
@@ -250,7 +297,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Artes Audiovisuales - Contenidos del Área"
         }
       ]
     },
@@ -259,7 +306,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Artes Visuales - Contenidos del Área"
         }
       ]
     },
@@ -268,7 +315,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Ciencias Naturales - Contenidos del Área"
         }
       ]
     },
@@ -277,7 +324,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Ciencias Sociales - Contenidos del Área"
         }
       ]
     },
@@ -286,7 +333,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Danza - Contenidos del Área"
         }
       ]
     },
@@ -295,7 +342,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Educacion Fisica - Contenidos del Área"
         }
       ]
     },
@@ -304,7 +351,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Educacion Tecnologica - Contenidos del Área"
         }
       ]
     },
@@ -312,8 +359,16 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Lengua Y Literatura",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "cdp,-esi,-ei",
+          "label": "CDP, ESI, EI"
+        },
+        {
+          "id": "cdp,-esi,-ei,-eai,-ecd",
+          "label": "CDP, ESI, EI, EAI, ECD"
+        },
+        {
+          "id": "esi,-ei,-eai,-ecd",
+          "label": "ESI, EI, EAI, ECD"
         }
       ]
     },
@@ -321,8 +376,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Lenguas Extranjeras",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "esi,-ecd,-ei",
+          "label": "ESI, ECD, EI"
         }
       ]
     },
@@ -331,7 +386,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Matematica - Contenidos del Área"
         }
       ]
     },
@@ -340,7 +395,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Musica - Contenidos del Área"
         }
       ]
     },
@@ -348,8 +403,24 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Saberes Vidas Y Mundos",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "ciudadanía,-derechos-humanos-y-participación",
+          "label": "CIUDADANÍA, DERECHOS HUMANOS Y PARTICIPACIÓN"
+        },
+        {
+          "id": "educación-intercultural",
+          "label": "EDUCACIÓN INTERCULTURAL"
+        },
+        {
+          "id": "educación-sexual-integral",
+          "label": "EDUCACIÓN SEXUAL INTEGRAL"
+        },
+        {
+          "id": "educación-ambiental-integral",
+          "label": "EDUCACIÓN AMBIENTAL INTEGRAL"
+        },
+        {
+          "id": "educación-y-cultura-digital",
+          "label": "EDUCACIÓN Y CULTURA DIGITAL"
         }
       ]
     },
@@ -358,7 +429,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Teatro - Contenidos del Área"
         }
       ]
     }
@@ -368,8 +439,16 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Artes Audiovisuales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "recursos-audiovisuales",
+          "label": "RECURSOS AUDIOVISUALES"
+        },
+        {
+          "id": "eai,-ei,-ecd",
+          "label": "EAI, EI, ECD"
+        },
+        {
+          "id": "interpretación-crítica",
+          "label": "INTERPRETACIÓN CRÍTICA"
         }
       ]
     },
@@ -377,8 +456,32 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Artes Visuales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "la-imagen-en-la-bidimensión",
+          "label": "LA IMAGEN EN LA BIDIMENSIÓN"
+        },
+        {
+          "id": "la-imagen-en-la-tridimensión",
+          "label": "LA IMAGEN EN LA TRIDIMENSIÓN"
+        },
+        {
+          "id": "la-imagen-en-medios-múltiples-y-digitales",
+          "label": "LA IMAGEN EN MEDIOS MÚLTIPLES Y DIGITALES"
+        },
+        {
+          "id": "nuestro-entorno,-nuestra-imagen",
+          "label": "NUESTRO ENTORNO, NUESTRA IMAGEN"
+        },
+        {
+          "id": "la-cultura-visual-en-el-mundo",
+          "label": "LA CULTURA VISUAL EN EL MUNDO"
+        },
+        {
+          "id": "contextos-expositivos",
+          "label": "CONTEXTOS EXPOSITIVOS"
+        },
+        {
+          "id": "manifestaciones-artísticas-históricas-y-actuales",
+          "label": "MANIFESTACIONES ARTÍSTICAS HISTÓRICAS Y ACTUALES"
         }
       ]
     },
@@ -387,7 +490,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Ciencias Naturales - Contenidos del Área"
         }
       ]
     },
@@ -395,8 +498,12 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Ciencias Sociales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "cdp,-ei---------------esi,-eai,-cdp,-ei",
+          "label": "CDP, EI               ESI, EAI, CDP, EI"
+        },
+        {
+          "id": "esi,-eai,-cdp,-ei",
+          "label": "ESI, EAI, CDP, EI"
         }
       ]
     },
@@ -404,8 +511,20 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Danza",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "cuerpo:-materialidad-y-sentido",
+          "label": "CUERPO: MATERIALIDAD Y SENTIDO"
+        },
+        {
+          "id": "de-sentido",
+          "label": "DE SENTIDO"
+        },
+        {
+          "id": "la-experiencia-del-danzar",
+          "label": "LA EXPERIENCIA DEL DANZAR"
+        },
+        {
+          "id": "el-proceso-creativo-y-la-composición-en-danza",
+          "label": "EL PROCESO CREATIVO Y LA COMPOSICIÓN EN DANZA"
         }
       ]
     },
@@ -413,8 +532,32 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Educacion Fisica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "desarrollo-perceptivo-motriz:-imagen-corporal",
+          "label": "DESARROLLO PERCEPTIVO MOTRIZ: IMAGEN CORPORAL"
+        },
+        {
+          "id": "habilidades-motoras",
+          "label": "HABILIDADES MOTORAS"
+        },
+        {
+          "id": "capacidades-motoras",
+          "label": "CAPACIDADES MOTORAS"
+        },
+        {
+          "id": "prácticas-lúdicas-y-deportivas",
+          "label": "PRÁCTICAS LÚDICAS Y DEPORTIVAS"
+        },
+        {
+          "id": "prácticas-gimnásticas,-atléticas-y-acuáticas",
+          "label": "PRÁCTICAS GIMNÁSTICAS, ATLÉTICAS Y ACUÁTICAS"
+        },
+        {
+          "id": "prácticas-expresivas-y-lenguajes",
+          "label": "PRÁCTICAS EXPRESIVAS Y LENGUAJES"
+        },
+        {
+          "id": "prácticas-en-el-ambiente",
+          "label": "PRÁCTICAS EN EL AMBIENTE"
         }
       ]
     },
@@ -422,8 +565,24 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Educacion Tecnologica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "dispositivos-computacionales-e-infraestructura",
+          "label": "DISPOSITIVOS COMPUTACIONALES E INFRAESTRUCTURA"
+        },
+        {
+          "id": "alfabetizaciones-múltiples",
+          "label": "ALFABETIZACIONES MÚLTIPLES"
+        },
+        {
+          "id": "programación-y-robótica",
+          "label": "PROGRAMACIÓN Y ROBÓTICA"
+        },
+        {
+          "id": "diversidad,-cambios-y-continuidades",
+          "label": "DIVERSIDAD, CAMBIOS Y CONTINUIDADES"
+        },
+        {
+          "id": "convivencia-en-entornos-digitales",
+          "label": "CONVIVENCIA EN ENTORNOS DIGITALES"
         }
       ]
     },
@@ -431,8 +590,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Lengua Y Literatura",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "cdp,-esi,-eai,-ecd",
+          "label": "CDP, ESI, EAI, ECD"
         }
       ]
     },
@@ -440,8 +599,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Lenguas Extranjeras",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "esi,-ei,-ecd",
+          "label": "ESI, EI, ECD"
         }
       ]
     },
@@ -449,8 +608,32 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Matematica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "números-naturales-y-sistema-de-numeración",
+          "label": "NÚMEROS NATURALES Y SISTEMA DE NUMERACIÓN"
+        },
+        {
+          "id": "operaciones",
+          "label": "OPERACIONES"
+        },
+        {
+          "id": "números-racionales:-fracciones-y-números-decimales",
+          "label": "NÚMEROS RACIONALES: FRACCIONES Y NÚMEROS DECIMALES"
+        },
+        {
+          "id": "operaciones",
+          "label": "OPERACIONES"
+        },
+        {
+          "id": "orientación-y-localización-en-el-espacio",
+          "label": "ORIENTACIÓN Y LOCALIZACIÓN EN EL ESPACIO"
+        },
+        {
+          "id": "figuras-geométricas",
+          "label": "FIGURAS GEOMÉTRICAS"
+        },
+        {
+          "id": "cuerpos-geométricos",
+          "label": "CUERPOS GEOMÉTRICOS"
         }
       ]
     },
@@ -458,8 +641,40 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Musica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "las-músicas-como-manifestaciones-sociales-y-cultur",
+          "label": "LAS MÚSICAS COMO MANIFESTACIONES SOCIALES Y CULTURALES"
+        },
+        {
+          "id": "las-músicas-y-sus-protagonistas",
+          "label": "LAS MÚSICAS Y SUS PROTAGONISTAS"
+        },
+        {
+          "id": "los-contextos-musicales",
+          "label": "LOS CONTEXTOS MUSICALES"
+        },
+        {
+          "id": "entornos-sonoros,-ámbitos-y-medios",
+          "label": "ENTORNOS SONOROS, ÁMBITOS Y MEDIOS"
+        },
+        {
+          "id": "relaciones-discursivo-musicales",
+          "label": "RELACIONES DISCURSIVO-MUSICALES"
+        },
+        {
+          "id": "relaciones-sonoras",
+          "label": "RELACIONES SONORAS"
+        },
+        {
+          "id": "producción-vocal",
+          "label": "PRODUCCIÓN VOCAL"
+        },
+        {
+          "id": "producción-corporal",
+          "label": "PRODUCCIÓN CORPORAL"
+        },
+        {
+          "id": "producción-instrumental",
+          "label": "PRODUCCIÓN INSTRUMENTAL"
         }
       ]
     },
@@ -467,8 +682,24 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Saberes Vidas Y Mundos",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "ciudadanía,-derechos-humanos-y-participación",
+          "label": "CIUDADANÍA, DERECHOS HUMANOS Y PARTICIPACIÓN"
+        },
+        {
+          "id": "educación-intercultural",
+          "label": "EDUCACIÓN INTERCULTURAL"
+        },
+        {
+          "id": "educación-sexual-integral",
+          "label": "EDUCACIÓN SEXUAL INTEGRAL"
+        },
+        {
+          "id": "educación-ambiental-integral",
+          "label": "EDUCACIÓN AMBIENTAL INTEGRAL"
+        },
+        {
+          "id": "educación-y-cultura-digital",
+          "label": "EDUCACIÓN Y CULTURA DIGITAL"
         }
       ]
     },
@@ -476,8 +707,36 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Teatro",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "el-teatro-como-manifestación-histórica-y-cultural",
+          "label": "EL TEATRO COMO MANIFESTACIÓN HISTÓRICA Y CULTURAL"
+        },
+        {
+          "id": "el-teatro-y-sus-hacedores",
+          "label": "EL TEATRO Y SUS HACEDORES"
+        },
+        {
+          "id": "el-reconocimiento-de-los-elementos-teatrales",
+          "label": "EL RECONOCIMIENTO DE LOS ELEMENTOS TEATRALES"
+        },
+        {
+          "id": "la-apreciación-de-las-producciones-propias-y-de-pa",
+          "label": "LA APRECIACIÓN DE LAS PRODUCCIONES PROPIAS Y DE PARES"
+        },
+        {
+          "id": "de-creación",
+          "label": "DE CREACIÓN"
+        },
+        {
+          "id": "el-juego-en-ficción",
+          "label": "EL JUEGO EN FICCIÓN"
+        },
+        {
+          "id": "y-expresión",
+          "label": "Y EXPRESIÓN"
+        },
+        {
+          "id": "el-teatro-como-actividad-colectiva-e-integradora",
+          "label": "EL TEATRO COMO ACTIVIDAD COLECTIVA E INTEGRADORA"
         }
       ]
     }
@@ -487,8 +746,16 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Artes Audiovisuales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "recursos-audiovisuales",
+          "label": "RECURSOS AUDIOVISUALES"
+        },
+        {
+          "id": "eai,-ei,-ecd",
+          "label": "EAI, EI, ECD"
+        },
+        {
+          "id": "interpretación-crítica",
+          "label": "INTERPRETACIÓN CRÍTICA"
         }
       ]
     },
@@ -496,8 +763,32 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Artes Visuales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "la-imagen-en-la-bidimensión",
+          "label": "LA IMAGEN EN LA BIDIMENSIÓN"
+        },
+        {
+          "id": "la-imagen-en-la-tridimensión",
+          "label": "LA IMAGEN EN LA TRIDIMENSIÓN"
+        },
+        {
+          "id": "la-imagen-en-medios-múltiples-y-digitales",
+          "label": "LA IMAGEN EN MEDIOS MÚLTIPLES Y DIGITALES"
+        },
+        {
+          "id": "nuestro-entorno,-nuestra-imagen",
+          "label": "NUESTRO ENTORNO, NUESTRA IMAGEN"
+        },
+        {
+          "id": "la-cultura-visual-en-el-mundo",
+          "label": "LA CULTURA VISUAL EN EL MUNDO"
+        },
+        {
+          "id": "contextos-expositivos",
+          "label": "CONTEXTOS EXPOSITIVOS"
+        },
+        {
+          "id": "manifestaciones-artísticas-históricas-y-actuales",
+          "label": "MANIFESTACIONES ARTÍSTICAS HISTÓRICAS Y ACTUALES"
         }
       ]
     },
@@ -506,7 +797,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Ciencias Naturales - Contenidos del Área"
         }
       ]
     },
@@ -514,8 +805,12 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Ciencias Sociales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "cdp,-ei---------------esi,-eai,-cdp,-ei",
+          "label": "CDP, EI               ESI, EAI, CDP, EI"
+        },
+        {
+          "id": "esi,-eai,-cdp,-ei",
+          "label": "ESI, EAI, CDP, EI"
         }
       ]
     },
@@ -523,8 +818,20 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Danza",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "cuerpo:-materialidad-y-sentido",
+          "label": "CUERPO: MATERIALIDAD Y SENTIDO"
+        },
+        {
+          "id": "de-sentido",
+          "label": "DE SENTIDO"
+        },
+        {
+          "id": "la-experiencia-del-danzar",
+          "label": "LA EXPERIENCIA DEL DANZAR"
+        },
+        {
+          "id": "el-proceso-creativo-y-la-composición-en-danza",
+          "label": "EL PROCESO CREATIVO Y LA COMPOSICIÓN EN DANZA"
         }
       ]
     },
@@ -532,8 +839,32 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Educacion Fisica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "desarrollo-perceptivo-motriz:-imagen-corporal",
+          "label": "DESARROLLO PERCEPTIVO MOTRIZ: IMAGEN CORPORAL"
+        },
+        {
+          "id": "habilidades-motoras",
+          "label": "HABILIDADES MOTORAS"
+        },
+        {
+          "id": "capacidades-motoras",
+          "label": "CAPACIDADES MOTORAS"
+        },
+        {
+          "id": "prácticas-lúdicas-y-deportivas",
+          "label": "PRÁCTICAS LÚDICAS Y DEPORTIVAS"
+        },
+        {
+          "id": "prácticas-gimnásticas,-atléticas-y-acuáticas",
+          "label": "PRÁCTICAS GIMNÁSTICAS, ATLÉTICAS Y ACUÁTICAS"
+        },
+        {
+          "id": "prácticas-expresivas-y-lenguajes",
+          "label": "PRÁCTICAS EXPRESIVAS Y LENGUAJES"
+        },
+        {
+          "id": "prácticas-en-el-ambiente",
+          "label": "PRÁCTICAS EN EL AMBIENTE"
         }
       ]
     },
@@ -541,8 +872,24 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Educacion Tecnologica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "dispositivos-computacionales-e-infraestructura",
+          "label": "DISPOSITIVOS COMPUTACIONALES E INFRAESTRUCTURA"
+        },
+        {
+          "id": "alfabetizaciones-múltiples",
+          "label": "ALFABETIZACIONES MÚLTIPLES"
+        },
+        {
+          "id": "programación-y-robótica",
+          "label": "PROGRAMACIÓN Y ROBÓTICA"
+        },
+        {
+          "id": "diversidad,-cambios-y-continuidades",
+          "label": "DIVERSIDAD, CAMBIOS Y CONTINUIDADES"
+        },
+        {
+          "id": "convivencia-en-entornos-digitales",
+          "label": "CONVIVENCIA EN ENTORNOS DIGITALES"
         }
       ]
     },
@@ -550,8 +897,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Lengua Y Literatura",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "cdp,-esi,-eai,-ecd",
+          "label": "CDP, ESI, EAI, ECD"
         }
       ]
     },
@@ -559,8 +906,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Lenguas Extranjeras",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "esi,-ei,-ecd",
+          "label": "ESI, EI, ECD"
         }
       ]
     },
@@ -568,8 +915,32 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Matematica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "números-naturales-y-sistema-de-numeración",
+          "label": "NÚMEROS NATURALES Y SISTEMA DE NUMERACIÓN"
+        },
+        {
+          "id": "operaciones",
+          "label": "OPERACIONES"
+        },
+        {
+          "id": "números-racionales:-fracciones-y-números-decimales",
+          "label": "NÚMEROS RACIONALES: FRACCIONES Y NÚMEROS DECIMALES"
+        },
+        {
+          "id": "operaciones",
+          "label": "OPERACIONES"
+        },
+        {
+          "id": "orientación-y-localización-en-el-espacio",
+          "label": "ORIENTACIÓN Y LOCALIZACIÓN EN EL ESPACIO"
+        },
+        {
+          "id": "figuras-geométricas",
+          "label": "FIGURAS GEOMÉTRICAS"
+        },
+        {
+          "id": "cuerpos-geométricos",
+          "label": "CUERPOS GEOMÉTRICOS"
         }
       ]
     },
@@ -577,8 +948,40 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Musica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "las-músicas-como-manifestaciones-sociales-y-cultur",
+          "label": "LAS MÚSICAS COMO MANIFESTACIONES SOCIALES Y CULTURALES"
+        },
+        {
+          "id": "las-músicas-y-sus-protagonistas",
+          "label": "LAS MÚSICAS Y SUS PROTAGONISTAS"
+        },
+        {
+          "id": "los-contextos-musicales",
+          "label": "LOS CONTEXTOS MUSICALES"
+        },
+        {
+          "id": "entornos-sonoros,-ámbitos-y-medios",
+          "label": "ENTORNOS SONOROS, ÁMBITOS Y MEDIOS"
+        },
+        {
+          "id": "relaciones-discursivo-musicales",
+          "label": "RELACIONES DISCURSIVO-MUSICALES"
+        },
+        {
+          "id": "relaciones-sonoras",
+          "label": "RELACIONES SONORAS"
+        },
+        {
+          "id": "producción-vocal",
+          "label": "PRODUCCIÓN VOCAL"
+        },
+        {
+          "id": "producción-corporal",
+          "label": "PRODUCCIÓN CORPORAL"
+        },
+        {
+          "id": "producción-instrumental",
+          "label": "PRODUCCIÓN INSTRUMENTAL"
         }
       ]
     },
@@ -586,8 +989,24 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Saberes Vidas Y Mundos",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "ciudadanía,-derechos-humanos-y-participación",
+          "label": "CIUDADANÍA, DERECHOS HUMANOS Y PARTICIPACIÓN"
+        },
+        {
+          "id": "educación-intercultural",
+          "label": "EDUCACIÓN INTERCULTURAL"
+        },
+        {
+          "id": "educación-sexual-integral",
+          "label": "EDUCACIÓN SEXUAL INTEGRAL"
+        },
+        {
+          "id": "educación-ambiental-integral",
+          "label": "EDUCACIÓN AMBIENTAL INTEGRAL"
+        },
+        {
+          "id": "educación-y-cultura-digital",
+          "label": "EDUCACIÓN Y CULTURA DIGITAL"
         }
       ]
     },
@@ -595,8 +1014,36 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Teatro",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "el-teatro-como-manifestación-histórica-y-cultural",
+          "label": "EL TEATRO COMO MANIFESTACIÓN HISTÓRICA Y CULTURAL"
+        },
+        {
+          "id": "el-teatro-y-sus-hacedores",
+          "label": "EL TEATRO Y SUS HACEDORES"
+        },
+        {
+          "id": "el-reconocimiento-de-los-elementos-teatrales",
+          "label": "EL RECONOCIMIENTO DE LOS ELEMENTOS TEATRALES"
+        },
+        {
+          "id": "la-apreciación-de-las-producciones-propias-y-de-pa",
+          "label": "LA APRECIACIÓN DE LAS PRODUCCIONES PROPIAS Y DE PARES"
+        },
+        {
+          "id": "de-creación",
+          "label": "DE CREACIÓN"
+        },
+        {
+          "id": "el-juego-en-ficción",
+          "label": "EL JUEGO EN FICCIÓN"
+        },
+        {
+          "id": "y-expresión",
+          "label": "Y EXPRESIÓN"
+        },
+        {
+          "id": "el-teatro-como-actividad-colectiva-e-integradora",
+          "label": "EL TEATRO COMO ACTIVIDAD COLECTIVA E INTEGRADORA"
         }
       ]
     }
@@ -606,8 +1053,16 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Artes Audiovisuales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "recursos-audiovisuales",
+          "label": "RECURSOS AUDIOVISUALES"
+        },
+        {
+          "id": "eai,-ei,-ecd",
+          "label": "EAI, EI, ECD"
+        },
+        {
+          "id": "interpretación-crítica",
+          "label": "INTERPRETACIÓN CRÍTICA"
         }
       ]
     },
@@ -615,8 +1070,32 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Artes Visuales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "la-imagen-en-la-bidimensión",
+          "label": "LA IMAGEN EN LA BIDIMENSIÓN"
+        },
+        {
+          "id": "la-imagen-en-la-tridimensión",
+          "label": "LA IMAGEN EN LA TRIDIMENSIÓN"
+        },
+        {
+          "id": "la-imagen-en-medios-múltiples-y-digitales",
+          "label": "LA IMAGEN EN MEDIOS MÚLTIPLES Y DIGITALES"
+        },
+        {
+          "id": "nuestro-entorno,-nuestra-imagen",
+          "label": "NUESTRO ENTORNO, NUESTRA IMAGEN"
+        },
+        {
+          "id": "la-cultura-visual-en-el-mundo",
+          "label": "LA CULTURA VISUAL EN EL MUNDO"
+        },
+        {
+          "id": "contextos-expositivos",
+          "label": "CONTEXTOS EXPOSITIVOS"
+        },
+        {
+          "id": "manifestaciones-artísticas-históricas-y-actuales",
+          "label": "MANIFESTACIONES ARTÍSTICAS HISTÓRICAS Y ACTUALES"
         }
       ]
     },
@@ -625,7 +1104,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Ciencias Naturales - Contenidos del Área"
         }
       ]
     },
@@ -633,8 +1112,12 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Ciencias Sociales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "cdp,-ei---------------esi,-eai,-cdp,-ei",
+          "label": "CDP, EI               ESI, EAI, CDP, EI"
+        },
+        {
+          "id": "esi,-eai,-cdp,-ei",
+          "label": "ESI, EAI, CDP, EI"
         }
       ]
     },
@@ -642,8 +1125,20 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Danza",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "cuerpo:-materialidad-y-sentido",
+          "label": "CUERPO: MATERIALIDAD Y SENTIDO"
+        },
+        {
+          "id": "de-sentido",
+          "label": "DE SENTIDO"
+        },
+        {
+          "id": "la-experiencia-del-danzar",
+          "label": "LA EXPERIENCIA DEL DANZAR"
+        },
+        {
+          "id": "el-proceso-creativo-y-la-composición-en-danza",
+          "label": "EL PROCESO CREATIVO Y LA COMPOSICIÓN EN DANZA"
         }
       ]
     },
@@ -651,8 +1146,32 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Educacion Fisica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "desarrollo-perceptivo-motriz:-imagen-corporal",
+          "label": "DESARROLLO PERCEPTIVO MOTRIZ: IMAGEN CORPORAL"
+        },
+        {
+          "id": "habilidades-motoras",
+          "label": "HABILIDADES MOTORAS"
+        },
+        {
+          "id": "capacidades-motoras",
+          "label": "CAPACIDADES MOTORAS"
+        },
+        {
+          "id": "prácticas-lúdicas-y-deportivas",
+          "label": "PRÁCTICAS LÚDICAS Y DEPORTIVAS"
+        },
+        {
+          "id": "prácticas-gimnásticas,-atléticas-y-acuáticas",
+          "label": "PRÁCTICAS GIMNÁSTICAS, ATLÉTICAS Y ACUÁTICAS"
+        },
+        {
+          "id": "prácticas-expresivas-y-lenguajes",
+          "label": "PRÁCTICAS EXPRESIVAS Y LENGUAJES"
+        },
+        {
+          "id": "prácticas-en-el-ambiente",
+          "label": "PRÁCTICAS EN EL AMBIENTE"
         }
       ]
     },
@@ -660,8 +1179,24 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Educacion Tecnologica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "dispositivos-computacionales-e-infraestructura",
+          "label": "DISPOSITIVOS COMPUTACIONALES E INFRAESTRUCTURA"
+        },
+        {
+          "id": "alfabetizaciones-múltiples",
+          "label": "ALFABETIZACIONES MÚLTIPLES"
+        },
+        {
+          "id": "programación-y-robótica",
+          "label": "PROGRAMACIÓN Y ROBÓTICA"
+        },
+        {
+          "id": "diversidad,-cambios-y-continuidades",
+          "label": "DIVERSIDAD, CAMBIOS Y CONTINUIDADES"
+        },
+        {
+          "id": "convivencia-en-entornos-digitales",
+          "label": "CONVIVENCIA EN ENTORNOS DIGITALES"
         }
       ]
     },
@@ -669,8 +1204,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Lengua Y Literatura",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "cdp,-esi,-eai,-ecd",
+          "label": "CDP, ESI, EAI, ECD"
         }
       ]
     },
@@ -678,8 +1213,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Lenguas Extranjeras",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "esi,-ei,-ecd",
+          "label": "ESI, EI, ECD"
         }
       ]
     },
@@ -687,8 +1222,32 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Matematica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "números-naturales-y-sistema-de-numeración",
+          "label": "NÚMEROS NATURALES Y SISTEMA DE NUMERACIÓN"
+        },
+        {
+          "id": "operaciones",
+          "label": "OPERACIONES"
+        },
+        {
+          "id": "números-racionales:-fracciones-y-números-decimales",
+          "label": "NÚMEROS RACIONALES: FRACCIONES Y NÚMEROS DECIMALES"
+        },
+        {
+          "id": "operaciones",
+          "label": "OPERACIONES"
+        },
+        {
+          "id": "orientación-y-localización-en-el-espacio",
+          "label": "ORIENTACIÓN Y LOCALIZACIÓN EN EL ESPACIO"
+        },
+        {
+          "id": "figuras-geométricas",
+          "label": "FIGURAS GEOMÉTRICAS"
+        },
+        {
+          "id": "cuerpos-geométricos",
+          "label": "CUERPOS GEOMÉTRICOS"
         }
       ]
     },
@@ -696,8 +1255,40 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Musica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "las-músicas-como-manifestaciones-sociales-y-cultur",
+          "label": "LAS MÚSICAS COMO MANIFESTACIONES SOCIALES Y CULTURALES"
+        },
+        {
+          "id": "las-músicas-y-sus-protagonistas",
+          "label": "LAS MÚSICAS Y SUS PROTAGONISTAS"
+        },
+        {
+          "id": "los-contextos-musicales",
+          "label": "LOS CONTEXTOS MUSICALES"
+        },
+        {
+          "id": "entornos-sonoros,-ámbitos-y-medios",
+          "label": "ENTORNOS SONOROS, ÁMBITOS Y MEDIOS"
+        },
+        {
+          "id": "relaciones-discursivo-musicales",
+          "label": "RELACIONES DISCURSIVO-MUSICALES"
+        },
+        {
+          "id": "relaciones-sonoras",
+          "label": "RELACIONES SONORAS"
+        },
+        {
+          "id": "producción-vocal",
+          "label": "PRODUCCIÓN VOCAL"
+        },
+        {
+          "id": "producción-corporal",
+          "label": "PRODUCCIÓN CORPORAL"
+        },
+        {
+          "id": "producción-instrumental",
+          "label": "PRODUCCIÓN INSTRUMENTAL"
         }
       ]
     },
@@ -705,8 +1296,24 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Saberes Vidas Y Mundos",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "ciudadanía,-derechos-humanos-y-participación",
+          "label": "CIUDADANÍA, DERECHOS HUMANOS Y PARTICIPACIÓN"
+        },
+        {
+          "id": "educación-intercultural",
+          "label": "EDUCACIÓN INTERCULTURAL"
+        },
+        {
+          "id": "educación-sexual-integral",
+          "label": "EDUCACIÓN SEXUAL INTEGRAL"
+        },
+        {
+          "id": "educación-ambiental-integral",
+          "label": "EDUCACIÓN AMBIENTAL INTEGRAL"
+        },
+        {
+          "id": "educación-y-cultura-digital",
+          "label": "EDUCACIÓN Y CULTURA DIGITAL"
         }
       ]
     },
@@ -714,8 +1321,36 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Teatro",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "el-teatro-como-manifestación-histórica-y-cultural",
+          "label": "EL TEATRO COMO MANIFESTACIÓN HISTÓRICA Y CULTURAL"
+        },
+        {
+          "id": "el-teatro-y-sus-hacedores",
+          "label": "EL TEATRO Y SUS HACEDORES"
+        },
+        {
+          "id": "el-reconocimiento-de-los-elementos-teatrales",
+          "label": "EL RECONOCIMIENTO DE LOS ELEMENTOS TEATRALES"
+        },
+        {
+          "id": "la-apreciación-de-las-producciones-propias-y-de-pa",
+          "label": "LA APRECIACIÓN DE LAS PRODUCCIONES PROPIAS Y DE PARES"
+        },
+        {
+          "id": "de-creación",
+          "label": "DE CREACIÓN"
+        },
+        {
+          "id": "el-juego-en-ficción",
+          "label": "EL JUEGO EN FICCIÓN"
+        },
+        {
+          "id": "y-expresión",
+          "label": "Y EXPRESIÓN"
+        },
+        {
+          "id": "el-teatro-como-actividad-colectiva-e-integradora",
+          "label": "EL TEATRO COMO ACTIVIDAD COLECTIVA E INTEGRADORA"
         }
       ]
     }
@@ -725,8 +1360,12 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Artes Audiovisuales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "recursos-audiovisuales",
+          "label": "RECURSOS AUDIOVISUALES"
+        },
+        {
+          "id": "interpretación-crítica",
+          "label": "INTERPRETACIÓN CRÍTICA"
         }
       ]
     },
@@ -734,8 +1373,32 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Artes Visuales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "la-imagen-en-la-bidimensión",
+          "label": "LA IMAGEN EN LA BIDIMENSIÓN"
+        },
+        {
+          "id": "la-imagen-en-la-tridimensión",
+          "label": "LA IMAGEN EN LA TRIDIMENSIÓN"
+        },
+        {
+          "id": "la-imagen-en-medios-múltiples-y-digitales",
+          "label": "LA IMAGEN EN MEDIOS MÚLTIPLES Y DIGITALES"
+        },
+        {
+          "id": "nuestro-entorno,-nuestra-imagen",
+          "label": "NUESTRO ENTORNO, NUESTRA IMAGEN"
+        },
+        {
+          "id": "la-cultura-visual-en-el-mundo",
+          "label": "LA CULTURA VISUAL EN EL MUNDO"
+        },
+        {
+          "id": "contextos-expositivos",
+          "label": "CONTEXTOS EXPOSITIVOS"
+        },
+        {
+          "id": "manifestaciones-artísticas-históricas-y-actuales",
+          "label": "MANIFESTACIONES ARTÍSTICAS HISTÓRICAS Y ACTUALES"
         }
       ]
     },
@@ -744,7 +1407,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Ciencias Naturales - Contenidos del Área"
         }
       ]
     },
@@ -752,8 +1415,8 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Ciencias Sociales",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "eai,-ei,-cdp",
+          "label": "EAI, EI, CDP"
         }
       ]
     },
@@ -761,8 +1424,20 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Danza",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "cuerpo:-materialidad-y-sentido",
+          "label": "CUERPO: MATERIALIDAD Y SENTIDO"
+        },
+        {
+          "id": "de-sentido",
+          "label": "DE SENTIDO"
+        },
+        {
+          "id": "la-experiencia-del-danzar",
+          "label": "LA EXPERIENCIA DEL DANZAR"
+        },
+        {
+          "id": "el-proceso-creativo-y-la-composición-en-danza",
+          "label": "EL PROCESO CREATIVO Y LA COMPOSICIÓN EN DANZA"
         }
       ]
     },
@@ -770,8 +1445,32 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Educacion Fisica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "esquema-corporal",
+          "label": "ESQUEMA CORPORAL"
+        },
+        {
+          "id": "habilidades-motoras",
+          "label": "HABILIDADES MOTORAS"
+        },
+        {
+          "id": "capacidades-motoras",
+          "label": "CAPACIDADES MOTORAS"
+        },
+        {
+          "id": "prácticas-lúdicas-y-deportivas",
+          "label": "PRÁCTICAS LÚDICAS Y DEPORTIVAS"
+        },
+        {
+          "id": "prácticas-gimnásticas,-atléticas-y-acuáticas",
+          "label": "PRÁCTICAS GIMNÁSTICAS, ATLÉTICAS Y ACUÁTICAS"
+        },
+        {
+          "id": "prácticas-expresivas-y-lenguajes",
+          "label": "PRÁCTICAS EXPRESIVAS Y LENGUAJES"
+        },
+        {
+          "id": "prácticas-en-el-ambiente",
+          "label": "PRÁCTICAS EN EL AMBIENTE"
         }
       ]
     },
@@ -779,8 +1478,24 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Educacion Tecnologica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "dispositivos-computacionales-e-infraestructura",
+          "label": "DISPOSITIVOS COMPUTACIONALES E INFRAESTRUCTURA"
+        },
+        {
+          "id": "alfabetizaciones-múltiples",
+          "label": "ALFABETIZACIONES MÚLTIPLES"
+        },
+        {
+          "id": "programación-y-robótica",
+          "label": "PROGRAMACIÓN Y ROBÓTICA"
+        },
+        {
+          "id": "diversidad,-cambios-y-continuidades",
+          "label": "DIVERSIDAD, CAMBIOS Y CONTINUIDADES"
+        },
+        {
+          "id": "convivencia-en-entornos-digitales",
+          "label": "CONVIVENCIA EN ENTORNOS DIGITALES"
         }
       ]
     },
@@ -789,7 +1504,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Lengua Y Literatura - Contenidos del Área"
         }
       ]
     },
@@ -798,7 +1513,7 @@ export const CURRICULUM_BY_GRADE = {
       "contents": [
         {
           "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "label": "Lenguas Extranjeras - Contenidos del Área"
         }
       ]
     },
@@ -806,8 +1521,36 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Matematica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "números-naturales-y-sistema-de-numeración",
+          "label": "NÚMEROS NATURALES Y SISTEMA DE NUMERACIÓN"
+        },
+        {
+          "id": "operaciones",
+          "label": "OPERACIONES"
+        },
+        {
+          "id": "números-racionales:-fracciones-y-números-decimales",
+          "label": "NÚMEROS RACIONALES: FRACCIONES Y NÚMEROS DECIMALES"
+        },
+        {
+          "id": "operaciones",
+          "label": "OPERACIONES"
+        },
+        {
+          "id": "cdp,-esi,-eai,-ei",
+          "label": "CDP, ESI, EAI, EI"
+        },
+        {
+          "id": "orientación-y-localización-en-el-espacio",
+          "label": "ORIENTACIÓN Y LOCALIZACIÓN EN EL ESPACIO"
+        },
+        {
+          "id": "figuras-geométricas",
+          "label": "FIGURAS GEOMÉTRICAS"
+        },
+        {
+          "id": "cuerpos-geométricos",
+          "label": "CUERPOS GEOMÉTRICOS"
         }
       ]
     },
@@ -815,8 +1558,40 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Musica",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "las-músicas-como-manifestaciones-sociales-y-cultur",
+          "label": "LAS MÚSICAS COMO MANIFESTACIONES SOCIALES Y CULTURALES"
+        },
+        {
+          "id": "las-músicas-y-sus-protagonistas",
+          "label": "LAS MÚSICAS Y SUS PROTAGONISTAS"
+        },
+        {
+          "id": "los-contextos-musicales",
+          "label": "LOS CONTEXTOS MUSICALES"
+        },
+        {
+          "id": "entornos-sonoros,-ámbitos-y-medios",
+          "label": "ENTORNOS SONOROS, ÁMBITOS Y MEDIOS"
+        },
+        {
+          "id": "relaciones-discursivo-musicales",
+          "label": "RELACIONES DISCURSIVO-MUSICALES"
+        },
+        {
+          "id": "relaciones-sonoras",
+          "label": "RELACIONES SONORAS"
+        },
+        {
+          "id": "producción-vocal",
+          "label": "PRODUCCIÓN VOCAL"
+        },
+        {
+          "id": "producción-corporal",
+          "label": "PRODUCCIÓN CORPORAL"
+        },
+        {
+          "id": "producción-instrumental",
+          "label": "PRODUCCIÓN INSTRUMENTAL"
         }
       ]
     },
@@ -824,8 +1599,24 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Saberes Vidas Y Mundos",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "ciudadanía,-derechos-humanos-y-participación",
+          "label": "CIUDADANÍA, DERECHOS HUMANOS Y PARTICIPACIÓN"
+        },
+        {
+          "id": "educación-intercultural",
+          "label": "EDUCACIÓN INTERCULTURAL"
+        },
+        {
+          "id": "educación-sexual-integral",
+          "label": "EDUCACIÓN SEXUAL INTEGRAL"
+        },
+        {
+          "id": "educación-ambiental-integral",
+          "label": "EDUCACIÓN AMBIENTAL INTEGRAL"
+        },
+        {
+          "id": "educación-y-cultura-digital",
+          "label": "EDUCACIÓN Y CULTURA DIGITAL"
         }
       ]
     },
@@ -833,8 +1624,36 @@ export const CURRICULUM_BY_GRADE = {
       "label": "Teatro",
       "contents": [
         {
-          "id": "objetivos-contenidos-y-ejes",
-          "label": "Objetivos Contenidos Y Ejes"
+          "id": "el-teatro-como-manifestación-histórica-y-cultural",
+          "label": "EL TEATRO COMO MANIFESTACIÓN HISTÓRICA Y CULTURAL"
+        },
+        {
+          "id": "el-teatro-y-sus-hacedores",
+          "label": "EL TEATRO Y SUS HACEDORES"
+        },
+        {
+          "id": "el-reconocimiento-de-los-elementos-teatrales",
+          "label": "EL RECONOCIMIENTO DE LOS ELEMENTOS TEATRALES"
+        },
+        {
+          "id": "la-apreciación-de-las-producciones-propias-y-de-pa",
+          "label": "LA APRECIACIÓN DE LAS PRODUCCIONES PROPIAS Y DE PARES"
+        },
+        {
+          "id": "de-creación",
+          "label": "DE CREACIÓN"
+        },
+        {
+          "id": "el-juego-en-ficción",
+          "label": "EL JUEGO EN FICCIÓN"
+        },
+        {
+          "id": "los-objetos-lúdicos-para-la-creación-y-expresión",
+          "label": "LOS OBJETOS LÚDICOS PARA LA CREACIÓN Y EXPRESIÓN"
+        },
+        {
+          "id": "el-teatro-como-actividad-colectiva-e-integradora",
+          "label": "EL TEATRO COMO ACTIVIDAD COLECTIVA E INTEGRADORA"
         }
       ]
     }
