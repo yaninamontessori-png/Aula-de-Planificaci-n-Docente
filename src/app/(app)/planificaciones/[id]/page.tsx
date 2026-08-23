@@ -20,7 +20,13 @@ export default async function PlanDetailPage({
   const supabase = await createClient();
 
   // RLS garantiza que solo se devuelva si la planificación es de la docente.
-  const { data: plan } = await supabase.from("plans").select("*").eq("id", id).maybeSingle();
+  const { data: plan, error } = await supabase.from("plans").select("*").eq("id", id).maybeSingle();
+
+  if (error) {
+    console.error("Error fetching plan:", error);
+    notFound();
+  }
+
   if (!plan) notFound();
 
   const sections = (plan.generated_sections ?? {}) as Partial<GeneratedSections>;
