@@ -192,7 +192,9 @@ export const planningTypeSchema = z.enum(["unidad_mensual", "secuencia_clases"])
 
 /** Contenido curricular tal como se selecciona en el Paso 2. */
 export const selectedContentSchema = z.object({
-  id: z.string().uuid(),
+  // Los contenidos vienen del currículum local (id tipo "artes-visuales/1/3"),
+  // no de una tabla con UUID; por eso se acepta cualquier string no vacío.
+  id: z.string().min(1),
   area: z.string().min(1),
   axis: z.string().nullable().optional(),
   contentNumber: z.string().nullable().optional(),
