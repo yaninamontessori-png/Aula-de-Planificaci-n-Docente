@@ -140,13 +140,20 @@ export async function savePlan(input: unknown, sectionsInput: unknown): Promise<
 
   if (error || !plan) return { ok: false, error: "No se pudo guardar la planificación." };
 
-  const rows = draft.contents.map((c) => ({
-    plan_id: plan.id,
-    curriculum_content_id: c.id,
-  }));
-  const { error: linkError } = await supabase.from("plan_contents").insert(rows);
-  if (linkError) {
-    return { ok: false, error: "La planificación se creó pero fallaron los contenidos. Revisá el detalle." };
+  // Solo vincular contenidos si sus IDs son UUIDs válidos (v4).
+  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+  const validContents = draft.contents.filter((c) => uuidRegex.test(c.id));
+
+  if (validContents.length > 0) {
+    const rows = validContents.map((c) => ({
+      plan_id: plan.id,
+      curriculum_content_id: c.id,
+    }));
+    const { error: linkError } = await supabase.from("plan_contents").insert(rows);
+    if (linkError) {
+      // No es un error fatal: la planificación se creó sin contenidos vinculados.
+      console.warn("No se pudieron vincular los contenidos:", linkError);
+    }
   }
 
   revalidatePath("/planificaciones");

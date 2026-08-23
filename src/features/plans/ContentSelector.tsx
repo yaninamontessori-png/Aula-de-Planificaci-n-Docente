@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { SelectedContent } from "./schema";
-import { CURRICULUM_BY_GRADE } from "./curriculum";
+import { ARTES_VISUALES, getArtesVisualesForGrade } from "./curriculum_artes_visuales";
 
 type Row = {
   id: string;
@@ -25,28 +25,38 @@ export function ContentSelector({
   const [openArea, setOpenArea] = useState<string | null>(null);
   const [openEjes, setOpenEjes] = useState<Set<string>>(new Set());
 
-  // Generar filas desde curriculum.ts
-  const rows = useMemo(() => {
-    const gradeData = CURRICULUM_BY_GRADE[String(grade) as keyof typeof CURRICULUM_BY_GRADE];
-    if (!gradeData) return [];
+  // Generar filas desde curriculum_artes_visuales.ts
+  const { rows, loading, error } = useMemo(() => {
+    try {
+      const gradeData = getArtesVisualesForGrade(grade);
+      const result: Row[] = [];
+      let contentId = 1;
 
-    const result: Row[] = [];
-    Object.entries(gradeData).forEach(([areaId, areaData]) => {
-      (areaData.contents as any).forEach((content: any) => {
-        result.push({
-          id: `${areaId}/${content.id}`,
-          area: (areaData.label as any),
-          axis: null,
-          content_number: null,
-          content_text: (content.label as any),
+      Object.entries(gradeData).forEach(([eje, contents]) => {
+        (contents as string[]).forEach((content) => {
+          result.push({
+            id: `av-${grade}-${contentId}`,
+            area: "Artes Visuales",
+            axis: eje,
+            content_number: null,
+            content_text: content,
+          });
+          contentId++;
         });
       });
-    });
-    return result;
-  }, [grade]);
 
-  const loading = false;
-  const error = null;
+      return { rows: result, loading: false, error: null };
+    } catch (err) {
+      return {
+        rows: [],
+        loading: false,
+        error:
+          err instanceof Error
+            ? err.message
+            : "No se pudieron cargar los contenidos",
+      };
+    }
+  }, [grade]);
 
   const selectedIds = useMemo(() => new Set(selected.map((c) => c.id)), [selected]);
   const searching = query.trim().length > 0;
@@ -222,4 +232,30 @@ export function ContentSelector({
       })}
     </div>
   );
+}
+
+function formatAreaLabel(area: string): string {
+  const labels: Record<string, string> = {
+    "artes-audiovisuales": "Artes Audiovisuales",
+    "artes-visuales": "Artes Visuales",
+    "ciencias-naturales": "Ciencias Naturales",
+    "ciencias-sociales": "Ciencias Sociales",
+    danza: "Danza",
+    "educacion-fisica": "Educación Física",
+    "educacion-tecnologica": "Educación Tecnológica",
+    "lengua-y-literatura": "Lengua y Literatura",
+    "lenguas-extranjeras": "Lenguas Extranjeras",
+    matematica: "Matemática",
+    musica: "Música",
+    "saberes-vidas-y-mundos": "Saberes, Vidas y Mundos",
+    teatro: "Teatro",
+  };
+  return labels[area] || area;
+}
+
+function formatEjeLabel(eje: string): string {
+  return eje
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 }
