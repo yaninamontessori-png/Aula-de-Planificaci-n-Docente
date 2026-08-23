@@ -17,8 +17,8 @@ const unbounded = Unbounded({
 
 export const metadata: Metadata = {
   title: {
-    default: "Aula de Planificación Docente",
-    template: "%s · Aula de Planificación Docente",
+    default: "planIA · Planificación docente",
+    template: "%s · planIA",
   },
   description:
     "De la pregunta motivadora a una planificación curricular interdisciplinaria y editable.",
