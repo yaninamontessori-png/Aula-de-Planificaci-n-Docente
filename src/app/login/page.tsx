@@ -10,9 +10,9 @@ export const metadata: Metadata = { title: "Ingresar" };
 export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ redirectTo?: string; error?: string }>;
+  searchParams: Promise<{ redirectTo?: string; error?: string; detalle?: string }>;
 }) {
-  const { redirectTo, error } = await searchParams;
+  const { redirectTo, error, detalle } = await searchParams;
   const supabase = await createClient();
   const {
     data: { user },
@@ -42,12 +42,15 @@ export default async function LoginPage({
         </div>
 
         {error && (
-          <p
+          <div
             role="alert"
             className="mt-4 rounded-lg bg-danger-bg p-3 text-sm text-danger"
           >
-            No pudimos completar el ingreso. Probá nuevamente.
-          </p>
+            <p>No pudimos completar el ingreso. Probá nuevamente.</p>
+            {detalle && (
+              <p className="mt-1 break-words text-xs opacity-80">Detalle: {detalle}</p>
+            )}
+          </div>
         )}
 
         <p className="mt-6 text-xs text-muted">

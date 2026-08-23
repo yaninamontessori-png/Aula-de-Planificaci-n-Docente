@@ -20,18 +20,24 @@ export async function GET(request: Request) {
   const forwardedProto = request.headers.get("x-forwarded-proto") ?? "https";
   const baseUrl = forwardedHost ? `${forwardedProto}://${forwardedHost}` : origin;
 
+  let reason = "sin_codigo";
+
   if (code) {
     const supabase = await createClient();
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
       return NextResponse.redirect(`${baseUrl}${next}`);
     }
+    reason = `exchange: ${error.message}`;
     console.error("[auth/callback] exchangeCodeForSession falló:", error.message);
   } else if (providerError) {
+    reason = `proveedor: ${providerError}`;
     console.error("[auth/callback] error del proveedor:", providerError);
   } else {
     console.error("[auth/callback] no llegó ningún código.");
   }
 
-  return NextResponse.redirect(`${baseUrl}/login?error=auth`);
+  return NextResponse.redirect(
+    `${baseUrl}/login?error=auth&detalle=${encodeURIComponent(reason.slice(0, 200))}`,
+  );
 }
