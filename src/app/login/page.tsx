@@ -27,7 +27,7 @@ export default async function LoginPage({
         ← Volver al inicio
       </Link>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/logo.webp" alt="planIA" className="mb-6 h-14 w-auto" />
+      <img src="/logo.webp" alt="planIA" className="mb-6 h-16 w-auto mix-blend-multiply" />
       <div className="rounded-2xl border border-border bg-surface p-7">
         <h1 className="font-heading text-2xl font-bold text-brand">
           Ingresá para planificar

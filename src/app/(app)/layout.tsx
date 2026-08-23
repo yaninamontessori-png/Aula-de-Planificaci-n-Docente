@@ -29,7 +29,7 @@ export default async function AppLayout({
         <div className="mx-auto flex w-full max-w-4xl items-center justify-between gap-4 px-5 py-3">
           <Link href="/nueva" className="flex items-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.webp" alt="planIA" className="h-9 w-auto" />
+            <img src="/logo.webp" alt="planIA" className="h-9 w-auto mix-blend-multiply" />
           </Link>
           <div className="flex items-center gap-4">
             <DesktopNav />
