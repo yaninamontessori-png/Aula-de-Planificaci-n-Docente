@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { MobileNav, DesktopNav } from "@/components/layout/MobileNav";
 import { SignOutButton } from "@/components/auth/SignOutButton";
 import { OnboardingModal } from "@/features/profile/OnboardingModal";
+import { Logo } from "@/components/Logo";
 
 export default async function AppLayout({
   children,
@@ -28,8 +29,7 @@ export default async function AppLayout({
       <header className="sticky top-0 z-10 border-b border-border bg-bg/95 backdrop-blur">
         <div className="mx-auto flex w-full max-w-4xl items-center justify-between gap-4 px-5 py-3">
           <Link href="/nueva" className="flex items-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="planIA" className="h-9 w-auto" />
+            <Logo iconSize={30} textClass="text-lg" />
           </Link>
           <div className="flex items-center gap-4">
             <DesktopNav />

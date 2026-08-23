@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import { GoogleButton } from "@/components/auth/GoogleButton";
+import { Logo } from "@/components/Logo";
 
 export const metadata: Metadata = { title: "Ingresar" };
 
@@ -26,8 +27,7 @@ export default async function LoginPage({
       <Link href="/" className="mb-8 text-sm font-semibold text-muted hover:text-brand">
         ← Volver al inicio
       </Link>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/logo.png" alt="planIA" className="mb-6 h-16 w-auto" />
+      <Logo iconSize={52} textClass="text-4xl" tagline className="mb-8" />
       <div className="rounded-2xl border border-border bg-surface p-7">
         <h1 className="font-heading text-2xl font-bold text-brand">
           Ingresá para planificar
