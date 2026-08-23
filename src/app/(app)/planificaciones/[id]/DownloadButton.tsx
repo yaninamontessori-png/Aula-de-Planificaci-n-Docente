@@ -1,73 +1,158 @@
 "use client";
 
-import { SECTION_LABELS, type GeneratedSections } from "@/features/plans/schema";
+import { useState } from "react";
+import { createClient } from "@/lib/supabase/client";
+import { type GeneratedSections } from "@/features/plans/schema";
+import {
+  generatePlanPdfBlob,
+  planPdfFilename,
+  type PlanForPdf,
+} from "@/features/plans/pdf";
 
-const tipoLabel: Record<string, string> = {
-  unidad_mensual: "Unidad didáctica mensual",
-  secuencia_clases: "Secuencia de clases",
-};
-
-type PlanForDownload = {
-  title: string;
-  planning_type: string;
-  grade: number;
-  institution: string | null;
-  duration: string | null;
-  guiding_question: string;
-};
+const BUCKET = "planificaciones";
 
 export function DownloadButton({
+  planId,
   plan,
   sections,
 }: {
-  plan: PlanForDownload;
+  planId: string;
+  plan: PlanForPdf;
   sections: Partial<GeneratedSections>;
 }) {
-  const handleDownload = () => {
-    const content = `PLANIFICACIÓN DIDÁCTICA
-${plan.title}
+  const [downloading, setDownloading] = useState(false);
+  const [sharing, setSharing] = useState(false);
+  const [shareUrl, setShareUrl] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-DATOS GENERALES
-Tipo: ${tipoLabel[plan.planning_type] ?? plan.planning_type}
-Grado: ${plan.grade}º
-Institución: ${plan.institution ?? "No especificada"}
-Duración: ${plan.duration || "No especificada"}
+  const storagePath = `${planId}.pdf`;
 
-PREGUNTA ORIENTADORA
-${plan.guiding_question}
+  // Genera el PDF, lo descarga y lo guarda en Supabase Storage.
+  async function handleDownload() {
+    setError(null);
+    setDownloading(true);
+    try {
+      const blob = await generatePlanPdfBlob(plan, sections);
 
-${Object.entries(sections)
-  .filter(([, value]) => value?.trim())
-  .map(([key, value]) => `${SECTION_LABELS[key as keyof GeneratedSections]}\n${value}`)
-  .join("\n\n")}
+      // Descargar en el navegador
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = planPdfFilename(plan);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
 
----
-Generado con Aula de Planificación
-${new Date().toLocaleDateString("es-AR")}
-`;
+      // Guardar en Supabase (no bloquea la descarga si falla)
+      try {
+        const supabase = createClient();
+        await supabase.storage
+          .from(BUCKET)
+          .upload(storagePath, blob, { contentType: "application/pdf", upsert: true });
+      } catch (uploadErr) {
+        console.warn("No se pudo guardar el PDF en Supabase:", uploadErr);
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "No se pudo generar el PDF.");
+    } finally {
+      setDownloading(false);
+    }
+  }
 
-    const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `${plan.title}.txt`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
+  // Asegura que el PDF esté guardado y genera un link firmado para compartir.
+  async function handleShare() {
+    setError(null);
+    setSharing(true);
+    setCopied(false);
+    try {
+      const supabase = createClient();
+
+      // Subir (o actualizar) el PDF antes de compartir.
+      const blob = await generatePlanPdfBlob(plan, sections);
+      const { error: upErr } = await supabase.storage
+        .from(BUCKET)
+        .upload(storagePath, blob, { contentType: "application/pdf", upsert: true });
+      if (upErr) throw upErr;
+
+      // Link firmado válido por 1 año.
+      const { data, error: signErr } = await supabase.storage
+        .from(BUCKET)
+        .createSignedUrl(storagePath, 60 * 60 * 24 * 365);
+      if (signErr || !data?.signedUrl) throw signErr ?? new Error("Sin URL");
+
+      setShareUrl(data.signedUrl);
+      try {
+        await navigator.clipboard.writeText(data.signedUrl);
+        setCopied(true);
+      } catch {
+        // Si no se puede copiar, el link queda visible para copiar a mano.
+      }
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? `No se pudo compartir: ${err.message}`
+          : "No se pudo generar el link para compartir.",
+      );
+    } finally {
+      setSharing(false);
+    }
+  }
 
   return (
-    <button
-      onClick={handleDownload}
-      className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-2 disabled:opacity-55"
-    >
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-        <polyline points="7 10 12 15 17 10" />
-        <line x1="12" y1="15" x2="12" y2="3" />
-      </svg>
-      Descargar
-    </button>
+    <div className="w-full">
+      <div className="flex flex-wrap gap-3">
+        <button
+          onClick={handleDownload}
+          disabled={downloading}
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-2 disabled:opacity-55"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          {downloading ? "Generando PDF…" : "Descargar PDF"}
+        </button>
+
+        <button
+          onClick={handleShare}
+          disabled={sharing}
+          className="inline-flex items-center justify-center gap-2 rounded-full border border-brand bg-surface px-6 py-3 text-sm font-bold text-brand transition-colors hover:bg-surface-2 disabled:opacity-55"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="18" cy="5" r="3" />
+            <circle cx="6" cy="12" r="3" />
+            <circle cx="18" cy="19" r="3" />
+            <line x1="8.6" y1="10.5" x2="15.4" y2="6.5" />
+            <line x1="8.6" y1="13.5" x2="15.4" y2="17.5" />
+          </svg>
+          {sharing ? "Preparando…" : "Compartir"}
+        </button>
+      </div>
+
+      {shareUrl && (
+        <div className="mt-3 rounded-xl border border-border bg-surface-2 p-3">
+          <p className="text-xs font-semibold text-brand-ink">
+            {copied ? "¡Link copiado! Ya podés pegarlo." : "Link para compartir:"}
+          </p>
+          <a
+            href={shareUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-1 block truncate text-xs text-brand underline"
+          >
+            {shareUrl}
+          </a>
+        </div>
+      )}
+
+      {error && (
+        <p role="alert" className="mt-3 text-sm font-bold text-danger">
+          {error}
+        </p>
+      )}
+    </div>
   );
 }

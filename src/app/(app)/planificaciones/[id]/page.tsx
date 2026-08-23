@@ -64,8 +64,8 @@ export default async function PlanDetailPage({
         </div>
       )}
 
-      <div className="mt-8 flex gap-3">
-        <DownloadButton plan={plan} sections={sections} />
+      <div className="mt-8">
+        <DownloadButton planId={id} plan={plan} sections={sections} />
       </div>
     </div>
   );
