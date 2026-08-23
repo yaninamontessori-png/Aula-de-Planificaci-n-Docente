@@ -19,7 +19,7 @@ export type GenerateResult =
 
 export type SaveResult = { ok: true; planId: string } | { ok: false; error: string };
 
-const MONTHLY_LIMIT = 50;
+const MONTHLY_LIMIT = 10;
 
 /**
  * Genera el borrador con IA. Valida sesión y datos, controla el uso mensual,
