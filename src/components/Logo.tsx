@@ -90,7 +90,7 @@ export function Logo({
         </span>
         {tagline && (
           <span className="mt-1 block text-xs font-semibold text-muted">
-            Planificación docente
+            PlanIA propone. La docente decide.
           </span>
         )}
       </span>
