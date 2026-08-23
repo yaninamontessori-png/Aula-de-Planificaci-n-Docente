@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import { ProfileForm } from "@/features/profile/ProfileForm";
+import { getProfile } from "@/features/profile/data";
 
 export const metadata: Metadata = { title: "Perfil" };
 
@@ -10,13 +11,7 @@ export default async function PerfilPage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select(
-      "display_name, institution, default_grade, teaching_skills, pedagogical_notes, role, teaching_subject",
-    )
-    .eq("id", user!.id)
-    .maybeSingle();
+  const profile = await getProfile(user!.id);
 
   return (
     <div>

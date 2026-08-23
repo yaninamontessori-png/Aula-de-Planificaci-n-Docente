@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import { buttonClasses } from "@/components/ui/Button";
+import { getProfile } from "@/features/profile/data";
 
 export const metadata: Metadata = { title: "Mis planificaciones" };
 
@@ -21,11 +22,7 @@ export default async function PlanificacionesPage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", user!.id)
-    .maybeSingle();
+  const profile = await getProfile(user!.id);
   const isDirectivo = profile?.role === "directivo";
 
   // RLS decide el alcance: un directivo también ve las de su institución.

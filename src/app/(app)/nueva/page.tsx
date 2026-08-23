@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import { Wizard } from "@/features/plans/Wizard";
+import { getProfile } from "@/features/profile/data";
 
 export const metadata: Metadata = { title: "Nueva planificación" };
 
@@ -10,11 +11,7 @@ export default async function NuevaPage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("display_name, institution, default_grade, teaching_skills")
-    .eq("id", user!.id)
-    .maybeSingle();
+  const profile = await getProfile(user!.id);
 
   return (
     <div>

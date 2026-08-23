@@ -5,6 +5,7 @@ import { MobileNav, DesktopNav } from "@/components/layout/MobileNav";
 import { SignOutButton } from "@/components/auth/SignOutButton";
 import { OnboardingModal } from "@/features/profile/OnboardingModal";
 import { Logo } from "@/components/Logo";
+import { getProfile } from "@/features/profile/data";
 
 export default async function AppLayout({
   children,
@@ -16,11 +17,7 @@ export default async function AppLayout({
 
   if (!user) redirect("/login");
 
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("onboarded, display_name")
-    .eq("id", user.id)
-    .maybeSingle();
+  const profile = await getProfile(user.id);
   // Primera vez (o perfil sin completar): mostramos el modal de bienvenida.
   const needsOnboarding = profile ? !profile.onboarded : true;
 

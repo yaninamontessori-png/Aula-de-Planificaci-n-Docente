@@ -11,6 +11,7 @@ import {
   type GeneratedSections,
 } from "./schema";
 import { generateSections, GEMINI_MODEL } from "./gemini";
+import { getProfile } from "@/features/profile/data";
 
 export type GenerateResult =
   | { ok: true; sections: GeneratedSections; model: string }
@@ -53,15 +54,11 @@ export async function generatePlan(input: unknown): Promise<GenerateResult> {
   }
 
   // Configuración pedagógica de la docente: orienta al agente de IA.
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("teaching_skills, pedagogical_notes, teaching_subject")
-    .eq("id", user.id)
-    .maybeSingle();
+  const profile = await getProfile(user.id);
   const guidelines = {
     skills: skillPromptsFor(profile?.teaching_skills ?? []),
     notes: (profile?.pedagogical_notes ?? "").trim(),
-    subject: subjectPromptFor(profile?.teaching_subject),
+    subject: subjectPromptFor(profile?.teaching_subject ?? undefined),
   };
 
   try {

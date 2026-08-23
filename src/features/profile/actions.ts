@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { saveProfile } from "./data";
 import { normalizeSkillIds, TEACHER_SUBJECTS } from "@/features/plans/schema";
 
 const SUBJECT_IDS = new Set(TEACHER_SUBJECTS.map((s) => s.id as string));
@@ -45,22 +46,16 @@ export async function updateProfile(
   const subjectRaw = String(formData.get("teaching_subject") ?? "").trim();
   const teachingSubject = SUBJECT_IDS.has(subjectRaw) ? subjectRaw : "grado";
 
-  // upsert cubre el caso (poco común) de que aún no exista la fila de perfil.
-  const { error } = await supabase.from("profiles").upsert(
-    {
-      id: user.id,
-      display_name: displayName,
-      institution: institution || null,
-      teaching_skills: skills,
-      pedagogical_notes: notes || null,
-      default_grade: defaultGrade,
-      role,
-      teaching_subject: teachingSubject,
-    },
-    { onConflict: "id" },
-  );
-
-  if (error) return { error: "No se pudo guardar. Intentá nuevamente." };
+  const err = await saveProfile(user.id, {
+    displayName,
+    institution: institution || null,
+    defaultGrade,
+    teachingSubject,
+    role,
+    teachingSkills: skills,
+    pedagogicalNotes: notes || null,
+  });
+  if (err) return { error: err };
 
   revalidatePath("/perfil");
   return { ok: true };
@@ -90,20 +85,15 @@ export async function completeOnboarding(
   const teachingSubject = SUBJECT_IDS.has(subjectRaw) ? subjectRaw : "grado";
   const role = String(formData.get("role") ?? "") === "directivo" ? "directivo" : "docente";
 
-  const { error } = await supabase.from("profiles").upsert(
-    {
-      id: user.id,
-      display_name: displayName,
-      institution: institution || null,
-      default_grade: defaultGrade,
-      teaching_subject: teachingSubject,
-      role,
-      onboarded: true,
-    },
-    { onConflict: "id" },
-  );
-
-  if (error) return { error: "No se pudo guardar. Intentá nuevamente." };
+  const err = await saveProfile(user.id, {
+    displayName,
+    institution: institution || null,
+    defaultGrade,
+    teachingSubject,
+    role,
+    onboarded: true,
+  });
+  if (err) return { error: err };
 
   // Revalida el layout para que el modal desaparezca.
   revalidatePath("/", "layout");
