@@ -68,13 +68,6 @@ export function OnboardingModal({ defaultName }: { defaultName: string }) {
                 ))}
               </select>
             </label>
-            <label className="block">
-              <span className="mb-1.5 block text-sm font-bold">Rol</span>
-              <select name="role" defaultValue="docente" className={inputCls}>
-                <option value="docente">Docente</option>
-                <option value="directivo">Directivo/a</option>
-              </select>
-            </label>
           </div>
 
           <label className="block">

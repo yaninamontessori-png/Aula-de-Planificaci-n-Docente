@@ -94,23 +94,6 @@ export function ProfileForm({
               ))}
             </select>
           </div>
-          <div>
-            <label className="mb-1.5 block text-sm font-bold" htmlFor="role">
-              Rol
-            </label>
-            <select
-              id="role"
-              name="role"
-              defaultValue={role || "docente"}
-              className="w-full rounded-xl border border-border bg-surface px-3 py-3"
-            >
-              <option value="docente">Docente</option>
-              <option value="directivo">Directivo/a</option>
-            </select>
-            <p className="mt-1 text-xs text-muted">
-              Directivo/a ve las planificaciones de su institución.
-            </p>
-          </div>
           <div className="sm:col-span-2">
             <label className="mb-1.5 block text-sm font-bold" htmlFor="institution">
               Institución
