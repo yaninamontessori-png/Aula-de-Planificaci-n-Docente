@@ -12,8 +12,8 @@ import {
   type PlanDraft,
 } from "./schema";
 
-export const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-flash-latest";
-// Modelo de respaldo cuando el principal está sobrecargado (503).
+export const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash-lite";
+// Modelo de respaldo cuando el principal está sobrecargado (503) o sin cuota (429).
 const FALLBACK_MODEL = "gemini-flash-lite-latest";
 
 const SECTION_KEYS: (keyof GeneratedSections)[] = [
