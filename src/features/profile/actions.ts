@@ -60,7 +60,12 @@ export async function updateProfile(
     { onConflict: "id" },
   );
 
-  if (error) return { error: "No se pudo guardar. Intentá nuevamente." };
+  if (error) {
+    console.error("updateProfile error:", error);
+    return {
+      error: `No se pudo guardar: ${error.message}${error.code ? ` [${error.code}]` : ""}`,
+    };
+  }
 
   revalidatePath("/perfil");
   return { ok: true };
@@ -103,7 +108,12 @@ export async function completeOnboarding(
     { onConflict: "id" },
   );
 
-  if (error) return { error: "No se pudo guardar. Intentá nuevamente." };
+  if (error) {
+    console.error("completeOnboarding error:", error);
+    return {
+      error: `No se pudo guardar: ${error.message}${error.code ? ` [${error.code}]` : ""}`,
+    };
+  }
 
   // Revalida el layout para que el modal desaparezca.
   revalidatePath("/", "layout");
