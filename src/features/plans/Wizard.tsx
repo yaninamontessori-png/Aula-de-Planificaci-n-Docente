@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
@@ -16,6 +16,9 @@ import {
 } from "./schema";
 
 const STEPS = ["Datos", "Contenidos", "Pregunta", "Planificación"] as const;
+
+// Clave para guardar el borrador en el navegador (por si la docente sale y vuelve).
+const DRAFT_KEY = "planificar:nueva-draft";
 
 export function Wizard({
   defaultTeacherName,
@@ -54,6 +57,80 @@ export function Wizard({
   const [error, setError] = useState<string | null>(null);
   const [editingKey, setEditingKey] = useState<keyof GeneratedSections | null>(null);
   const [savedPlanId, setSavedPlanId] = useState<string | null>(null);
+  const [hydrated, setHydrated] = useState(false);
+
+  // Restaurar el borrador guardado (una vez, al montar).
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(DRAFT_KEY);
+      if (raw) {
+        const d = JSON.parse(raw);
+        if (typeof d.grade === "number") setGrade(d.grade);
+        if (d.planningType) setPlanningType(d.planningType);
+        if (typeof d.duration === "string") setDuration(d.duration);
+        if (typeof d.startDate === "string") setStartDate(d.startDate);
+        if (typeof d.title === "string") setTitle(d.title);
+        if (typeof d.guidingQuestion === "string") setGuidingQuestion(d.guidingQuestion);
+        if (typeof d.teacherResource === "string") setTeacherResource(d.teacherResource);
+        if (Array.isArray(d.adaptations)) setAdaptations(d.adaptations);
+        if (typeof d.adaptationNotes === "string") setAdaptationNotes(d.adaptationNotes);
+        if (Array.isArray(d.contents)) setContents(d.contents);
+        if (d.sections) setSections(d.sections);
+        if (typeof d.step === "number") setStep(d.step);
+      }
+    } catch {
+      // Si el borrador está corrupto, se ignora.
+    }
+    setHydrated(true);
+  }, []);
+
+  // Guardar el borrador cada vez que cambia algo (después de restaurar).
+  useEffect(() => {
+    if (!hydrated) return;
+    try {
+      localStorage.setItem(
+        DRAFT_KEY,
+        JSON.stringify({
+          grade,
+          planningType,
+          duration,
+          startDate,
+          title,
+          guidingQuestion,
+          teacherResource,
+          adaptations,
+          adaptationNotes,
+          contents,
+          sections,
+          step,
+        }),
+      );
+    } catch {
+      // Sin espacio o modo privado: no es crítico.
+    }
+  }, [
+    hydrated,
+    grade,
+    planningType,
+    duration,
+    startDate,
+    title,
+    guidingQuestion,
+    teacherResource,
+    adaptations,
+    adaptationNotes,
+    contents,
+    sections,
+    step,
+  ]);
+
+  function clearDraft() {
+    try {
+      localStorage.removeItem(DRAFT_KEY);
+    } catch {
+      // Ignorar.
+    }
+  }
 
   const areas = countAreas(contents);
 
@@ -95,6 +172,7 @@ export function Wizard({
     const res = await savePlan(draft(), sections);
     setSaving(false);
     if (!res.ok) return setError(res.error);
+    clearDraft();
     setSavedPlanId(res.planId);
   }
 
@@ -131,6 +209,7 @@ export function Wizard({
             type="button"
             className="rounded-full bg-surface-2 px-6 py-3 font-bold text-brand-ink transition-colors hover:bg-accent-2"
             onClick={() => {
+              clearDraft();
               setSavedPlanId(null);
               setSections(null);
               setContents([]);
