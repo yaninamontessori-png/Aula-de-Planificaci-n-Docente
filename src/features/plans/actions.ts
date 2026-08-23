@@ -19,10 +19,10 @@ export type GenerateResult =
 
 export type SaveResult = { ok: true; planId: string } | { ok: false; error: string };
 
-const MONTHLY_LIMIT = 10;
+const DAILY_LIMIT = 3;
 
 /**
- * Genera el borrador con IA. Valida sesión y datos, controla el uso mensual,
+ * Genera el borrador con IA. Valida sesión y datos, controla el uso diario,
  * registra el evento y devuelve las secciones. La clave de Gemini nunca sale
  * del servidor.
  */
@@ -39,18 +39,21 @@ export async function generatePlan(input: unknown): Promise<GenerateResult> {
   }
   const draft = parsed.data;
 
-  // Control de uso mensual (nivel gratuito).
-  const month = new Date().toISOString().slice(0, 7); // YYYY-MM
+  // Control de uso diario (nivel gratuito).
+  const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
   const { data: usage } = await supabase
     .from("usage_limits")
     .select("period_start, generations_used, monthly_limit")
     .eq("user_id", user.id)
     .maybeSingle();
-  const sameMonth = usage?.period_start?.slice(0, 7) === month;
-  const used = sameMonth ? usage!.generations_used : 0;
-  const limit = usage?.monthly_limit ?? MONTHLY_LIMIT;
+  const sameDay = usage?.period_start?.slice(0, 10) === today;
+  const used = sameDay ? usage!.generations_used : 0;
+  const limit = DAILY_LIMIT;
   if (used >= limit) {
-    return { ok: false, error: `Alcanzaste el límite mensual de ${limit} generaciones.` };
+    return {
+      ok: false,
+      error: `Alcanzaste el límite de ${limit} planificaciones por día. Probá de nuevo mañana.`,
+    };
   }
 
   // Configuración pedagógica de la docente: orienta al agente de IA.
@@ -74,7 +77,7 @@ export async function generatePlan(input: unknown): Promise<GenerateResult> {
       output_tokens: outputTokens,
     });
     await supabase.from("usage_limits").upsert(
-      { user_id: user.id, period_start: `${month}-01`, generations_used: used + 1, monthly_limit: limit },
+      { user_id: user.id, period_start: today, generations_used: used + 1, monthly_limit: limit },
       { onConflict: "user_id" },
     );
     return { ok: true, sections, model };
