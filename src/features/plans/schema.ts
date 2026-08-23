@@ -232,17 +232,9 @@ export const planDraftSchema = z
     adaptations: z.array(z.string()).max(20).optional().default([]),
     adaptationNotes: z.string().trim().max(500).optional().default(""),
     contents: z.array(selectedContentSchema).min(1, "Seleccioná al menos un contenido."),
-  })
-  .superRefine((data, ctx) => {
-    if (!isInterdisciplinary(data.contents)) {
-      ctx.addIssue({
-        code: "custom",
-        path: ["contents"],
-        message:
-          "La planificación debe ser interdisciplinaria: elegí contenidos de al menos dos áreas.",
-      });
-    }
   });
+// La interdisciplinariedad es optativa: se puede planificar con una sola área
+// (p. ej. solo Educación Física). El wizard igual sugiere sumar áreas.
 export type PlanDraft = z.infer<typeof planDraftSchema>;
 
 /** Secciones que devuelve y valida la IA. */

@@ -44,12 +44,12 @@ describe("planDraftSchema", () => {
     guidingQuestion: "¿Cómo contamos una historia para que otra persona la imagine?",
   };
 
-  it("rechaza una selección de una sola área", () => {
+  it("acepta una selección de una sola área (interdisciplina optativa)", () => {
     const res = planDraftSchema.safeParse({
       ...base,
       contents: [contenido(uuid(1), "Lengua y Literatura")],
     });
-    expect(res.success).toBe(false);
+    expect(res.success).toBe(true);
   });
 
   it("acepta contenidos de dos áreas", () => {

@@ -105,7 +105,10 @@ function buildPrompt(d: PlanDraft): string {
       ? `\nADAPTACIONES CURRICULARES A CONTEMPLAR: ${adaptaciones}.\nEn la sección "adecuaciones" desarrollá adaptaciones concretas y diferenciadas para estas configuraciones de apoyo: ajustes de acceso, de la actividad, de los materiales y de la evaluación, con estrategias específicas para cada una y basadas en el Diseño Universal para el Aprendizaje (DUA). No nombres ni identifiques a estudiantes.`
       : "",
     "",
-    "La planificación debe ser interdisciplinaria. Si la docente indicó un recurso, integralo de manera concreta en las actividades sin reemplazar los contenidos curriculares. Respetá la extensión elegida: una unidad mensual muestra progresión semanal; una secuencia organiza clases consecutivas.",
+    areas.length >= 2
+      ? "La planificación debe articular de forma interdisciplinaria las áreas indicadas."
+      : "La planificación se centra en el área indicada; profundizá en sus contenidos.",
+    "Si la docente indicó un recurso, integralo de manera concreta en las actividades sin reemplazar los contenidos curriculares. Respetá la extensión elegida: una unidad mensual muestra progresión semanal; una secuencia organiza clases consecutivas.",
   ].join("\n");
 }
 
