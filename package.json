@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "curriculum": "node scripts/generate-curriculum.mjs",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
@@ -20,6 +21,7 @@
     "next": "16.3.2",
     "react": "19.2.8",
     "react-dom": "19.2.8",
+    "xlsx": "^0.18.5",
     "zod": "^4.4.3"
   },
   "devDependencies": {

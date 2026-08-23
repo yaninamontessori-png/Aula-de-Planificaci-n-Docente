@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { SelectedContent } from "./schema";
-import { ARTES_VISUALES, getArtesVisualesForGrade } from "./curriculum_artes_visuales";
+import { getAllContentsForGrade } from "./curriculum";
 
 type Row = {
   id: string;
@@ -25,26 +25,17 @@ export function ContentSelector({
   const [openArea, setOpenArea] = useState<string | null>(null);
   const [openEjes, setOpenEjes] = useState<Set<string>>(new Set());
 
-  // Generar filas desde curriculum_artes_visuales.ts
+  // Generar filas desde curriculum.ts (datos de los Excel de /informacion)
   const { rows, loading, error } = useMemo(() => {
     try {
-      const gradeData = getArtesVisualesForGrade(grade);
-      const result: Row[] = [];
-      let contentId = 1;
-
-      Object.entries(gradeData).forEach(([eje, contents]) => {
-        (contents as string[]).forEach((content) => {
-          result.push({
-            id: `av-${grade}-${contentId}`,
-            area: "Artes Visuales",
-            axis: eje,
-            content_number: null,
-            content_text: content,
-          });
-          contentId++;
-        });
-      });
-
+      const contents = getAllContentsForGrade(grade);
+      const result: Row[] = contents.map((c) => ({
+        id: c.id,
+        area: c.areaLabel,
+        axis: c.eje,
+        content_number: null,
+        content_text: c.label,
+      }));
       return { rows: result, loading: false, error: null };
     } catch (err) {
       return {
@@ -232,30 +223,4 @@ export function ContentSelector({
       })}
     </div>
   );
-}
-
-function formatAreaLabel(area: string): string {
-  const labels: Record<string, string> = {
-    "artes-audiovisuales": "Artes Audiovisuales",
-    "artes-visuales": "Artes Visuales",
-    "ciencias-naturales": "Ciencias Naturales",
-    "ciencias-sociales": "Ciencias Sociales",
-    danza: "Danza",
-    "educacion-fisica": "Educación Física",
-    "educacion-tecnologica": "Educación Tecnológica",
-    "lengua-y-literatura": "Lengua y Literatura",
-    "lenguas-extranjeras": "Lenguas Extranjeras",
-    matematica: "Matemática",
-    musica: "Música",
-    "saberes-vidas-y-mundos": "Saberes, Vidas y Mundos",
-    teatro: "Teatro",
-  };
-  return labels[area] || area;
-}
-
-function formatEjeLabel(eje: string): string {
-  return eje
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
 }
