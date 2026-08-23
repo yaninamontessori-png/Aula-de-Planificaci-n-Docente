@@ -159,6 +159,16 @@ export async function generateSections(
         continue; // transitorio: reintentar y luego pasar al modelo de respaldo
       }
 
+      // 429 = límite de uso de la API de Google (cuota gratuita agotada o
+      // demasiadas solicitudes seguidas). Probamos el modelo de respaldo.
+      if (res.status === 429) {
+        lastError =
+          "Se alcanzó el límite de generaciones gratuitas de la IA por ahora. " +
+          "Esperá unos minutos e intentá de nuevo. Si pasa seguido, hay que " +
+          "activar la facturación de la API de Gemini en Google.";
+        break; // no reintentar el mismo modelo; pasar al de respaldo
+      }
+
       const json = (await res.json()) as {
         error?: { message?: string };
         candidates?: { content?: { parts?: { text?: string }[] } }[];
