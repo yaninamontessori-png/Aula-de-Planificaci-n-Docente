@@ -237,9 +237,9 @@ export async function generatePlanPdfBlob(
 
   const docDefinition = await buildPlanPdfDefinition(plan, sections);
 
-  return new Promise<Blob>((resolve) => {
-    pdfMake.createPdf(docDefinition).getBlob((blob: Blob) => resolve(blob));
-  });
+  // pdfmake 0.3.x: getBlob() es async y devuelve una Promise<Blob>.
+  const blob: Blob = await pdfMake.createPdf(docDefinition).getBlob();
+  return blob;
 }
 
 export function planPdfFilename(plan: PlanForPdf): string {
