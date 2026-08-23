@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
@@ -55,7 +55,6 @@ export function Wizard({
   const [generating, setGenerating] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [editingKey, setEditingKey] = useState<keyof GeneratedSections | null>(null);
   const [savedPlanId, setSavedPlanId] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
 
@@ -479,27 +478,21 @@ export function Wizard({
                   final es tuya.
                 </span>
               </div>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {(Object.keys(SECTION_LABELS) as (keyof GeneratedSections)[]).map((key) => (
-                  <button
+                  <div
                     key={key}
-                    type="button"
-                    onClick={() => setEditingKey(key)}
-                    className="flex w-full items-center gap-3 rounded-2xl border-2 border-border bg-surface px-4 py-3 text-left transition-colors hover:border-accent"
+                    className="rounded-2xl border-2 border-border bg-surface p-4 focus-within:border-accent"
                   >
-                    <span className="min-w-0 flex-1">
-                      <span className="block font-heading text-sm font-bold text-ink">
-                        {SECTION_LABELS[key]}
-                      </span>
-                      <span className="mt-0.5 block truncate text-xs text-muted">
-                        {sections[key]?.trim() || "Tocá para escribir…"}
-                      </span>
-                    </span>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-brand">
-                      <path d="M12 20h9" />
-                      <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" />
-                    </svg>
-                  </button>
+                    <label className="mb-2 block font-heading text-sm font-bold text-ink">
+                      {SECTION_LABELS[key]}
+                    </label>
+                    <AutoTextarea
+                      value={sections[key] ?? ""}
+                      onChange={(v) => setSections({ ...sections, [key]: v })}
+                      placeholder="Escribí acá…"
+                    />
+                  </div>
                 ))}
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-3">
@@ -532,36 +525,6 @@ export function Wizard({
         </button>
         {step < STEPS.length - 1 && <Button onClick={() => goTo(step + 1)}>Continuar →</Button>}
       </div>
-
-      {/* Hoja de edición a pantalla completa */}
-      {editingKey && sections && (
-        <div className="fixed inset-0 z-50 flex flex-col bg-bg">
-          <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-3">
-            <button
-              type="button"
-              onClick={() => setEditingKey(null)}
-              aria-label="Volver"
-              className="flex items-center gap-1 text-sm font-bold text-muted hover:text-brand"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="m15 18-6-6 6-6" />
-              </svg>
-            </button>
-            <span className="font-heading text-sm font-bold text-ink">
-              {SECTION_LABELS[editingKey]}
-            </span>
-            <Button size="md" onClick={() => setEditingKey(null)}>
-              Listo
-            </Button>
-          </div>
-          <textarea
-            autoFocus
-            className="mx-auto w-full max-w-2xl flex-1 resize-none bg-bg px-5 py-5 text-base leading-relaxed focus:outline-none"
-            value={sections[editingKey]}
-            onChange={(e) => setSections({ ...sections, [editingKey]: e.target.value })}
-          />
-        </div>
-      )}
     </div>
   );
 }
@@ -575,5 +538,36 @@ function Field({ label, children }: { label: React.ReactNode; children: React.Re
       <span className="mb-1.5 block text-sm font-bold">{label}</span>
       {children}
     </label>
+  );
+}
+
+/** Textarea que crece con su contenido (sin barra de scroll interna). */
+function AutoTextarea({
+  value,
+  onChange,
+  placeholder,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+  placeholder?: string;
+}) {
+  const ref = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.height = `${el.scrollHeight}px`;
+  }, [value]);
+
+  return (
+    <textarea
+      ref={ref}
+      value={value}
+      placeholder={placeholder}
+      onChange={(e) => onChange(e.target.value)}
+      rows={2}
+      className="w-full resize-none rounded-xl border border-border bg-surface px-3 py-2.5 text-sm leading-relaxed text-ink focus:border-brand-2 focus:outline-none"
+    />
   );
 }
