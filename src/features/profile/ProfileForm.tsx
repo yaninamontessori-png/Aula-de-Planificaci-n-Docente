@@ -126,60 +126,6 @@ export function ProfileForm({
         </div>
       </section>
 
-      {/* Enfoques del agente de IA */}
-      <section className="space-y-4 rounded-2xl border border-border bg-surface p-6">
-        <div>
-          <h2 className="font-heading text-lg font-bold text-ink">
-            Enfoques para tus planificaciones
-          </h2>
-          <p className="mt-1 text-sm text-muted">
-            Elegí cómo querés que la IA arme tus borradores. Se aplican a{" "}
-            <strong>todas</strong> las planificaciones que generes — los configurás una sola
-            vez acá.
-          </p>
-        </div>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {TEACHING_SKILLS.map((s) => {
-            const on = active.has(s.id);
-            return (
-              <label
-                key={s.id}
-                className={`flex cursor-pointer items-start gap-3 rounded-2xl border-2 p-4 transition-colors ${
-                  on ? "border-accent bg-accent-2" : "border-border bg-surface hover:border-accent"
-                }`}
-              >
-                <input
-                  type="checkbox"
-                  name="skills"
-                  value={s.id}
-                  defaultChecked={on}
-                  className="mt-0.5 h-5 w-5 shrink-0 accent-[var(--color-brand)]"
-                />
-                <span>
-                  <span className="block text-sm font-bold text-ink">{s.label}</span>
-                  <span className="mt-0.5 block text-xs leading-snug text-muted">{s.short}</span>
-                </span>
-              </label>
-            );
-          })}
-        </div>
-        <div>
-          <label className="mb-1.5 block text-sm font-bold" htmlFor="pedagogical_notes">
-            Contexto de tu grupo <span className="font-normal text-muted">· opcional</span>
-          </label>
-          <textarea
-            id="pedagogical_notes"
-            name="pedagogical_notes"
-            defaultValue={notes}
-            maxLength={600}
-            placeholder="Ej.: plurigrado rural; grupo numeroso; hay estudiantes con apoyos; priorizamos la lectura en voz alta…"
-            className="min-h-24 w-full rounded-xl border border-border bg-surface px-3 py-3 text-sm leading-relaxed"
-          />
-          <p className="mt-1.5 text-xs text-muted">
-            La IA lo tiene en cuenta al planificar, sin nombrar ni diagnosticar estudiantes.
-          </p>
-        </div>
-      </section>
 
       <div className="flex items-center gap-3">
         <Button type="submit" size="lg" disabled={pending}>
