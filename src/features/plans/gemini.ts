@@ -166,9 +166,8 @@ export async function generateSections(
       // demasiadas solicitudes seguidas). Probamos el modelo de respaldo.
       if (res.status === 429) {
         lastError =
-          "Se alcanzó el límite de generaciones gratuitas de la IA por ahora. " +
-          "Esperá unos minutos e intentá de nuevo. Si pasa seguido, hay que " +
-          "activar la facturación de la API de Gemini en Google.";
+          "En este momento hay muchas docentes generando a la vez. " +
+          "Esperá un minutito y volvé a intentar. 🌿";
         break; // no reintentar el mismo modelo; pasar al de respaldo
       }
 
