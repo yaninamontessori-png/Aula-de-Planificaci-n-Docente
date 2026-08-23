@@ -26,7 +26,7 @@ export default async function AppLayout({
       <header className="sticky top-0 z-10 border-b border-border bg-bg/95 backdrop-blur">
         <div className="mx-auto flex w-full max-w-4xl items-center justify-between gap-4 px-5 py-3">
           <Link href="/nueva" className="flex items-center">
-            <Logo iconSize={30} textClass="text-lg" />
+            <Logo iconSize={44} textClass="text-2xl" tagline />
           </Link>
           <div className="flex items-center gap-4">
             <DesktopNav />
